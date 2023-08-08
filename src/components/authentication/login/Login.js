@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "gatsby"
+import image from "../logo (2).png"
 const Login = () => {
   return (
     <div>
