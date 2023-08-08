@@ -1,0 +1,118 @@
+.getstartedsection{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+
+
+.getstartedimage{
+    background: linear-gradient(180.09deg, rgba(0, 0, 0, 0.176) 27.66%, rgba(0, 0, 0, 0.8) 78.79%), url(https://images.unsplash.com/photo-1519763909878-93bb13c38cf3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=453&q=80);
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+width: 75%;
+background-size: cover;
+background-position: bottom;
+background-repeat: no-repeat;
+height: 100%;
+display: flex;
+flex-direction: column;
+margin-top: auto;
+}
+.mpawa {
+padding: 50px;
+display: flex;
+flex-direction: column;
+margin-top: auto;
+}
+
+a{
+text-decoration: none;
+}
+.loginflex input {
+padding: 0.85rem;
+font-size: 15px;
+border-radius: 0.32rem;
+color: #000;
+outline: none;
+width: 100%;
+border: 1px solid rgb(171 171 171 / 63%);
+transition: all .25s ease 0s;
+}
+.getstartedlogin{
+    background-image: url('https://img.freepik.com/free-vector/white-abstract-background-design_361591-1248.jpg?w=826&t=st=1690291826~exp=1690292426~hmac=f81508b1394875f1a914b0fcdb47ceda4efa355a2512befb183a4a210fcbfd27');
+    background-position: bottom;
+    background-size: 30%;
+    background-repeat: no-repeat;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 100%;
+padding: 180px;
+
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.mpawatext {
+color: white;
+font-family: inter;
+margin-top: 10px;
+font-size: 16px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0px;
+text-align: left;
+}
+
+.loginbox2{
+width: 100%;
+}
+.mpawa img{
+    margin-right: auto;
+}
+.logincontent {
+width: 100%;
+padding: 30px;
+}
+
+@media screen and (max-width: 1100px){
+.getstartedsection {
+flex-direction: column;
+}
+
+.logincontent {
+width: 100%;
+padding: 15px;
+}
+.getstartedimage{
+width: 100%;
+background-position: center;
+}
+}
+
+@media screen and (max-width:800px) {
+.getstartedlogin{
+    padding: 50px;
+}
+.mpawa{
+    padding: 10px;
+
+
+}
+
+.mpawatext{
+    font-size: 14px;
+    font-weight: 400;
+line-height: normal;
+}
+
+}
+@media screen and (max-width:500px) {
+.getstartedlogin{
+    padding: 20px;
+}
+
+}
