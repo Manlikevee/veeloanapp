@@ -2,6 +2,12 @@ import React from 'react'
 import logo from "../logo (2).png"
 import { Link } from "gatsby"
 const Landingpageheader = () => {
+  const handleLogoClick = () => {
+    // Handle logo click if needed
+    // For example, scroll to top of page
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <header id="navbar">
       <div className="container" data-aos="fade-left">
