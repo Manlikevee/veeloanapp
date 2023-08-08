@@ -123,7 +123,7 @@ const links = [
   },
 ]
 
-const IndexPage = () => {
+const s = () => {
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
@@ -171,6 +171,6 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default s
 
 export const Head = () => <title>Home Page</title>
