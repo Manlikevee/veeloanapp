@@ -1,55 +1,21 @@
 import React from 'react'
 import { Link } from "gatsby"
+import Splash from '../splashscreen/Splash'
 import image from "../logo (2).png"
+import login from '../components/authentication/register/register.css'
 const Register = () => {
+
   return (
     <div>
-        <div className="getstartedsection">
+<div className="getstartedsection">
   <div className="getstartedimage">
-    <div className="mpawa" data-aos="fade-up">
-      <div
-        className="logo"
-        style={{
-          display: "flex",
-          alignItems: "self-start",
-          justifyContent: "flex-start"
-        }}
-      >
-       <Link to="/" 
-          style={{
-            color: "inherit",
-            textDecoration: "none",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <div
-            className="logo"
-            onclick="window.location.href = 'index.html'"
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "flex-start",
-              justifyContent: "flex-start"
-            }}
-          >
-            <img src={image} alt="" />
-          </div>
-        </Link>
-      </div>
-      <div className="mpawatext">
-        Flexible options, competitive rates, exceptional service – Empowering
-        your dreams. Apply now for a seamless borrowing experience and secure a
-        brighter future.
-      </div>
-    </div>
+  <Splash/>
   </div>
   <div className="getstartedlogin">
     <div className="loginbox2" data-aos="fade-right">
       <br />
-      <div className="logo" onclick="window.location.href = 'index.html'">
-        <img src="media/logo (2).png" alt="" style={{ width: "fit-content" }} />
+      <div className="logo">
+        <img src={image} alt="" style={{ width: "fit-content" }} />
       </div>
       <div className="logintitle">
         Welcome Onboard.{" "}
@@ -88,7 +54,6 @@ const Register = () => {
                   />{" "}
                   <i
                     id="eyes"
-                    onclick="eyefunclogin()"
                     className="fas fa-solid fa-eye fa-eye-slash"
                     style={{ color: "#0c3730" }}
                   />
@@ -112,6 +77,7 @@ const Register = () => {
 
     </div>
   )
+
 }
 
 export default Register

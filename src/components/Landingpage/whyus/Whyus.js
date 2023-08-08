@@ -1,5 +1,5 @@
 import React from 'react'
-import { IonIcon } from '@ionic/react';
+
 const Whyus = () => {
   return (
     <div>
@@ -61,7 +61,7 @@ const Whyus = () => {
               <div className="gridboxes">
                 <div className="servicebox" data-aos="fade-right">
                   <div className="serviceicon">
-                    <IonIcon name="accessibility-outline" />
+                    {/* <ion-icon name="accessibility-outline" /> */}
                   </div>
                   <div className="servicetitle">Personal Loans</div>
                   <div className="serviceexplanation">
@@ -71,7 +71,7 @@ const Whyus = () => {
                 </div>
                 <div className="servicebox" data-aos="fade-right">
                   <div className="serviceicon">
-                    <IonIcon name="bandage-outline" />
+                    {/* <ion-icon name="bandage-outline" /> */}
                   </div>
                   <div className="servicetitle">Emergency Loans</div>
                   <div className="serviceexplanation">
@@ -81,7 +81,7 @@ const Whyus = () => {
                 </div>
                 <div className="servicebox" data-aos="fade-right">
                   <div className="serviceicon">
-                    <IonIcon name="bag-outline" />
+                    {/* <ion-icon name="bag-outline" /> */}
                   </div>
                   <div className="servicetitle">Business Loans</div>
                   <div className="serviceexplanation">
@@ -91,7 +91,7 @@ const Whyus = () => {
                 </div>
                 <div className="servicebox homes" data-aos="fade-right">
                   <div className="serviceicon">
-                    <IonIcon name="car-outline" />
+                    {/* <ion-icon name="car-outline" /> */}
                   </div>
                   <div className="servicetitle ">Home Loans</div>
                   <div className="serviceexplanation">

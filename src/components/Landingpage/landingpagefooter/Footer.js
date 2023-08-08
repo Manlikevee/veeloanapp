@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "../logo (2).png"
-import { IonIcon } from '@ionic/react';
+
 
 
 
@@ -11,7 +11,7 @@ const Footer = () => {
   <div className="container">
     <div className="logosecion">
       <div className="mylogosec">
-        <div className="logo" onclick="window.location.href = 'index.html'">
+        <div className="logo" >
           <img src={logo} alt="" />
         </div>
       </div>
@@ -24,7 +24,7 @@ const Footer = () => {
     <div className="linkssection">
       <h3>About Us</h3>
       <ul>
-        <li onclick="window.location.href = '#hero'">Home</li>
+        <li >Home</li>
         <li>About Us</li>
         <li>Our Services</li>
         <li>Contact Us</li>
@@ -42,13 +42,13 @@ const Footer = () => {
     </div>
     <div className="socialmedia">
       <div className="social">
-        <IonIcon name="logo-google" />
+      
       </div>
       <div className="social">
-        <IonIcon name="logo-facebook" />
+     
       </div>
       <div className="social">
-        <IonIcon name="logo-whatsapp" />
+    
       </div>
     </div>
   </div>
