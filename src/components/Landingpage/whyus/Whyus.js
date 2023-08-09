@@ -2,7 +2,7 @@ import React from 'react'
 
 const Whyus = () => {
   return (
-    <div>
+  
         <div className="section" data-aos="fade-up">
   <div className="container">
     <div className="stack">
@@ -62,6 +62,9 @@ const Whyus = () => {
                 <div className="servicebox" data-aos="fade-right">
                   <div className="serviceicon">
                     {/* <ion-icon name="accessibility-outline" /> */}
+                    <span class="material-symbols-outlined">
+directory_sync
+</span>
                   </div>
                   <div className="servicetitle">Personal Loans</div>
                   <div className="serviceexplanation">
@@ -72,6 +75,10 @@ const Whyus = () => {
                 <div className="servicebox" data-aos="fade-right">
                   <div className="serviceicon">
                     {/* <ion-icon name="bandage-outline" /> */}
+                    <span class="material-symbols-outlined">
+directory_sync
+</span>
+
                   </div>
                   <div className="servicetitle">Emergency Loans</div>
                   <div className="serviceexplanation">
@@ -82,6 +89,10 @@ const Whyus = () => {
                 <div className="servicebox" data-aos="fade-right">
                   <div className="serviceicon">
                     {/* <ion-icon name="bag-outline" /> */}
+                    <span class="material-symbols-outlined">
+directory_sync
+</span>
+
                   </div>
                   <div className="servicetitle">Business Loans</div>
                   <div className="serviceexplanation">
@@ -92,6 +103,10 @@ const Whyus = () => {
                 <div className="servicebox homes" data-aos="fade-right">
                   <div className="serviceicon">
                     {/* <ion-icon name="car-outline" /> */}
+
+                    <span class="material-symbols-outlined">
+directory_sync
+</span>
                   </div>
                   <div className="servicetitle ">Home Loans</div>
                   <div className="serviceexplanation">
@@ -166,7 +181,7 @@ const Whyus = () => {
   </div>
 </div>
 
-    </div>
+ 
   )
 }
 

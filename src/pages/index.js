@@ -2,9 +2,10 @@ import React, { useEffect } from 'react'
 import Landingpage from '../components/Landingpage/Landingpage'
 import AOS from 'aos'; // Import AOS library
 import 'aos/dist/aos.css'; // Import AOS styles
-
+import "../components/Landingpage/layout.css";
 const IndexPage = () => {
   useEffect(() => {
+    document.body.classList.add('myhome');
     // Initialize AOS with your desired options
     AOS.init({
       duration: 1200,

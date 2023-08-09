@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import Login from '../components/authentication/login/Login'
 import layout from '../components/Landingpage/layout.css'
-import Register from '../components/authentication/register/register.css'
 import AOS from 'aos'; // Import AOS library
 import 'aos/dist/aos.css'; // Import AOS styles
 import { Link } from "gatsby"
 
-const Userlogin = () => {
+
+const Userregistration = () => {
   useEffect(() => {
     // Initialize AOS with your desired options
     AOS.init({
@@ -19,8 +19,9 @@ const Userlogin = () => {
     });
   }, []); 
   return (
-    <div>
+  
 <Login>
+
 <div className="logintitle">
         Welcome Please provide your Log In details.{" "}
       </div>
@@ -28,6 +29,16 @@ const Userlogin = () => {
         <form method="post" action="">
           <div className="loginform">
             <div className="logincontent">
+            <div className="loginflex">
+                <label htmlFor="Username">Username</label>
+                <input
+                  type="email"
+                  name="username"
+                  id="id_username"
+                  placeholder="Enter Your Email Username"
+                />
+              </div>
+
               <div className="loginflex">
                 <label htmlFor="Email">Email Address</label>
                 <input
@@ -54,29 +65,23 @@ const Userlogin = () => {
                   />
                 </div>
               </div>
-              <div className="forgot">
-                <p>
-                  <a href="withdraw.html"> Forgot Password </a>
-                </p>
-             
-               
-              </div>
+         
               <div className="loginflex">
-                <button type="submit">LOGIN</button>
+                <button type="submit">Register</button>
               </div>
               <div className="logintitle">
-                Don’t have an account?{" "}
-                <Link to="/Userregistration">Create An Account</Link>{" "}
+                Already Have An Account?{" "}
+                <Link to="/Userlogin">Login</Link>{" "}
               </div>
             </div>
           </div>
         </form>
       </div>
+
 </Login>
 
-
-    </div>
+  
   )
 }
 
-export default Userlogin
+export default Userregistration

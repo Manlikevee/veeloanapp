@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "gatsby"
 
 const Hero = () => {
   return (
@@ -23,13 +23,13 @@ const Hero = () => {
             Empower your business with flexible terms and competitive rates. Let's
             thrive together!
           </div>
-          <div
+          <Link to='/Userdashboard'
             className="getstarted login"
             style={{ width: "fit-content" }}
             onclick="window.location.href = 'getstarted.html'"
           >
             Request for Loan
-          </div>
+          </Link>
         </div>
         <div className="sideb" data-aos="fade-right">
           <img

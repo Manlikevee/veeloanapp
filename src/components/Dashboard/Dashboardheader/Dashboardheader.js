@@ -1,19 +1,10 @@
 import React from 'react'
-import logo from "../logo (2).png"
+import logo from "../../Landingpage/logo (2).png"
 import { Link } from "gatsby"
-import { Helmet } from 'react-helmet';
-const Landingpageheader = () => {
-  return (
 
-    <>      
-    <Helmet>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  
-    <meta name="description" content="This is a description of my page." />
-    {/* Add more head tags here */}
-  </Helmet>   
-   <header id="navbar">
+const Dashboardheader = () => {
+  return (
+    <header id="navbar">
     <div className="container" data-aos="fade-left">
       <div className="logo" >
         <img src={logo} alt="" />
@@ -26,7 +17,7 @@ const Landingpageheader = () => {
         <Link  to='/'>What We Do </Link>
         <Link  to='/'>Contact Us </Link>
         <div className="hideme">
-        <Link  to='/Userdashboard' className="blackboton">
+        <Link  to='/' className="blackboton">
             {" "}
             Get Started
             </Link>
@@ -44,9 +35,8 @@ const Landingpageheader = () => {
       </div>
     </div>
   </header>
-  </>
-
+  
   )
 }
 
-export default Landingpageheader
+export default Dashboardheader

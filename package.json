@@ -15,7 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@ionic/react": "^7.2.2",
+    "@coreui/coreui": "^5.0.0-alpha.1",
+    "@coreui/react": "^5.0.0-alpha.0",
     "aos": "^2.3.4",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
@@ -25,7 +26,8 @@
     "gatsby-transformer-sharp": "^5.11.0",
     "ionicons": "^5.5.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "gatsby-plugin-netlify": "^5.1.0"
