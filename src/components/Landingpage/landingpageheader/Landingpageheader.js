@@ -5,41 +5,36 @@ import { Helmet } from 'react-helmet';
 
 const Landingpageheader = () => {
   const [isActive, setIsActive] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 900);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   const handleClick = () => {
     setIsActive(!isActive);
   };
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      setIsLargeScreen(window.innerWidth > 900);
-
-      if (window.innerWidth <= 900) {
-        setIsActive(false);
-      }
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    handleWindowResize();
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []); 
+    if (typeof window !== 'undefined') {
+      const handleWindowResize = () => {
+        setIsLargeScreen(window.innerWidth > 900);
+  
+        if (window.innerWidth <= 900) {
+          setIsActive(false);
+        }
+      };
+  
+      window.addEventListener('resize', handleWindowResize);
+      handleWindowResize();
+  
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+      };
+    }
+  }, []);
 
   useEffect(() => {
-    const handleInitialResize = () => {
+    if (typeof window !== 'undefined') {
       setIsLargeScreen(window.innerWidth > 900);
-    };
-
-    document.addEventListener('DOMContentLoaded', handleInitialResize);
-
-    return () => {
-      document.removeEventListener('DOMContentLoaded', handleInitialResize);
-    };
-  }, []); 
+    }
+  }, []);
 
   return (
     <>
@@ -83,5 +78,4 @@ const Landingpageheader = () => {
   );
 };
 
-
-export default Landingpageheader
+export default Landingpageheader;
