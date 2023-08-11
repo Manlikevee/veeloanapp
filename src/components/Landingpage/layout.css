@@ -117,8 +117,8 @@ body {
 
 /* header */
 header {
-    z-index: 999999999;
-    transition: 0.25s ease;
+    transition: .25s ease;
+    z-index: 9999999999999999999999999999999999999999999999;
 }
 
 header .container {
