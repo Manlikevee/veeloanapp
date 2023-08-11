@@ -1,6 +1,6 @@
 import React from 'react'
 import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
-import Loancard from '../components/Dashboard/Loancard/loancard';
+import Loancard from '../components/Dashboard/Loancard/Loancard';
 import Loantable from '../components/Dashboard/Loantable/Loantable';
 
 
