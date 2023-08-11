@@ -6,7 +6,7 @@ const Loancard = () => {
     <div className="dashcard" id="step1Target" data-aos="fade-down">
       <div className="dashcardheader">
         <div className="dashamount">Loan Amount</div>
-        <div className="dashtoggle">|</div>
+        <div className="dashtoggle"> </div>
       </div>
       <div className="dashvalue">
         <h3>200,000.00</h3>
