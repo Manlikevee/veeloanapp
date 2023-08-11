@@ -1269,7 +1269,9 @@ input:-webkit-autofill:active {
         width: 100%;
         padding: 3px;
     }
-
+    .stack__card{
+        padding-top: 30px;
+    }
     .loginbox {
         width: 94%;
     }
@@ -1379,7 +1381,7 @@ input:-webkit-autofill:active {
     }
 
     .logo img {
-        height: 100%;
+        height: 35px;
     }
 
     .loginbox {
@@ -1507,6 +1509,15 @@ input:-webkit-autofill:active {
 @media screen and (max-width: 600px) {
     .container {
         width: 98%;
+    }
+    .daysleft{
+        width: 100% !important;
+    }
+    .dashboardcard{
+        margin-top: 60px;
+    }
+    .article, .loanrequestheader {
+        padding: 10px 5px !important;
     }
     .activitybox{
         align-self: flex-start;
