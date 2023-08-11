@@ -1508,7 +1508,17 @@ input:-webkit-autofill:active {
     .container {
         width: 98%;
     }
+    .activitybox{
+        align-self: flex-start;
+        flex-direction: column;
+        align-items: start !important;
+        gap: 9px;
+        padding:10px !important;
+    }
 
+    .activitybox .activityview.card-subtitle{
+        margin-left: 50px;
+    }
     .whybody {
         color: #505563;
         font-family: inter;
