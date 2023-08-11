@@ -531,11 +531,12 @@ marquee {}
 .tinyicon {
 
     width: 20%;
-    height: 100%;
+    height: 50%;
     animation: vicror 3s ease-in-out infinite;
 
 
 }
+
 
 .tinyiconbox {
     width: 100%;
@@ -2895,6 +2896,11 @@ line-height: normal;
     font-weight: 300;
 }
 
+.navtoggle  .material-symbols-outlined{
+    font-size: 20px;
+    color: white;
+    font-weight: 300;
+}
 .empty-data-message{
     display: flex;
     align-items: center;

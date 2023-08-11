@@ -104,7 +104,7 @@ const imageUrls = [
               <div className="tinybox tinyactive" data-aos="fade-right">
                 <div className="tinyicon">
                   <img
-                    src="https://res.cloudinary.com/dfvot6oia/image/upload/v1674215414/cross-channel_yzvzwt.svg"
+                    src="https://cdn-icons-png.flaticon.com/512/3157/3157914.png"
                     alt=""
                   />
                 </div>
@@ -122,7 +122,7 @@ const imageUrls = [
               <div className="tinybox" data-aos="fade-right">
                 <div className="tinyicon">
                   <img
-                    src="https://res.cloudinary.com/dfvot6oia/image/upload/v1674215414/quick-integration_mnepnr.svg"
+                    src="https://cdn-icons-png.flaticon.com/512/3306/3306551.png"
                     alt=""
                   />
                 </div>
@@ -139,7 +139,7 @@ const imageUrls = [
               <div className="tinybox" data-aos="fade-up">
                 <div className="tinyicon">
                   <img
-                    src="https://res.cloudinary.com/dfvot6oia/image/upload/v1674215414/delivery_dcoczz.svg"
+                    src="https://cdn-icons-png.flaticon.com/512/829/829755.png "
                     alt=""
                   />
                 </div>
@@ -155,7 +155,7 @@ const imageUrls = [
               <div className="tinybox" data-aos="fade-down">
                 <div className="tinyicon">
                   <img
-                    src="https://res.cloudinary.com/dfvot6oia/image/upload/v1674215414/cost-saving_g5z9da.svg"
+                    src="https://cdn-icons-png.flaticon.com/512/10759/10759272.png "
                     alt=""
                   />
                 </div>
