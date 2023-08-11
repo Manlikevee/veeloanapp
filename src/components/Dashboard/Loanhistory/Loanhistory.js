@@ -1,4 +1,29 @@
 import React from 'react'
+import blank from '../blank.png'
+const activityDataList = [
+  {
+    logo: 'account_balance_wallet',
+    status: 'Status Awaiting Payment ( 224423153 )',
+    date: '23-June-2021',
+    viewDetails: 'View Details'
+  },
+  {
+    logo: 'account_balance_wallet',
+    status: 'Status Awaiting Payment ( 224423153 )',
+    date: '23-June-2021',
+    viewDetails: 'View Details'
+  },
+
+  {
+    logo: 'account_balance_wallet',
+    status: 'Status Awaiting Payment ( 224423153 )',
+    date: '23-June-2021',
+    viewDetails: 'View Details'
+  },
+
+
+
+];
 
 const Loanhistory = () => {
   return (
@@ -21,166 +46,42 @@ const Loanhistory = () => {
   <br />
   <div className="loantablediv" id="step3Target">
     <div className="mustscroll activityscroll">
-      <div className="activitybox">
+      
+    
+    {activityDataList.length > 0 ? (
+    activityDataList.map((activityData, index) => (
+      <div className="activitybox" key={index}>
         <div className="activitydemo">
           <div className="activitylogo">
             <div className="svs">
               <span className="material-symbols-outlined">
-                account_balance_wallet
+                {activityData.logo}
               </span>
             </div>
           </div>
           <div className="activitytext">
             <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
+              {activityData.status}
             </div>
             <div className="activitybottomtext">
-              <small>23-June-2021</small>
+              <small>{activityData.date}</small>
             </div>
           </div>
         </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
+        <div className="activityview card-subtitle">
+          {activityData.viewDetails}
         </div>
-        <div className="activityview card-subtitle">View Details</div>
       </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
-        </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
-        </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
-        </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
-        </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
-        </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
-      <div className="activitybox">
-        <div className="activitydemo">
-          <div className="activitylogo">
-            <div className="svs">
-              <span className="material-symbols-outlined">
-                account_balance_wallet
-              </span>
-            </div>
-          </div>
-          <div className="activitytext">
-            <div className="activitytoptext">
-              Status Awaiting Payment ( 224423153 )
-            </div>
-            <div className="activitybottomtext">
-              <small>23-June-2021</small>
-            </div>
-          </div>
-        </div>
-        <div className="activityview card-subtitle">View Details</div>
-      </div>
+    ))
+  ) : (
+    <div className="empty-data-message">
+      <img src={blank} alt="" />
+
+      you don’t have any pending request</div>
+  )}
+
+
+      
     </div>
   </div>
 </article>

@@ -6,6 +6,7 @@ import "../components/Landingpage/layout.css";
 const IndexPage = () => {
   useEffect(() => {
     document.body.classList.add('myhome');
+    document.body.classList.remove('veehome');
     // Initialize AOS with your desired options
     AOS.init({
       duration: 1200,

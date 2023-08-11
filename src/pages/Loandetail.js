@@ -1,22 +1,21 @@
 import React from 'react'
 import Dashboarddata from '../components/Dashboard/Dashboarddata/Dashboarddata'
 import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
+import Loanplandetail from '../components/Dashboard/Loanexpand/Loanplandetail/Loanplandetail';
+import Loanstatus from '../components/Dashboard/Loanexpand/Loanstatus/Loanstatus';
 import Loanhistory from '../components/Dashboard/Loanhistory/Loanhistory';
 
 
-function Userdashboard() {
+
+const Loandetail = () => {
   return (
     <Dashboardlayout>
-   
-   <Dashboarddata />
-   <br />
+  <Loanplandetail/>
 
-<Loanhistory/>
+  <Loanstatus/>
 
-    
-    
     </Dashboardlayout>
   )
 }
 
-export default Userdashboard
+export default Loandetail

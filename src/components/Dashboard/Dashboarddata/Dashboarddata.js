@@ -16,8 +16,8 @@ function Dashboarddata() {
   {/* 
             - #HOME
           */}
-  <section className="home">
-    <div className="card revenue-card">
+  <section className="home" data-aos="fade-right">
+    <div className="card revenue-card" >
       <button
         className="card-menu-btn icon-box"
         aria-label="More"

@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 import logo from "../logo (2).png"
 import { Link } from "gatsby"
 import { Helmet } from 'react-helmet';
 const Landingpageheader = () => {
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+
+    setIsActive(!isActive);
+  };
   return (
 
     <>      
@@ -13,12 +20,13 @@ const Landingpageheader = () => {
     <meta name="description" content="This is a description of my page." />
     {/* Add more head tags here */}
   </Helmet>   
+  <div id="navlinkovalay" className={`target-div ${isActive ? 'navlinkactiveovalay' : ''}`} />
    <header id="navbar">
     <div className="container" data-aos="fade-left">
-      <div className="logo" >
+    <Link to='/' className="logo" >
         <img src={logo} alt="" />
-      </div>
-      <div className="links" id="middlelinks">
+      </Link>
+      <div  className={`target-div ${isActive ? 'navlinkactive' : 'links'}`} id="middlelinks">
         <Link to=''  className="activated">
           Home
         </Link>
@@ -39,7 +47,7 @@ const Landingpageheader = () => {
       >
         Get Started
       </Link>
-      <div className="navtoggle" onclick="navtoggler()">
+      <div className="navtoggle" onClick={handleClick}>
         <span className="material-symbols-outlined">menu</span>
       </div>
     </div>
