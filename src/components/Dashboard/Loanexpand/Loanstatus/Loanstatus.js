@@ -3,7 +3,7 @@ import React from 'react'
 const Loanstatus = () => {
   return (
     <>
-    <div className="planboxs">
+    <div className="planboxs" data-aos="fade-up">
     <div className="plangrid">
       <div className="planbox">
         <div className="plantitle gridloantitle card-title">Account Number</div>
@@ -46,7 +46,7 @@ const Loanstatus = () => {
       </div>
     </div>
   </div>
-  <div className="daysleft">
+  <div className="daysleft" data-aos="fade-right">
   <div className="daysflex">
     <div className="left">Days Left</div>
     <div className="right">40 days</div>

@@ -33,7 +33,7 @@ credit_score
         <Link  to='/Loandetail'><span class="material-symbols-outlined">
 manage_accounts
 </span> Self Service </Link>
-        <Link  to='/'><span class="material-symbols-outlined">
+        <Link  to='/Profileupdate'><span class="material-symbols-outlined">
 contacts
 </span> Contact Us </Link>
         <div className="hideme">

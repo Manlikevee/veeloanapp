@@ -2942,3 +2942,127 @@ text-align: center;
     height: 100%;
     object-fit: contain;
 }
+
+.updcanc {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+.dashboardformflex{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  
+}
+.updcanc .circle {
+    height: 15px;
+    width: 15px;
+    border: 1px solid #0C231F;
+    border-radius: 50%;
+}
+
+.updcanc .done {
+    background-color: #0C231F;
+}
+
+.updcanc .lint {
+    width: 28px;
+    background-color: #0C231F;
+    height: 1px;
+}
+
+.dashboardform{
+    
+    margin: auto;
+    padding: 30px;
+    width: 800px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pupd{
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #0C231F;
+}
+
+
+.dbform{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dbcolumn{
+    display: flex;
+    gap: 25px;
+}
+
+.dbform .loginflex label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000cc;
+}
+.dbform .loginflex input{}
+.dbform .loginflex input::placeholder {
+    font-size: 14px;
+    color: #999; /* Placeholder text color */
+    font-style: italic; /* Placeholder text style */
+  }
+.dbcolumn .loanrequestbutton{
+    width: 100%;
+}
+  .dbcolumn .loanrequestbutton button{
+    width: 100% !important;
+  }
+
+  .info-text{
+    color: #222;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+textarea{
+    padding: 0.72rem;
+    font-size: 15px;
+    border-radius: 0.2rem;
+    color: #000;
+    outline: none;
+    width: 100%;
+    border: 1px solid rgb(139 139 139 / 63%);
+    transition: all .25s ease 0s;
+}
+@media screen and (max-width:900px) {
+    .dashboardform{
+        width: 100%;
+
+    }
+    
+}
+
+@media screen and (max-width:700px) {
+    .dbcolumn{
+        display: flex;
+        gap: 25px;
+   flex-direction: column;
+    }
+    
+}
