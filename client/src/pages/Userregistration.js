@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Login from '../components/authentication/login/Login'
-import layout from '../components/Landingpage/layout.css'
 import AOS from 'aos'; // Import AOS library
 import 'aos/dist/aos.css'; // Import AOS styles
 import { Link } from "gatsby"
