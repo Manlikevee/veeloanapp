@@ -37,13 +37,13 @@ manage_accounts
 contacts
 </span> Contact Us </Link>
         <div className="hideme">
-        <Link  to='/' className="blackboton">
+        <Link  to='/Userprofile' className="blackboton">
             {" "}
             John Doe
             </Link>
         </div>
       </div>
-     <Link to='/Userlogin'
+     <Link to='/Userprofile'
         className="login getstarteds"
         style={{ width: "fit-content" }}
         

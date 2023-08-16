@@ -1,6 +1,6 @@
 import React from 'react'
 import blank from '../blank.png'
-import ButtonComponent from '../../Buttoncomponent';
+import ButtonComponent from '../ButtonComponent';
 const activityDataList = [
   {
     logo: 'account_balance_wallet',
