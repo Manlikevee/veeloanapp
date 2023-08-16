@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonComponent from '../../Buttoncomponent'
+import ButtonComponent from '../ButtonComponent'
 
 const Loanpopup = ({ openModal }) => {
   return (
