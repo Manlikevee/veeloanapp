@@ -32,7 +32,6 @@ const Loantable = () => {
   return (
 <>
 
-<Loanpopup/>
 
     <div className="loantablediv" id="step3Target" data-aos="fade-right">
   <div className="loandiv">

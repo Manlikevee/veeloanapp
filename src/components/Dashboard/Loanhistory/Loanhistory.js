@@ -1,5 +1,6 @@
 import React from 'react'
 import blank from '../blank.png'
+import ButtonComponent from '../../Buttoncomponent';
 const activityDataList = [
   {
     logo: 'account_balance_wallet',
@@ -25,7 +26,7 @@ const activityDataList = [
 
 ];
 
-const Loanhistory = () => {
+const Loanhistory = ({ openModal }) => {
   return (
     <div>
         <article>
@@ -35,7 +36,7 @@ const Loanhistory = () => {
         <h4> Loan Requests </h4>
       </div>
       <div className="loanrequestbutton">
-        <button onclick="openModal(66)">New Loan +</button>
+      <ButtonComponent openModal={openModal} />
       </div>
     </div>
     <br />

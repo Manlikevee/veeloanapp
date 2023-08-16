@@ -16,24 +16,24 @@ const Dashboardheader = () => {
   return (
     <>
     <div id="navlinkovalay" className={`target-div ${isActive ? 'navlinkactiveovalay' : ''}`} />
-    <header id="navbar" className='mynav'>
+    <header id="navbar" className='mynav navactive'>
     <div className="container" data-aos="fade-left">
-    <Link to='/' className="logo" >
+    <Link to='/' className="logo"  >
         <img src={logo} alt="" />
       </Link>
       <div  className={`target-div ${isActive ? 'navlinkactive' : 'links'}`} id="middlelinks">
-        <Link to='/Userdashboard'  className="activated">
+        <Link to='/Userdashboard'  className="" activeClassName="activated">
         <span class="material-symbols-outlined">
 grid_view
 </span>     Dashboard
         </Link>
-        <Link  to='/Loan'><span class="material-symbols-outlined">
+        <Link  to='/Loan' className="" activeClassName="activated"><span class="material-symbols-outlined" >
 credit_score
 </span> Loan</Link>
-        <Link  to='/Loandetail'><span class="material-symbols-outlined">
+        <Link  to='/Loandetail' className="" activeClassName="activated"><span class="material-symbols-outlined">
 manage_accounts
 </span> Self Service </Link>
-        <Link  to='/Profileupdate'><span class="material-symbols-outlined">
+        <Link  to='/Profileupdate' className="" activeClassName="activated"><span class="material-symbols-outlined">
 contacts
 </span> Contact Us </Link>
         <div className="hideme">

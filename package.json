@@ -18,6 +18,7 @@
     "@coreui/coreui": "^5.0.0-alpha.1",
     "@coreui/react": "^5.0.0-alpha.0",
     "aos": "^2.3.4",
+    "axios": "^1.4.0",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-layout": "^4.11.0",

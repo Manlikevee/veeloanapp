@@ -23,7 +23,7 @@ const Landingpageheader = () => {
     {/* Add more head tags here */}
   </Helmet>   
   <div id="navlinkovalay" className={`target-div ${isActive ? 'navlinkactiveovalay' : ''}`} />
-   <header id="navbar" className='mynav'>
+   <header id="navbar" className='mynav navactive'>
     <div className="container" data-aos="fade-left">
     <Link to='' className="logo" >
         <img src={logo} alt="" />

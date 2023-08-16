@@ -1,6 +1,7 @@
 import React from 'react'
+import ButtonComponent from '../../Buttoncomponent'
 
-const Loanpopup = () => {
+const Loanpopup = ({ openModal }) => {
   return (
   
         <div className="loanrequests" id="step2Target" data-aos="fade-down">
@@ -9,7 +10,7 @@ const Loanpopup = () => {
       <h4> Loan Requests </h4>
     </div>
     <div className="loanrequestbutton">
-      <button>New Loan +</button>
+    <ButtonComponent openModal={openModal}/>
     </div>
   </div>
 </div>
