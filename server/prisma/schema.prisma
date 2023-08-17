@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role{
+  ADMIN
+  User
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  userName String
+  email  String @unique
+  password String
+   createdAt DateTime @default(now()) 
+  UpdatedAt  DateTime @default(now())
+  profile  Profile?
+  nextOfKin NextOfKin?
+  loanPaymentHistory  LoanPaymentHistory?
+  loan Loan?
+  loanTypes LoanTypes?
+}
+
+
+model Profile{
+  id Int @id @default(autoincrement())
+  firstName String
+  lastName   String
+  phoneNumber String
+  role Role
+  address String 
+  status String 
+   createdAt DateTime   @default(now())
+  UpdatedAt  DateTime  @default(now())
+  user_id Int @unique
+  user User @relation( fields: [user_id],references: [id])
+  
+}
+
+model NextOfKin{
+  id Int @id @default(autoincrement())
+  email String @unique
+  name  String 
+ createdAt DateTime  @default(now())
+  UpdatedAt  DateTime  @default(now())
+   user_id Int @unique
+  user User @relation( fields: [user_id],references: [id])
+}
+
+model LoanTypes{
+  id Int @id @default(autoincrement())
+  planName String
+  loanDetail String
+  status   String 
+   createdAt DateTime   @default(now())
+  UpdatedAt  DateTime  @default(now())
+loanPaymentHistory LoanPaymentHistory?
+user_id Int @unique
+  user User @relation( fields: [user_id],references: [id])
+}
+
+
+model LoanPaymentHistory{
+  id        Int    @id     @default(autoincrement())
+  paymentRef Float
+  paymentStatus String
+  createdAt DateTime   @default(now())
+  UpdatedAt  DateTime  @default(now())
+ user_id Int @unique
+  user User @relation( fields: [user_id],references: [id])
+  loanType_id  Int @unique
+  loanType      LoanTypes @relation(fields: [loanType_id],references: [id])
+  loan_id   Int @unique
+  loan    Loan @relation(fields: [loan_id],references: [id])
+}
+
+model Loan {
+  id        Int     @id @default(autoincrement())
+  principal Int
+  tenor Int
+  accountNumber Int
+  totalRepayment Int
+  loanPlan Int
+  interest   Int 
+  effectiveDate DateTime 
+  dueDate  DateTime
+  status  String
+   createdAt DateTime   @default(now())
+  UpdatedAt  DateTime  @default(now())
+   user_id Int @unique
+  user User @relation( fields: [user_id],references: [id])
+loanPaymentHistory  LoanPaymentHistory?
+}
