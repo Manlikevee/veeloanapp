@@ -3566,3 +3566,7 @@ border-radius: 9px;
     }
 }
 
+.smb{
+    width: fit-content;
+    padding: 10px;
+}

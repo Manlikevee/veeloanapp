@@ -4,14 +4,14 @@ import blank from '../blank.png'
 const loanDataList = [
     {
       type: 'Term Loan',
-      code: 'dnnxnu373hns',
+      code: 'dnnxnu373hnsasas',
       amount: 'N900,000',
       status: 'Pending Approval',
       action: 'View'
     },
     {
         type: 'Term Loan',
-        code: 'dnnxnu373hns',
+        code: 'dnnxnu373hnssxasa',
         amount: 'N900,000',
         status: 'Pending Approval',
         action: 'View'
@@ -19,7 +19,7 @@ const loanDataList = [
 
       {
         type: 'Term Loan',
-        code: 'dnnxnu373hns',
+        code: 'dnnxnu373hnccasass',
         amount: 'N900,000',
         status: 'Pending Approval',
         action: 'View'
