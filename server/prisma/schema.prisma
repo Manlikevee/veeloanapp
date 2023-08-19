@@ -38,6 +38,7 @@ model Profile{
   role Role
   address String 
   status String 
+  level   Int @default(1)
    createdAt DateTime   @default(now())
   UpdatedAt  DateTime  @default(now())
   user_id Int @unique
