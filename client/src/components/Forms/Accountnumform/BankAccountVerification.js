@@ -30,6 +30,7 @@ const BankAccountVerification = () => {
         setBanks(formattedBanks);
         setLoadingBanks(false);
       } catch (error) {
+        
         console.error('Error fetching banks:', error);
         setLoadingBanks(false);
       }
