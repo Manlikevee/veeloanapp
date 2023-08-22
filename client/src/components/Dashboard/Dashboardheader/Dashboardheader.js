@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo from "../../Landingpage/logo (2).png"
 import { Link } from "gatsby"
-
+import { handleLogin, isLoggedIn , getUser, logout} from "../../../service/auth"
+import { navigate } from "gatsby";
 
 const Dashboardheader = () => {
 
@@ -36,20 +37,55 @@ manage_accounts
         <Link  to='/Profileupdate' className="" activeClassName="activated"><span class="material-symbols-outlined">
 contacts
 </span> Contact Us </Link>
+
+<Link  to='/app/profile' className="" activeClassName="activated"><span class="material-symbols-outlined">
+account_box
+</span> User Profile </Link>
+
         <div className="hideme">
-        <Link  to='/Userprofile' className="blackboton">
-            {" "}
-            John Doe
-            </Link>
+        {isLoggedIn() ? (
+          <a
+            href="/"
+            onClick={event => {
+              event.preventDefault()
+              logout(() => navigate(`/app/login`))
+            }}
+          >
+            Logout
+          </a>
+        ) : null}
         </div>
       </div>
-     <Link to='/Userprofile'
+     {/* <Link to='/Userprofile'
         className="login getstarteds"
         style={{ width: "fit-content" }}
         
       >
         John Doe
-      </Link>
+      </Link> */}
+{isLoggedIn() ? (
+  <a
+    href="/" className='login getstarteds'
+    onClick={event => {
+      event.preventDefault();
+      logout(() => navigate(`/app/login`));
+    }}
+  >
+    Logout
+  </a>
+) : (
+  <div>
+    <Link
+      to="/app/profile"
+      className="login getstarteds"
+      style={{ width: "fit-content" }}
+    >
+      John Doe
+    </Link>
+  </div>
+)}
+
+
       <div className="navtoggle" onClick={handleClick}>
         <span className="material-symbols-outlined">menu</span>
       </div>

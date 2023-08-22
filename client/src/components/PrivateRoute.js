@@ -1,17 +1,14 @@
-import React, { createContext, useContext, useState } from 'react';
+import React from "react"
+import { navigate } from "gatsby"
+import { handleLogin, isLoggedIn } from "../service/auth"
 
-const UserContext = createContext();
+const PrivateRoute = ({ component: Component, location, ...rest }) => {
+  if (!isLoggedIn() && location.pathname !== `/app/login`) {
+    navigate("/app/login")
+    return null
+  }
 
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  return <Component {...rest} />
+}
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-
-export const useUserContext = () => {
-  return useContext(UserContext);
-};
+export default PrivateRoute

@@ -1,4 +1,7 @@
 import React from 'react'
+import { handleLogin, isLoggedIn, getUser , logout} from "../../../service/auth"
+
+
 
 const Profile = () => {
   return (
@@ -21,7 +24,7 @@ const Profile = () => {
           className="introctitle"
           style={{ textAlign: "center", textTransform: "capitalize" }}
         >
-          Victor Ebube Odah
+        {getUser().email}
         </div>
         <div className="introcbody" style={{ textAlign: "center" }}>
           Front end development
@@ -30,7 +33,7 @@ const Profile = () => {
       <hr />
       <div className="introccontent">
         <div className="introctitle">Email</div>
-        <div className="introcbody">Odahviktor@gmail.com</div>
+        <div className="introcbody">{getUser().email}</div>
       </div>
       <div className="introccontent">
         <div className="introctitle">Phone Number</div>

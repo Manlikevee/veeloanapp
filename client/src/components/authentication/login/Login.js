@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from "gatsby"
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import image from "../logo (2).png"
 import Splash from '../splashscreen/Splash'
 function Login({ children }) {
   return (
     <div>
+          <ToastContainer/>
 <div className="getstartedsection">
   <div className="getstartedimage">
   <Splash/>
