@@ -1,6 +1,6 @@
 import React from "react"
 import { Router } from "@reach/router"
-import Userprofile from "./privateroute/Userprofile"
+import Userprofile from "../privateroute/Userprofile"
 import PrivateRoute from "../components/privateRoute"
 import Userlogin from "./Userlogin"
 
