@@ -1,7 +1,7 @@
 import React from "react"
 import { Router } from "@reach/router"
 import Userprofile from "../privateroute/Userprofile"
-import PrivateRoute from "../components/privateRoute"
+import PrivateRoute from "../components/PrivateRoute"
 import Userlogin from "./Userlogin"
 
 const App = () => (
