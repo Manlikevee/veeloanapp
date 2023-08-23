@@ -16,4 +16,6 @@ export class AuthController {
   loginUserAcct(@Body() body: LoginUserDto): Promise<Tokens> {
     return this.authService.LoginUserAcct(body);
   }
+  @Post()
+  userProfile() {}
 }
