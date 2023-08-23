@@ -5,7 +5,8 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
+import { Tokens } from '../types';
+import { JwtService } from '@nestjs/jwt';
 interface CreateUserData {
   email: string;
   password: string;
@@ -17,8 +18,43 @@ interface LoginUserDetails {
 }
 @Injectable()
 export class AuthService {
-  constructor(private readonly prismaService: PrismaService) {}
-  async createUserAcct({ email, password, userName }: CreateUserData) {
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly jwtService: JwtService,
+  ) {}
+  async getToken(userId: number, email: string): Promise<Tokens> {
+    const [at, rt] = await Promise.all([
+      this.jwtService.signAsync(
+        {
+          sub: userId,
+          email: email,
+        },
+        {
+          secret: 'at-secret',
+          expiresIn: 60 * 60,
+        },
+      ),
+      this.jwtService.signAsync(
+        {
+          sub: userId,
+          email: email,
+        },
+        {
+          secret: 'pt-secret',
+          expiresIn: 60 * 60 * 24 * 7,
+        },
+      ),
+    ]);
+    return {
+      access_token: at,
+      refresh_token: rt,
+    };
+  }
+  async createUserAcct({
+    email,
+    password,
+    userName,
+  }: CreateUserData): Promise<Tokens> {
     const emailExist = await this.prismaService.user.findUnique({
       where: {
         email,
@@ -34,16 +70,25 @@ export class AuthService {
         password: hashpassword,
       },
     });
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-      },
-      process.env.SECRET_KEY,
-    );
-    return { user, token };
+    const tokens = await this.getToken(user.id, user.email);
+    await this.updateRefreshToken(user.id, tokens.refresh_token);
+    return {
+      ...user,
+      ...tokens,
+    };
   }
-  async LoginUserAcct({ email, password }: LoginUserDetails) {
+  async updateRefreshToken(userId: number, rt: string) {
+    const hash = await bcrypt.hash(rt, 12);
+    await this.prismaService.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        hashRt: hash,
+      },
+    });
+  }
+  async LoginUserAcct({ email, password }: LoginUserDetails): Promise<Tokens> {
     let user = await this.prismaService.user.findUnique({
       where: {
         email,
@@ -54,17 +99,25 @@ export class AuthService {
     const checkPassword = await bcrypt.compare(password, user.password);
     if (!checkPassword)
       throw new BadRequestException('Incorrect Password,please try again');
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-      },
-      process.env.SECRET_KEY,
-    );
+    const tokens = await this.getToken(user.id, user.email);
+    this.updateRefreshToken(user.id, tokens.refresh_token);
     return {
-      id: user.id,
-      email: user.email,
-      token,
+      ...user,
+      ...tokens,
     };
   }
+
+  // async logout(userId: number) {
+  //   await this.prismaService.user.updateMany({
+  //     where: {
+  //       id: userId,
+  //       hashRt: {
+  //         not: null,
+  //       },
+  //     },
+  //     data: {
+  //       hashRt: null,
+  //     },
+  //   });
+  // }
 }
