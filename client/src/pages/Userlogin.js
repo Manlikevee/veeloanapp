@@ -7,7 +7,7 @@ import { navigate } from "gatsby";
 import { handleLogin, isLoggedIn } from "../service/auth";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useLocation } from "@reach/router";
 
 
 const Userlogin = () => {
@@ -26,6 +26,7 @@ const Userlogin = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const location = useLocation(); // Get the current location
 
   const handleUpdate = event => {
     const { name, value } = event.target;
@@ -45,14 +46,18 @@ const Userlogin = () => {
     });
 
     if (loginSuccessful) {
-      navigate(`/app/profile`);
+      // Redirect to the previous location or profile page
+      if (location.state?.from) {
+        navigate(location.state.from);
+      } else {
+        navigate(`/app/profile`);
+      }
     }
   };
 
   if (isLoggedIn()) {
     navigate(`/app/profile`);
   }
-
 
 
   

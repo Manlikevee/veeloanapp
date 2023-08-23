@@ -23,7 +23,7 @@ const Dashboardheader = () => {
         <img src={logo} alt="" />
       </Link>
       <div  className={`target-div ${isActive ? 'navlinkactive' : 'links'}`} id="middlelinks">
-        <Link to='/Userdashboard'  className="" activeClassName="activated">
+        <Link to='/app/dashboard'  className="" activeClassName="activated">
         <span class="material-symbols-outlined">
 grid_view
 </span>     Dashboard

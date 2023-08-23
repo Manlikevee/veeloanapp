@@ -1,8 +1,6 @@
-import React from 'react';
-import { UserProvider } from './src/components/UserContext';
+import React from "react";
+import LoggedUserLogger from "./src/service/LoggedUserLogger"; // Adjust the import path
 
-export const wrapRootElement = ({ element }) => (
-  <UserProvider>
-    {element}
-  </UserProvider>
-);
+export const wrapRootElement = ({ element }) => {
+  return <LoggedUserLogger>{element}</LoggedUserLogger>;
+};

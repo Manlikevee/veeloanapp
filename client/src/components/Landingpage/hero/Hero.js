@@ -23,10 +23,10 @@ const Hero = () => {
             Empower your business with flexible terms and competitive rates. Let's
             thrive together!
           </div>
-          <Link to='/Userdashboard'
+          <Link to='/app/dashboard'
             className="getstarted login"
             style={{ width: "fit-content" }}
-            onclick="window.location.href = 'getstarted.html'"
+    
           >
             Request for Loan
           </Link>

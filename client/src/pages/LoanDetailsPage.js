@@ -2,7 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import LoanDetails from '../components/LoanDetails';
 const loanDataList = [
-    {
+   
+  {
       type: 'Term Loan',
       code: 'dnnxnu373hnsasas',
       amount: 'N900,000',
