@@ -107,17 +107,17 @@ export class AuthService {
     };
   }
 
-  // async logout(userId: number) {
-  //   await this.prismaService.user.updateMany({
-  //     where: {
-  //       id: userId,
-  //       hashRt: {
-  //         not: null,
-  //       },
-  //     },
-  //     data: {
-  //       hashRt: null,
-  //     },
-  //   });
-  // }
+  async logout(userId: number) {
+    await this.prismaService.user.updateMany({
+      where: {
+        id: userId,
+        hashRt: {
+          not: null,
+        },
+      },
+      data: {
+        hashRt: null,
+      },
+    });
+  }
 }
