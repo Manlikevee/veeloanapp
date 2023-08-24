@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BankAccountVerification = () => {
   const [banks, setBanks] = useState([]);
@@ -33,6 +36,9 @@ const BankAccountVerification = () => {
         
         console.error('Error fetching banks:', error);
         setLoadingBanks(false);
+        toast.error('You Are Now Logged In', {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     };
 
@@ -68,6 +74,7 @@ const BankAccountVerification = () => {
 
   return (
     <div className="dashboardform">
+        <ToastContainer/>
     <div className="loanrequesttitles">
       <h4> Profile Update </h4>
     </div>
