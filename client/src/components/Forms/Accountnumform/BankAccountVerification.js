@@ -36,9 +36,7 @@ const BankAccountVerification = () => {
         
         console.error('Error fetching banks:', error);
         setLoadingBanks(false);
-        toast.error('You Are Now Logged In', {
-          position: toast.POSITION.BOTTOM_CENTER,
-        });
+
       }
     };
 
@@ -66,6 +64,9 @@ const BankAccountVerification = () => {
         setAccountName(response.data.data.account_name);
       } catch (error) {
         console.error('Error verifying account:', error);
+        toast.error('You Are Now Logged In', {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       } finally {
         setLoadingVerification(false);
       }
@@ -74,7 +75,7 @@ const BankAccountVerification = () => {
 
   return (
     <div className="dashboardform">
-        <ToastContainer/>
+    
     <div className="loanrequesttitles">
       <h4> Profile Update </h4>
     </div>
