@@ -3622,3 +3622,246 @@ border-radius: 9px;
 .ends .title {
     text-align: right;
 }
+
+.loading-over {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    backdrop-filter: blur(2px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 9999999999999999999998;
+    align-items: center;
+    justify-content: center;
+}
+  .popup {
+    background-color: #fff;
+    width: 400px;
+    padding: 30px 40px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    display: block;
+}
+.popup #close, #close2 {
+    display: block;
+    margin-top: -5px;
+    float: right;
+    background-color: transparent;
+    font-size: 35px;
+    color: #c5c5c5;
+    outline: none;
+    cursor: pointer;
+}
+.popup p {
+    font-size: 14px;
+    text-align: justify;
+    margin: 20px 0;
+}
+.secoact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.logomen {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: justified;
+    color: rgba(0, 0, 0, 1);
+}
+.logobod {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+}
+.logobtn {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.arwbtn {
+    width: 100%;
+    background: var(--main);
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media screen and (max-width: 600px){
+  .popup {
+    width: 90%;
+    margin: auto;
+}
+}
+
+
+.investment_product_type_text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+}
+
+.investment_product_span {
+    color: var(--main);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.investment_text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: justified;
+    margin-bottom: 30px;
+}
+
+.tansaction_details {
+    display: flex;
+    grid-gap: 60px;
+    flex-wrap: wrap;
+}
+
+.transaction_header {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: var(--main);
+    margin-bottom: 10px;
+}
+.transaction_flex {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.transaction_flex_column {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.transaction_flex_column_content {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+}
+
+.transaction_flex_btn {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.transaction_flex_column_btn1 button {
+    position: relative;
+    background-color: var(--main);
+    border: 1px solid #fff;
+    font-size: 15px;
+    color: #FFFFFF;
+    border-radius: 9px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.transaction_flex_column_btn2 button {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid var(--main);
+    font-size: 15px;
+    color: var(--main);
+    border-radius: 9px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.7s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.transaction_container {
+    width: 45%;
+}
+
+.transaction_flex_column_btn1 button:hover {
+    position: relative;
+    background-color: white;
+    border: 1px solid var(--main);
+    color: var(--main);
+}
+
+.transaction_flex_column_btn2 button:hover {
+    background-color:  var(--main);
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.transaction_container svg{
+  height: 100%;
+}
+
+@media (max-width: 991px){
+  .transaction_container {
+    width: 100%;
+}
+.transaction_flex_column_btn1 button, .transaction_flex_column_btn2 button  {
+    width: 100%;
+}
+.transaction_flex_btn {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.dashboardform {
+    margin: auto;
+    padding: 15px;
+}
+.loanrequesttitles{
+  padding: 25px;
+}
+}
