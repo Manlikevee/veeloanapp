@@ -272,9 +272,9 @@ marquee {}
     border-bottom: 1px solid transparent;
 }
 
-.links .activated {
+.activated {
 
-    border-bottom: 2px solid var(--main)
+    border-bottom: 2px solid var(--main) !important;
 }
 
 .login {
@@ -565,6 +565,16 @@ marquee {}
 @media screen and (max-width:1100px) {
     .twosides {
         flex-direction: column;
+    }
+    .navlinkactive a{
+        padding: 9px;
+    }
+
+    .activated {
+        border: 1px solid var(--main) !important;
+        background: var(--main);
+        border-radius: 4px;
+        color: white !important;
     }
     .links {
         display: none;
