@@ -324,12 +324,17 @@ marquee {}
     z-index: 999999999999999;
 }
 
+.sasx{
+    justify-content: center;
+}
 
 #navbar {
     background-color: white;
-    z-index: 99999999999;
+    z-index: 9999999;
 }
-
+.Toastify__toast-container{
+    z-index: 999999999;  
+}
 .hideme {
     display: none;
 }
@@ -3007,13 +3012,17 @@ text-align: center;
 .dashboardform{
     
     margin: auto;
+    margin-top: 10px;
     padding: 30px;
-    width: 800px;
+    width: 880px;
     background: #FFFFFF;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.dbform .loginflex input {
+    font-family: 'poppins';
 }
 
 .pupd{
@@ -3577,8 +3586,15 @@ border-radius: 9px;
 }
 
 .smb{
-    width: fit-content;
+    width: fit-content !important;
     padding: 10px;
+
+}
+
+.custom-select{
+    font-family: 'poppins';
+    padding: 13px;
+    min-height: 48px !important;
 }
 
 .steppercontainer {
@@ -3875,3 +3891,85 @@ border-radius: 9px;
   padding: 25px;
 }
 }
+
+
+
+.skelenton {
+  
+ 
+    border-radius: 3px;
+    transition: all 200ms ease-in-out;
+    position: relative;
+  
+  }
+.skelenton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+    animation: load 1s infinite;
+  }
+  
+  @keyframes load {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+.skelenton .loanrequesttitles{
+    background-color: #eaeaea !important;
+    background-image: none;
+    position: relative;
+}
+
+
+.skelenton .loanrequesttitles h4{
+    margin-top: 9px;
+    background-color: #bfbfbf;
+    padding: 2px;
+    border-radius: 3px;
+    width: fit-content;
+    margin: auto;
+    color: transparent;
+  }
+
+  .skelenton .info-text{
+    margin-top: 0px;
+    background-color: #bfbfbf;
+    width: 100%;
+    padding: 16px;
+    border-radius: 3px;
+
+  }
+
+  .skelenton .dashboardformtitle{
+    margin-top: 0px;
+    background-color: #bfbfbf;
+    width: 200px;
+    padding: 12px;
+    border-radius: 3px; 
+  }
+
+  .skelenton .loginflex{
+    width: 100%;
+    background-color: #bfbfbf;
+    padding: 10px;
+    color: transparent;
+  }
+
+  .skelenton input{
+    display: none;
+  }
+
+  .skelenton .loginflex label{
+    color: transparent;
+  }
+
+  .skelenton .loanrequestbutton button{
+    color: transparent;
+    background-color: #bfbfbf;
+    border:#bfbfbf;
+  }

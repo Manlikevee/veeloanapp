@@ -65,7 +65,7 @@ account_box
       </Link> */}
 {isLoggedIn() ? (
   <a
-    href="/" className='login getstarteds'
+    href="/" className='login getstarteds sasx'
     onClick={event => {
       event.preventDefault();
       logout(() => navigate(`/app/login`));

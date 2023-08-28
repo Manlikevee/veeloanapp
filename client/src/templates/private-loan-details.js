@@ -5,7 +5,7 @@ import LoanForm from '../components/Forms/Accountnumform/LoanForm'; // Import th
 import PrivateRoute from '../components/PrivateRoute'; // Import your PrivateRoute component
 import { navigate } from "gatsby";
 import { handleLogin, isLoggedIn } from "../service/auth";
-
+import Lazyloadingform from '../components/Lazyloading/Lazyloadingform'
 const PrivateLoanDetailsTemplate = ({ pageContext }) => {
   const { loanId } = pageContext;
   const [loanData, setLoanData] = useState({});
@@ -19,19 +19,22 @@ const PrivateLoanDetailsTemplate = ({ pageContext }) => {
       })
       .catch(error => {
         console.error('Error fetching loan data:', error);
+        
         setIsLoading(false);
       });
   }, [loanId]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return  <Dashboardlayout>
+      <Lazyloadingform/>
+       </Dashboardlayout>;
   }
 
   return (
     <Dashboardlayout>
 
 
-    <div className="dashboardform">
+    <div className="dashboardform" >
             <div className="loanrequesttitles">
               <div className="steppercontainer">
                 <div className="stepper">

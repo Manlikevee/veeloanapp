@@ -5,6 +5,16 @@ import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    borderRadius: '8px',
+    padding: '10px',
+  }),
+  // Add more custom styles here for other parts of the component
+};
+
 const BankAccountVerification = () => {
   const [banks, setBanks] = useState([]);
   const [selectedBank, setSelectedBank] = useState(null);
@@ -35,6 +45,10 @@ const BankAccountVerification = () => {
       } catch (error) {
         
         console.error('Error fetching banks:', error);
+        toast.error('Error fetching banks', {
+          position: toast.POSITION.TOP_RIGHT,
+           zIndex: 999999999,
+        });
         setLoadingBanks(false);
 
       }
@@ -64,8 +78,9 @@ const BankAccountVerification = () => {
         setAccountName(response.data.data.account_name);
       } catch (error) {
         console.error('Error verifying account:', error);
-        toast.error('You Are Now Logged In', {
-          position: toast.POSITION.BOTTOM_CENTER,
+        toast.error('Error verifying account', {
+          position: toast.POSITION.TOP_RIGHT,
+          zIndex: 999999999,
         });
       } finally {
         setLoadingVerification(false);
@@ -102,7 +117,11 @@ const BankAccountVerification = () => {
         <Select
         options={banks}
         value={selectedBank}
-        onChange={setSelectedBank}
+        onChange={(bank) => {
+          setSelectedBank(bank);
+          
+          setAccountName(''); // Clear account name when bank changes
+        }}
         placeholder="Select a bank"
         isLoading={loadingBanks}
       />
@@ -118,11 +137,23 @@ const BankAccountVerification = () => {
           placeholder="Account Number"
           value={accountNumber}
           onChange={handleAccountNumberChange}
+          className="custom-select"
         />
         <button className='smb' onClick={handleAccountVerification}>Verify</button>
         </div>
 </div>
-        {loadingVerification && <div>Loading...</div>}
+        {loadingVerification && 
+        
+        <div className='skelenton'>
+<div className="loginflex ">
+  <label htmlFor="">Loading.......</label>
+
+</div>
+
+
+        </div>
+        
+        }
         {accountName && (
             <div className='bx'>
         <div className="loginflex">
