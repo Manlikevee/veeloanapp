@@ -1,32 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import blank from '../blank.png'
 import ButtonComponent from '../ButtonComponent';
-const activityDataList = [
-  {
-    logo: 'account_balance_wallet',
-    status: 'Status Awaiting Payment ( 224423153 )',
-    date: '23-June-2021',
-    viewDetails: 'View Details'
-  },
-  {
-    logo: 'account_balance_wallet',
-    status: 'Status Awaiting Payment ( 224423153 )',
-    date: '23-June-2021',
-    viewDetails: 'View Details'
-  },
-
-  {
-    logo: 'account_balance_wallet',
-    status: 'Status Awaiting Payment ( 224423153 )',
-    date: '23-June-2021',
-    viewDetails: 'View Details'
-  },
+import axios from 'axios';
 
 
-
-];
 
 const Loanhistory = ({ openModal }) => {
+
+const [activityDataList, setActivityDataList] = useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://isslblog.vercel.app/loanhistory/');
+      const data = response.data;
+      setActivityDataList(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, []); 
+
+
+
   return (
     <div>
         <article>
@@ -56,21 +54,21 @@ const Loanhistory = ({ openModal }) => {
           <div className="activitylogo">
             <div className="svs">
               <span className="material-symbols-outlined">
-                {activityData.logo}
+              account_balance_wallet
               </span>
             </div>
           </div>
           <div className="activitytext">
             <div className="activitytoptext">
-              {activityData.status}
+              {activityData.reference}
             </div>
             <div className="activitybottomtext">
-              <small>{activityData.date}</small>
+              <small>{activityData.reference}</small>
             </div>
           </div>
         </div>
         <div className="activityview card-subtitle">
-          {activityData.viewDetails}
+          Detail
         </div>
       </div>
     ))
