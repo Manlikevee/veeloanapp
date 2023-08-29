@@ -1,11 +1,14 @@
 import React from 'react'
 import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
 import Loanoffer from '../components/Forms/Accountnumform/Loanoffer'
-const Userloanoffer = () => {
+const Userloanoffer = ({ pageContext }) => {
+  const { myid } = pageContext;
   return (
     <Dashboardlayout>
-   
-    <Loanoffer/>
+<h1>{myid}</h1>
+
+    <Loanoffer loanid={myid}/>
+
 
    
     </Dashboardlayout>
