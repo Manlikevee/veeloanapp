@@ -1,6 +1,6 @@
 import React from 'react'
 import pics from '../Accountnumform/pic.svg'
-const Loanoffer = () => {
+const Loanoffer = (props) => {
   return (
     <div>
 
@@ -34,7 +34,7 @@ const Loanoffer = () => {
       <div className="transaction_header">Transaction Details</div>
       <div className="transaction_flex" id="principal">
         <div className="transaction_flex_column">Principal</div>
-        <div className="transaction_flex_column_content">N40,000</div>
+        <div className="transaction_flex_column_content">{props.refss}</div>
       </div>
       <div className="transaction_flex">
         <div className="transaction_flex_column" id="tenor">

@@ -71,16 +71,14 @@ const LoanForm = ({ loanData }) => {
     }
 
     try {
-      const response = await axios.post('https://isslblog.vercel.app/loanoverview/', {
+      const response = await axios.post('https://isslblog.vercel.app/UserCreateLoan', {
         principal: principal,
         tenor: tenorMonths,
         monthly_repayment : principal,
         interest_rate: interestRate,
-        total_repayment: totalRepayment,
         plan: loanid,
         requestuser: getUser().id,
-        effective_date : startDate,
-        maturity_date : maturityDate
+
 
         // Add other fields here if needed
       });
@@ -88,9 +86,10 @@ const LoanForm = ({ loanData }) => {
       const newLoanReference = response.data.reference;
       setLoanReference(newLoanReference);
       console.log('Loan created:', response.data);
-      navigate(`/new-loan/${newLoanReference}`);
+      navigate(`/Userloanoffer/?loanReference=${newLoanReference}`);
       // Do something with the response if needed
     } catch (error) {
+      alert(error)
       console.error('Error creating loan:', error);
       // Handle the error if needed
     }

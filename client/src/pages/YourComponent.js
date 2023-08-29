@@ -10,7 +10,7 @@ const YourComponent = () => {
     setLoanReference(randomReference);
 
     // Navigate to the new loan page with dynamic parameter
-    navigate(`/NewLoanPage/?loanReference=${loanReference}`);
+    navigate(`/Userloanoffer/?loanReference=${loanReference}`);
   };
 
   return (

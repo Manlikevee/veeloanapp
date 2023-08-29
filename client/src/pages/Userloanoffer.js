@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import Dashboardlayout from '../components/Dashboard/Dashboardlayout';
 import Loanoffer from '../components/Forms/Accountnumform/Loanoffer';
+import React, { useEffect, useState } from 'react';
 
 
-const NewLoanPage = () => {
+const Userloanoffer = () => {
   const [loanReference, setLoanReference] = useState(null);
 
   useEffect(() => {
@@ -18,11 +18,11 @@ const NewLoanPage = () => {
     <Dashboardlayout>
 
       {loanReference && 
-         <Loanoffer />
+         <Loanoffer refss={loanReference} />
       }
  
     </Dashboardlayout>
   );
 };
 
-export default NewLoanPage;
+export default Userloanoffer
