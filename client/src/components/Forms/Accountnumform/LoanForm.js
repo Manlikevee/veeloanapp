@@ -14,6 +14,7 @@ const LoanForm = ({ loanData }) => {
   const [interestRate, setInterestRate] = useState(loanData.Loan_rate);
   const [totalRepayment, setTotalRepayment] = useState('');
   const [loanid, setLoanid] = useState(loanData.id);
+  const [loanReference, setLoanReference] = useState(null);
 
   const getFormattedDate = (date) => {
     const year = date.getFullYear();
@@ -83,9 +84,11 @@ const LoanForm = ({ loanData }) => {
 
         // Add other fields here if needed
       });
-  
+      
+      const newLoanReference = response.data.reference;
+      setLoanReference(newLoanReference);
       console.log('Loan created:', response.data);
-      navigate('/');
+      navigate(`/new-loan/${newLoanReference}`);
       // Do something with the response if needed
     } catch (error) {
       console.error('Error creating loan:', error);

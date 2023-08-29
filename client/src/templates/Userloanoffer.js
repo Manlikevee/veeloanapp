@@ -1,8 +1,8 @@
 import React from 'react'
 import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
 import Loanoffer from '../components/Forms/Accountnumform/Loanoffer'
-const Userloanoffer = ({ pageContext }) => {
-  const { myid } = pageContext;
+const userloanoffer = ({ pageContext }) => {
+  const { myid } = pageContext.loanId;
   return (
     <Dashboardlayout>
 <h1>{myid}</h1>
@@ -15,4 +15,4 @@ const Userloanoffer = ({ pageContext }) => {
   )
 }
 
-export default Userloanoffer
+export default userloanoffer

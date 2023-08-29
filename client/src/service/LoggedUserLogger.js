@@ -6,9 +6,10 @@ const LoggedUserLogger = ({ children }) => {
     const intervalId = setInterval(() => {
       const user = getUser();
       if (user.username) {
+        
         console.log(`User is logged in. Username: ${user.username}`);
       }
-    }, 2000); // 2000 milliseconds = 2 seconds
+    }, 10000); // 2000 milliseconds = 2 seconds
 
     return () => {
       clearInterval(intervalId); // Clear the interval when component unmounts
