@@ -1,4 +1,5 @@
 // Import any necessary modules or data here
+import React, { useEffect } from 'react';
 
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions;
@@ -141,13 +142,31 @@ exports.createPages = async ({ actions }) => {
 
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions;
+  const [loanDataLists, setLoanDataLists] = useState([]);
 
-  try {
-    const response = await axios.get('https://isslblog.vercel.app/loanhistory/');
-    const loanDataLists = response.data;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://isslblog.vercel.app/loanhistory/');
+        const loanDataLists = response.data;
+        setLoanDataLists(loanDataLists);
+      } catch (error) {
+        console.error('Error fetching loan data:', error);
+      }
+    };
 
+    // Fetch data initially
+    fetchData();
+
+    // Fetch data every 5 seconds
+    const interval = setInterval(fetchData, 5000);
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     loanDataLists.forEach(loan => {
-  
       const myid = loan.reference;
       createPage({
         path: `/Userloanoffer/${myid}`,
@@ -155,7 +174,5 @@ exports.createPages = async ({ actions }) => {
         context: { myid }, // Pass the loan id as context
       });
     });
-  } catch (error) {
-    console.error('Error fetching loan data:', error);
-  }
-};
+  }, [loanDataLists, createPage]);
+}
