@@ -60,7 +60,7 @@ useEffect(() => {
           </div>
           <div className="activitytext">
             <div className="activitytoptext">
-              {activityData.reference}
+              {activityData.status}
             </div>
             <div className="activitybottomtext">
               <small>{activityData.reference}</small>

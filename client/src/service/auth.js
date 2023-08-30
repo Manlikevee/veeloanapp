@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import jwtDecode from 'jwt-decode';
 // utils.js
 
 
@@ -17,21 +18,27 @@ const setUser = user =>
   export const handleLogin = async ({ username, password }) => {
     try {
       // Call the authentication API here
-      const response = await axios.post('https://isslblog.vercel.app/login/', {
+      const response = await axios.post('https://isslblog.vercel.app/token/', {
         username,
         password,
       });
   
-      const { token, user_id, username: userEmail } = response.data;
+
+      const { access, refresh } = response.data;
+      const decodedAccessToken = jwtDecode(access);
+
+      
       toast.success('You Are Now Logged In', {
         position: toast.POSITION.BOTTOM_CENTER,
       });
+
       // Assuming setUser is available in the function's arguments
       setUser({
-        id: user_id,
-        username: username,
-        email: userEmail,
-        token: token,
+        id: decodedAccessToken.user_id,
+        username: decodedAccessToken.username,
+        email: decodedAccessToken.email,
+        accesstoken: access,
+        refreshtoken: refresh
       });
 
       toast.success('You Are Now Logged In', {

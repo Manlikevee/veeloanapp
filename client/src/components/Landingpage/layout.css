@@ -311,6 +311,18 @@ marquee {}
     padding-bottom: 0;
     height: 100vh;
 }
+.progress-item:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+
+@media (min-width: 768px){
+    .progress-item:not(:last-child) {
+        margin-bottom: 0;
+    }
+}
+
+
 
 #navlinkovalay {
     display: none;
@@ -321,7 +333,7 @@ marquee {}
     height: 100%;
     background-color: rgba(0, 0, 0, 0.768);
     backdrop-filter: blur(3px);
-    z-index: 999999999999999;
+    z-index: 99;
 }
 
 .sasx{
