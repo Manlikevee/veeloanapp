@@ -1,6 +1,64 @@
 import React from 'react'
 import pics from '../Accountnumform/pic.svg'
+import axiosInstance from '../../../service/axiosinterceptor';
+import { toast } from 'react-toastify';
+
 const Loanoffer = (props) => {
+
+
+  const handlePostRequest = async () => {
+    try {
+      if (props.refss) {
+        const response = await axiosInstance.post('/UserCreateLoanaccept', {
+          reference: props.refss,
+        });
+
+        // Handle the response as needed
+        toast.success('This Loan In Now Being Processed');
+        
+
+        console.log('POST request successful', response);
+      } else {
+        toast.error('Value to be sent is missing.');
+      }
+    } catch (error) {
+      // Handle errors
+      
+      console.error('POST request error', error);
+      if (error.response && error.response.data && error.response.data.error) {
+        toast.error(error.response.data.error);
+      } else {
+        toast.error('An error occurred while sending the request.');
+      }
+    }
+  };
+
+  const handlePostrejectRequest = async () => {
+    try {
+      if (props.refss) {
+        const response = await axiosInstance.post('/UserCreateLoandecline', {
+          reference: props.refss,
+        });
+
+        // Handle the response as needed
+        toast.success('This Loan Offer Has Been Declined');
+        
+        console.log('POST request successful', response);
+      } else {
+        toast.error('Value to be sent is missing.');
+      }
+    } catch (error) {
+      // Handle errors
+      
+      console.error('POST request error', error);
+      if (error.response && error.response.data && error.response.data.error) {
+        toast.error(error.response.data.error);
+      } else {
+        toast.error('An error occurred while sending the request.');
+      }
+    }
+  };
+
   return (
     <div>
 
@@ -52,10 +110,10 @@ const Loanoffer = (props) => {
       </div>
       <div className="transaction_flex_btn" id="acceptordeny">
         <div className="transaction_flex_column_btn1">
-          <button>I agree</button>
+          <button onClick={handlePostRequest}>I agree</button>
         </div>
         <div className="transaction_flex_column_btn2">
-          <button>I don’t agree</button>
+          <button onClick={handlePostrejectRequest}>I don’t agree</button>
         </div>
       </div>
     </div>

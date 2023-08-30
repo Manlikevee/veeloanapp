@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import jwtDecode from 'jwt-decode';
+import { navigate } from 'gatsby';
+import { createContext, useState, useEffect } from 'react'
 // utils.js
 
 
@@ -68,4 +70,5 @@ export const isLoggedIn = () => {
 export const logout = callback => {
   setUser({})
   callback()
+  navigate('/Userlogin/');
 }

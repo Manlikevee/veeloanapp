@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Loanstatus = () => {
+const Loanstatus = ({ responsed }) => {
   return (
     <>
     <div className="planboxs" data-aos="fade-up">
     <div className="plangrid">
       <div className="planbox">
         <div className="plantitle gridloantitle card-title">Account Number</div>
-        <div className="plandetail gridloancontent card-subtitle">346577782</div>
+        <div className="plandetail gridloancontent card-subtitle">{ responsed.reference }</div>
       </div>
     </div>
     <div className="planlines" />
@@ -17,24 +17,24 @@ const Loanstatus = () => {
           Total Loan Repayment
         </div>
         <div className="plandetail gridloancontent card-subtitle">
-          N 22,000,000.00
+        { responsed.total_repayment }
         </div>
       </div>
       <div className="planbox">
         <div className="plantitle gridloantitle card-title">Loan Amount</div>
         <div className="plandetail gridloancontent card-subtitle">
-          N 2,000,000.00
+         {responsed.principal}
         </div>
       </div>
       <div className="planbox">
         <div className="plantitle gridloantitle card-title">Interest</div>
         <div className="plandetail gridloancontent card-subtitle">
-          N 2,000,000.00
+        {responsed.total_interest}
         </div>
       </div>
       <div className="planbox">
         <div className="plantitle gridloantitle card-title">Tenor</div>
-        <div className="plandetail gridloancontent card-subtitle">180 days</div>
+        <div className="plandetail gridloancontent card-subtitle">{responsed.tenor} days</div>
       </div>
       <div className="planbox">
         <div className="plantitle gridloantitle card-title">Effectivate Date</div>
