@@ -24,34 +24,25 @@ function getTimeAgo(dateString) {
 }
 
 
-const Loanhistory = ({ openModal }) => {
+const Loanhistory = ({ openModal , responseData }) => {
 
   const [activityDataList, setActivityDataList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get('/myloans');
-        const data = response.data;
-        setActivityDataList(data);
-        setLoading(false); // Data fetched, loading is done
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setError(true);
-        setLoading(false); // Error occurred, loading is done
-      }
-    };
 
-    fetchData();
-  }, []);
+
+
+  useEffect(() => {
+    setActivityDataList(responseData.myloans);
+    setLoading(false);
+  });
 
 
   return (
     <div>
         <article>
-  <div className="loanrequests" id="step2Target">
+  <div className="loanrequests" id="step2Target" data-aos="fade-down">
     <div className="loanrequestheader">
       <div className="loanrequesttitle">
         <h4> Loan Requests </h4>
@@ -67,7 +58,7 @@ const Loanhistory = ({ openModal }) => {
   </p>
   <br />
 
-  <div className="loantablediv" id="step3Target">
+  <div className="loantablediv" id="step3Target" data-aos="fade-right">
       <div className="mustscroll activityscroll">
         {loading ? (
           <p>Loading...</p>

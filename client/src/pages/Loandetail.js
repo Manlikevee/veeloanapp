@@ -10,14 +10,15 @@ const Loandetail = () => {
   const [loading, setLoading] = useState(true);
   const [responseData, setResponseData] = useState(null);
 
-  const param = typeof window !== 'undefined' && window.location.search;
-  // Get the loanReference query parameter from the URL
-  const queryParams = new URLSearchParams(param);
-  
-  // Get the loanReference query parameter from the URL
-  const loanReferenceValue = queryParams.get('loanreferences');
+
 
   useEffect(() => {
+    const param = typeof window !== 'undefined' && window.location.search;
+    // Get the loanReference query parameter from the URL
+    const queryParams = new URLSearchParams(param);
+    
+    // Get the loanReference query parameter from the URL
+    const loanReferenceValue = queryParams.get('loanreferences');
     setLoanReference(loanReferenceValue);
     
 

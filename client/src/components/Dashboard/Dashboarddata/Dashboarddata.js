@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Dashboarddata() {
+function Dashboarddata({responseData}) {
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
@@ -51,7 +51,7 @@ function Dashboarddata() {
       </ul>
       <p className="card-title">Loan Balances</p>
       <data className="card-price" value={2100}>
-        $2,100
+        ${responseData.totalloanamount.principal__sum}
       </data>
       <p className="card-text">Last Week</p>
       <div className="divider card-divider" />
@@ -89,7 +89,7 @@ function Dashboarddata() {
         </div>
         <div>
           <data className="card-data" value={21}>
-            21
+          {responseData.pendingloans}
           </data>
           <p className="card-text">Pending Loans</p>
         </div>
@@ -102,7 +102,7 @@ function Dashboarddata() {
         </div>
         <div>
           <data className="card-data" value={21}>
-            21
+          {responseData.loans}
           </data>
           <p className="card-text">Total Loans</p>
         </div>

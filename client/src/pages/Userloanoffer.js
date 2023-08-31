@@ -16,7 +16,6 @@ const Userloanoffer = () => {
   const loanReferenceValue = queryParams.get('loanReference');
 
   useEffect(() => {
-    const vee = 'VICTOR';
     setLoanReference(loanReferenceValue);
 
 
