@@ -17,8 +17,10 @@
   "dependencies": {
     "@coreui/coreui": "^5.0.0-alpha.1",
     "@coreui/react": "^5.0.0-alpha.0",
+    "accounting": "^0.4.1",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",

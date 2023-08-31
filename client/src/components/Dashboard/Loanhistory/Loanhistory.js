@@ -4,7 +4,24 @@ import ButtonComponent from '../ButtonComponent';
 import axios from 'axios';
 import { Link } from 'gatsby'; // Import Link component
 import axiosInstance from '../../../service/axiosinterceptor';
+import { differenceInMinutes, differenceInHours, differenceInDays } from 'date-fns';
 
+function getTimeAgo(dateString) {
+  const currentDate = new Date();
+  const date = new Date(dateString);
+
+  const minutesDiff = differenceInMinutes(currentDate, date);
+  const hoursDiff = differenceInHours(currentDate, date);
+  const daysDiff = differenceInDays(currentDate, date);
+
+  if (minutesDiff < 60) {
+    return `${minutesDiff} minute${minutesDiff !== 1 ? 's' : ''}`;
+  } else if (hoursDiff < 24) {
+    return `${hoursDiff} hour${hoursDiff !== 1 ? 's' : ''}`;
+  } else {
+    return `${daysDiff} day${daysDiff !== 1 ? 's' : ''}`;
+  }
+}
 
 
 const Loanhistory = ({ openModal }) => {
@@ -79,11 +96,20 @@ const Loanhistory = ({ openModal }) => {
                             {activityData.status}
                           </div>
                           <div className="activitybottomtext">
-                            <small>{activityData.reference}</small>
+                            <small>
+                            {getTimeAgo(activityData.updated_at)} ago
+                            </small>
                           </div>
                         </div>
                       </div>
-                      <Link to={`/Userloanoffer/?loanReference=${activityData.reference}`} className="activityview card-subtitle">Detail </Link>
+                      {activityData.status === 'pending confirmation' ? (
+              <Link to={`/Userloanoffer/?loanReference=${activityData.reference}`} className="activityview card-subtitle">Detail</Link>
+            ) : activityData.status === 'submitted for review' || activityData.status === 'confirmed' ? (
+              <Link to={`/Loandetail/?loanreferences=${activityData.reference}`} className="activityview card-subtitle"> Detail</Link>
+            ) : (
+              <Link to={`/Userloanoffer/?loanReference=${activityData.reference}`} className="activityview card-subtitle">Detail</Link>
+            )}
+                   
                     </div>
                   ))
                 ) : (

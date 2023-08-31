@@ -6,27 +6,29 @@ import Loanstatus from '../components/Dashboard/Loanexpand/Loanstatus/Loanstatus
 import { toast } from 'react-toastify';
 
 const Loandetail = () => {
-  const [loanReference, setLoanReference] = useState(null);
+  const [loanReference, setLoanReference] = useState('');
   const [loading, setLoading] = useState(true);
   const [responseData, setResponseData] = useState(null);
 
-  useEffect(() => {
-    // Get the loanReference query parameter from the URL
-    const queryParams = new URLSearchParams(window.location.search);
-    const loanReferenceValue = queryParams.get('loanReference');
+  // Get the loanReference query parameter from the URL
+  const queryParams = new URLSearchParams(window.location.search);
+  const loanReferenceValue = queryParams.get('loanreferences');
 
+  useEffect(() => {
     setLoanReference(loanReferenceValue);
+    
 
     if (loanReferenceValue) {
+      const myref = loanReferenceValue
       axiosInstance
-        .get('/mlv', {
-          reference: loanReferenceValue,
+        .post('/mlv', {
+          reference: myref,
         })
         .then(response => {
           // Handle the response as needed
-          toast.success('This Loan Is Now Being Processed');
+          toast.success('Loan Details gotten');
           setResponseData(response.data);
-          console.log(response.data)
+          console.log(response.data);
           setLoading(false);
         })
         .catch(error => {
@@ -50,7 +52,7 @@ const Loandetail = () => {
         <h1>Loading...</h1>
       ) : loanReference && responseData ? (
         <div>
-          {responseData.reference}
+     
           <Loanplandetail  responsed={responseData} />
           <Loanstatus responsed={responseData} />
         </div>
