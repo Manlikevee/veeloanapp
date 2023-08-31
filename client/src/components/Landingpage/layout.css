@@ -101,7 +101,9 @@ body {
 
 
 ::-webkit-scrollbar {
-    width: 1px;
+    width: 5px;
+
+
 }
 
 ::-webkit-scrollbar-track {
@@ -109,8 +111,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    outline: 1px solid slategrey;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -4028,4 +4032,149 @@ border-radius: 9px;
 .green {
     background-color: #c3e6cb;
     color: #155724;
+}
+
+
+.skelenton .loanrequesttitles{
+    background-color: #eaeaea !important;
+    background-image: none;
+    position: relative;
+}
+
+.skelenton .card-title, .skelenton .card-text, .skelenton .revenue-item-data, .skelenton .revenue-item-text{
+    background-color: #bfbfbf;
+    color: transparent !important;
+    margin-top: 2px;
+    border-radius: 5px;
+}
+
+ .card-texts{
+    background-color: #bfbfbf;
+    width: fit-content;
+    color: transparent !important;
+    margin-top: 2px;
+    border-radius: 5px;
+}
+
+.skelenton .card-price, .skelenton .card-subtitle, .skelenton .contact-link{
+    min-height: 20px;
+    margin-bottom: 10px;
+    background-color: #bfbfbf;
+    color: transparent;
+    border-radius: 5px;
+} 
+
+.skelenton .loanrequesttitles h4{
+    margin-top: 9px;
+    background-color: #bfbfbf;
+    padding: 2px;
+    border-radius: 3px;
+    width: fit-content;
+    margin: auto;
+    color: transparent;
+  }
+.skelenton h4{
+    width: fit-content;
+    background-color: #bfbfbf;
+        color: transparent;
+}
+  .skelenton .card-icon, .skelenton .card-avatar{
+    background-color: #bfbfbf !important;
+   
+  }
+
+
+  .skelenton .card-avatar img{
+    display: none;
+  }
+
+  .skelenton .card-avatar{
+    width: 45px;
+    height: 45px;
+  }
+  .skelenton .task-card .card-icon.green, .skelenton .card-icon.blue{
+    color: transparent !important;
+    --color: transparent !important;
+  }
+
+ .skelenton .revenue-item .icon.green,  .skelenton .card-data,  .skelenton .progress-title, .skelenton .progress-data, .skelenton .activitytoptext, .skelenton .activitybottomtext{
+    background-color: #bfbfbf !important;
+    color: transparent !important;
+    --color: transparent !important;
+    border-radius: 2px;
+    width: fit-content;
+ }
+
+ .skelenton .progress{
+    display: none;
+ }
+ 
+ .skelenton .revenue-item .icon.red {
+    background-color: #bfbfbf !important;
+    color: transparent !important;
+    --color: transparent !important;
+
+ }
+
+ 
+  .skelenton .info-text{
+    margin-top: 0px;
+    background-color: #bfbfbf;
+    width: 100%;
+    padding: 16px;
+    border-radius: 3px;
+
+  }
+
+  .skelenton .dashboardformtitle{
+    margin-top: 0px;
+    background-color: #bfbfbf;
+    width: 200px;
+    padding: 12px;
+    border-radius: 3px; 
+  }
+
+  .skelenton .loginflex{
+    width: 100%;
+    background-color: #bfbfbf;
+    padding: 10px;
+    color: transparent;
+  }
+
+  .skelenton input{
+    display: none;
+  }
+
+  .skelenton .loginflex label{
+    color: transparent;
+  }
+
+  .skelenton .loanrequestbutton button{
+    color: transparent;
+    background-color: #bfbfbf;
+    border:#bfbfbf;
+  }
+
+
+  .investment_contents {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 20px;
+}
+
+.investment_card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.investment_card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
 }

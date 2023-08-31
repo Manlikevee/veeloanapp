@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { getUser } from '../../../service/auth'
 function Dashboarddata({responseData, timeOfDay}) {
   const [isActive, setIsActive] = useState(false);
 
@@ -11,7 +11,7 @@ function Dashboarddata({responseData, timeOfDay}) {
     <div>
 
 <article className="article">
-  <h2 className="h2 article-title">Good {timeOfDay} Victor </h2>
+  <h2 className="h2 article-title">Good {timeOfDay} {getUser().username} </h2>
   <p className="article-subtitle">Welcome to Dashboard!</p>
   {/* 
             - #HOME
@@ -170,9 +170,9 @@ function Dashboarddata({responseData, timeOfDay}) {
       </div>
       <ul className="contact-list">
         <li>
-          <a href="mailto:xyz@mail.com" className="contact-link icon-box">
+          <a href={getUser().email} className="contact-link icon-box">
             <span className="material-symbols-outlined icon">mail</span>
-            <p className="text">xyz@mail.com</p>
+            <p className="text">{getUser().email}</p>
           </a>
         </li>
         <li>

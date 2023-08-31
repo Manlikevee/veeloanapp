@@ -5,6 +5,7 @@ import Loanhistory from '../components/Dashboard/Loanhistory/Loanhistory';
 import Loanplans from '../components/Loanplanpopup/Loanplans';
 import axiosInstance from '../service/axiosinterceptor';
 import { toast } from 'react-toastify';
+import Lazyloadingdashboard from '../components/Lazyloading/Lazyloadingdashboard';
 
 
 function Userdashboard() {
@@ -77,7 +78,7 @@ function Userdashboard() {
     <Dashboardlayout>
 
 {loading ? (
-        <h1>Loading...</h1>
+        <Lazyloadingdashboard timeOfDay={timeOfDay} />
       ) : loanReference && responseData ? (
         <div>
 
