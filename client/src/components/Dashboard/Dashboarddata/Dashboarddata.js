@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Dashboarddata({responseData}) {
+function Dashboarddata({responseData, timeOfDay}) {
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
@@ -11,7 +11,7 @@ function Dashboarddata({responseData}) {
     <div>
 
 <article className="article">
-  <h2 className="h2 article-title">Hi Victor</h2>
+  <h2 className="h2 article-title">Good {timeOfDay} Victor </h2>
   <p className="article-subtitle">Welcome to Dashboard!</p>
   {/* 
             - #HOME

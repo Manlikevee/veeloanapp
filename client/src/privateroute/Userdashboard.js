@@ -13,6 +13,22 @@ function Userdashboard() {
   const [responseData, setResponseData] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
 
+  let timeOfDay;
+  const date = new Date();
+  const hours = date.getHours();
+  const styles = {
+    fontSize: 35,
+  }
+
+  if (hours < 12) {
+    timeOfDay = 'Morning';
+  } else if (hours >= 12 && hours < 17) {
+    timeOfDay = 'Afternoon';
+  } else {
+    timeOfDay = 'Evening';
+  }
+
+
   const openModal = () => {
     console.log('clickedd')
     setModalOpen(true);
@@ -65,7 +81,7 @@ function Userdashboard() {
       ) : loanReference && responseData ? (
         <div>
 
-   <Dashboarddata responseData={responseData} />
+   <Dashboarddata responseData={responseData} timeOfDay={timeOfDay} />
 
    <Loanhistory openModal={openModal}  responseData={responseData} />
 
