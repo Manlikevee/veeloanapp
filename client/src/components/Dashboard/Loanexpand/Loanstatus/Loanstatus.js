@@ -35,6 +35,11 @@ const Loanstatus = ({ responsed }) => {
         <div className="plantitle gridloantitle card-title">Account Number</div>
         <div className="plandetail gridloancontent card-subtitle">{ responsed.reference }</div>
       </div>
+
+      <div className="planbox">
+        <div className="plantitle gridloantitle card-title">Status</div>
+        <div className="plandetail gridloancontent card-subtitle">{ responsed.status }</div>
+      </div>
     </div>
     <div className="planlines" />
     <div className="plangrid">
