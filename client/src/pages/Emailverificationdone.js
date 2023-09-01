@@ -37,7 +37,7 @@ const Emailverificationdone = () => {
     // Send a POST request when Verificationtoken changes
     if (Verificationtoken) {
       axios
-        .post(`https://isslblog.vercel.app/emailverification/verify/${Verificationtoken}`)
+        .get(`https://isslblog.vercel.app/emailverification/verify/${Verificationtoken}`)
         .then(response => {
           // Handle the response as needed
           console.log('Verification successful', response.data);
