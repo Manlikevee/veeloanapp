@@ -1,99 +1,97 @@
 import React, { useEffect, useState } from 'react';
-import AOS from 'aos'; // Import AOS library
-import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import Login from '../components/authentication/login/Login';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 
 const Emailverification = () => {
-  const [Verificationtoken, SetVerificationtoken] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [verificationToken, setVerificationToken] = useState('');
+  const [loading, setLoading] = useState(false);
   const [responseData, setResponseData] = useState(null);
-  const [userrefefence, setUserrefefence] = useState('');
+  const [userReference, setUserReference] = useState('');
 
   useEffect(() => {
-    // Get the loanReference query parameter from the URL
     const queryParams = new URLSearchParams(window.location.search);
     const loanReferenceValue = queryParams.get('UserAccountid');
 
-    SetVerificationtoken(loanReferenceValue);
+    setVerificationToken(loanReferenceValue);
   }, []);
- 
-  useEffect(() => {
-    // Send a POST request when Verificationtoken changes
-    if (Verificationtoken) {
-      axios
-        .get(`https://isslblog.vercel.app/newemailverification/verify/${Verificationtoken}/${userrefefence}`)
-        .then(response => {
-          // Handle the response as needed
-          console.log('Verification successful', response.data);
-          setResponseData(response.data);
-          setLoading(false);
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('Verification error', error);
-          setResponseData({ error: 'Verification failed. Please try again.' });
-          setLoading(false);
-        });
+
+  const handleVerification = () => {
+    if (!verificationToken || !userReference) {
+      toast.error('Please fill in all fields');
+      return;
     }
-  }, [Verificationtoken]);
 
-    useEffect(() => {
-        // Initialize AOS with your desired options
-        AOS.init({
-          duration: 1200,
-          offset: 120,
-          easing: 'ease-in-out',
-          delay: 100,
-          once: true,
-          anchorPlacement: 'center',
-        });
-      }, []);
+    setLoading(true);
 
+    axios
+      .get(`https://isslblog.vercel.app/newemailverification/verify/${verificationToken}/${userReference}`)
+      .then(response => {
+        // Handle the response as needed
+        console.log('Verification successful', response.data);
+        setResponseData(response.data);
+        setLoading(false);
+        toast.success(responseData.message); // Display success message
+        navigate('/'); // Redirect to the homepage upon success
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Verification error', error);
+        setResponseData({ error: 'Verification failed. Please try again.' });
+        setLoading(false);
+        toast.error(responseData.message || 'Verification failed. Please try again.');
+      });
+  };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      offset: 120,
+      easing: 'ease-in-out',
+      delay: 100,
+      once: true,
+      anchorPlacement: 'center',
+    });
+  }, []);
 
   return (
-    <Login typeofpage={'verification'}> 
-    <div>
-    <div className="logintitle">
-    
-    To complete your registration and access our services, please click the verification link we've sent to your email address or type below. 
-      </div>
-    <div className="loginform">
-        <div className="logincontent">
-          <div className="loginflex">
-            <label htmlFor="verificationcode">Verification Code</label>
-            <input
-              type="text"
-              name="verificationcode"
-              id="id_username"
-              placeholder="Enter Your verification code"
-            />
-     
-          </div>
+    <Login typeofpage={'verification'}>
+      <div>
+        <div className="logintitle">
+          To complete your registration and access our services, please click the verification link we've sent to
+          your email address or type below.
+        </div>
+        <div className="loginform">
+          <div className="logincontent">
+            <div className="loginflex">
+              <label htmlFor="userreference">User Reference</label>
+              <input
+                type="text"
+                name="userreference"
+                id="id_userreference"
+                placeholder="Enter Your User Reference"
+                value={userReference}
+                onChange={e => setUserReference(e.target.value)}
+              />
+            </div>
 
-          <div className="loginflex">
-            <button type="submit">
-                Verify Email
-            </button>
-          </div>
+            <div className="loginflex">
+              <button type="submit" onClick={handleVerification} disabled={loading}>
+                {loading ? 'Processing...' : 'Verify Email'}
+              </button>
+            </div>
 
-    
-
-
-          <div className="logintitle">
-           Resend Verification Code{" "}
-            <Link to="/Userlogin">Login</Link>{" "}
+            <div className="logintitle">
+              Resend Verification Code <Link to="/Userlogin">Login</Link>
+            </div>
           </div>
         </div>
       </div>
-
-    </div>
-
     </Login>
-  )
-}
+  );
+};
 
-export default Emailverification
+export default Emailverification;
