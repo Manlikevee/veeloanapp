@@ -74,6 +74,34 @@ function Userdashboard() {
   }, []);
   
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get('/Dashboarddata');
+        // Handle the response as needed
+
+        setResponseData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        // Fail silently without showing errors
+        console.error('Fetch error (silently ignored)', error);
+      }
+    };
+  
+    // Fetch data initially
+    fetchData();
+  
+    // Fetch data every 10 seconds
+    const intervalId = setInterval(fetchData, 30000);
+  
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
+  
+
+
+  
+
   return (
     <Dashboardlayout>
 

@@ -4167,14 +4167,157 @@ border-radius: 9px;
     background-color: #fff;
     padding: 20px;
     border-radius: 7px;
+    transition: box-shadow 0.25s ease-in-out; 
 }
 
 .investment_card {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: var(--shadow-2);
+
+}
+
+.investment_card:hover{
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
+}
+
+.investmentcard_type {
+    margin-top: 10px;
+    color: #737373;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.investmentcard_type {
+    margin-top: 20px;
+    color: #737373;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: var(--onyx-2);
+    font-size: 24px;
+    font-weight: var(--fw-600);
+}
+.investment_card_column {
+    width: 100%;
+}
+
+.investment_card_brown_text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    color: #737373;
+}
+
+.investment_card_orange_text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    color: var(--main);
+}
+
+.card_rule_bottom {
+    margin-top: 11px;
+    margin-bottom: 11px;
+    width: 95%;
+    border-bottom: 0.5px solid   var(--main);
+}
+
+.investment_card_row {
+    display: flex;
+    grid-gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.hearder_tooltip {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    position: relative;
+}
+
+.account_number {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+span.card_number {
+    color: var(--davys-gray);
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+}
+.acc_title {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+card_number {
+    margin-top: 5px;
+    color:  var(--main);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.hearder_tooltip:hover .dropdown-content {
+    display: block;
+    transition: 0.25s ease-in-out
+}
+
+.dropdown-content {
+    transition: 0.5s ease-in-out;
+    margin-top: 10px;
+    display: none;
+    position: absolute;
+    padding: 4px;
+    background-color: #ffffff;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content p{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    color: #737373;
+    padding: 3px;
+}
+.dropdown-content a {
+    color: black;
+padding: 3px;
+    text-decoration: none;
+    display: block;
+        font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    color: var(--main);
 }

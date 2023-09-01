@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getUser } from '../../../service/auth'
+import accounting from 'accounting';
 function Dashboarddata({responseData, timeOfDay}) {
   const [isActive, setIsActive] = useState(false);
 
@@ -51,7 +52,7 @@ function Dashboarddata({responseData, timeOfDay}) {
       </ul>
       <p className="card-title">Loan Balances</p>
       <data className="card-price" value={2100}>
-        ${responseData.totalloanamount.principal__sum}
+        {accounting.formatMoney(responseData.totalloanamount.principal__sum, '$', 2)}
       </data>
       <p className="card-text">Last Week</p>
       <div className="divider card-divider" />

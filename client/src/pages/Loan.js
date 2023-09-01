@@ -18,7 +18,7 @@ const Loan = () => {
   };
   return (
     <Dashboardlayout>
-
+<br/>
 <Loancard />
 
 <Loanpopup openModal={openModal}/>
