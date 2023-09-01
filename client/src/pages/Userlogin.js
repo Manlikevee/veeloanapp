@@ -65,7 +65,7 @@ const Userlogin = () => {
 
 
     <div>
-<Login>
+<Login typeofpage={'login'}>
 <div className="logintitle">
         Welcome Please provide your Log In details.{" "}
       </div>

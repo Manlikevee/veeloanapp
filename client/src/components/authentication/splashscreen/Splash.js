@@ -1,9 +1,9 @@
 import React from 'react'
 import image from "../logo (2).png"
 import { Link } from "gatsby"
-const Splash = () => {
+const Splash = ({typeofpage}) => {
   return (
-  
+    
           <div className="mpawa" data-aos="fade-up">
       <div
         className="logo"

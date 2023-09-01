@@ -5,13 +5,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import image from "../logo (2).png"
 import Splash from '../splashscreen/Splash'
-function Login({ children }) {
+function Login({ children, typeofpage }) {
   return (
     <div>
           <ToastContainer/>
 <div className="getstartedsection">
-  <div className="getstartedimage">
-  <Splash/>
+    <div className={`getstartedimage ${typeofpage ? typeofpage : ''}`} >
+     <Splash/>
   </div>
   <div className="getstartedlogin">
     <div className="loginbox2" data-aos="fade-right">
