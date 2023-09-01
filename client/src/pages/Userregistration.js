@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Login from '../components/authentication/login/Login';
-
+import { navigate } from 'gatsby';
 
 const Userregistration = () => {
   useEffect(() => {
@@ -70,7 +70,20 @@ const Userregistration = () => {
       const response = await axios.post('https://isslblog.vercel.app/trafalgarregister/', formData);
   
       console.log('Registration successful', response.data);
-      toast.success('Registration successful');
+
+      if (response.data.message && response.data.accountnumber){
+        toast.success(response.data.message);
+        const re = response.data.accountnumber;
+      
+        // Add a delay before navigating
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // 1000 milliseconds = 1 second
+      
+        navigate(`/Emailverification/?UserAccountid=${re}`);
+      } else{
+        toast.success('Registration successful you can now login');
+      }
+      
+    
       
       setFormData({
         username: '',
@@ -81,7 +94,11 @@ const Userregistration = () => {
       console.error('Registration error', error);
       if (error.response.data.username) {
         toast.error(error.response.data.username[0]);
-      } else if (error.response.data.message) {
+      }
+      else if (error.response.data.email) {
+        toast.error(error.response.data.email[0]);
+      }
+      else if (error.response.data.message) {
         toast.error(error.response.data.message);
       } else {
         toast.error('Registration failed. Please try again.');
