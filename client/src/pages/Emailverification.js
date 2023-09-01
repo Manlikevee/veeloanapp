@@ -7,6 +7,39 @@ import Login from '../components/authentication/login/Login';
 import { Link } from 'gatsby';
 
 const Emailverification = () => {
+  const [Verificationtoken, SetVerificationtoken] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [responseData, setResponseData] = useState(null);
+  const [userrefefence, setUserrefefence] = useState('');
+
+  useEffect(() => {
+    // Get the loanReference query parameter from the URL
+    const queryParams = new URLSearchParams(window.location.search);
+    const loanReferenceValue = queryParams.get('UserAccountid');
+
+    SetVerificationtoken(loanReferenceValue);
+  }, []);
+ 
+  useEffect(() => {
+    // Send a POST request when Verificationtoken changes
+    if (Verificationtoken) {
+      axios
+        .get(`https://isslblog.vercel.app/emailverification/verify/${Verificationtoken}/${userrefefence}`)
+        .then(response => {
+          // Handle the response as needed
+          console.log('Verification successful', response.data);
+          setResponseData(response.data);
+          setLoading(false);
+        })
+        .catch(error => {
+          // Handle errors
+          console.error('Verification error', error);
+          setResponseData({ error: 'Verification failed. Please try again.' });
+          setLoading(false);
+        });
+    }
+  }, [Verificationtoken]);
+
     useEffect(() => {
         // Initialize AOS with your desired options
         AOS.init({
@@ -26,17 +59,17 @@ const Emailverification = () => {
     <div>
     <div className="logintitle">
     
-    To complete your registration and access our services, please click the verification link we've sent to your email address. 
+    To complete your registration and access our services, please click the verification link we've sent to your email address or type below. 
       </div>
     <div className="loginform">
         <div className="logincontent">
           <div className="loginflex">
-            <label htmlFor="Username">Verification Code</label>
+            <label htmlFor="verificationcode">Verification Code</label>
             <input
               type="text"
-              name="username"
+              name="verificationcode"
               id="id_username"
-              placeholder="Enter Your Email Username"
+              placeholder="Enter Your verification code"
             />
      
           </div>
