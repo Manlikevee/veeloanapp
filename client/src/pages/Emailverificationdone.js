@@ -57,8 +57,8 @@ const Emailverificationdone = () => {
   let content;
   if (loading) {
     content = <p>Loading...</p>;
-  } else if (responseData && responseData.success) {
-    content = <p>Verification successful. {responseData.message}</p>;
+  } else if (responseData.message) {
+    content = <p> {responseData.message}</p>;
   } else if (responseData && responseData.error) {
     content = <p>Verification failed. {responseData.error}</p>;
   } else {
