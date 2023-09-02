@@ -7,18 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Login from '../components/authentication/login/Login';
 import { navigate } from 'gatsby';
-import { Helmet } from 'react-helmet';
-
 
 const Emailverificationdone = () => {
 
-  <Helmet>
-  <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   
-  <meta name="description" content="This is a description of my page." />
-  {/* Add more head tags here */}
-  </Helmet>  
 
   const [Verificationtoken, SetVerificationtoken] = useState('');
   const [loading, setLoading] = useState(true);
@@ -82,7 +74,7 @@ const Emailverificationdone = () => {
 
     </div>;
   } else if (responseData.message) {
-    content = <div> {responseData.message} 🎉
+    content = <div> <div className='mytitle'> {responseData.error} </div>
 
 <div className="logintitle">
 Congratulations! Your email address has been successfully verified, and your registration is now complete. You can now access our services and enjoy all the benefits of our platform.
@@ -97,18 +89,26 @@ Congratulations! Your email address has been successfully verified, and your reg
   // Display something when the error message is 'Your account is already verified'
   <div>
  <div className='mytitle'> {responseData.error} </div>
- <div> 
-  <span class="material-symbols-outlined">
-pending_actions
-</span>
- </div>
   <div className="logintitle">
   We're sorry, but it seems that your account is already verified. You can log in now.
 </div>
+<div className="loginflex">
+             <Link to='/'> <button>Log In</button> </Link>
+ </div>
 </div>
 ) : (
+
+  <div>
+  <div className='mytitle'> {responseData.error} </div>
+   <div className="logintitle">
+   An error occurred during verification. Please try again or contact support.
+ </div>
+ <div className="loginflex">
+              <Link > <button>Contact Support</button> </Link>
+  </div>
+ </div>
+
   // Display something else when the error message is different
-  <p>An error occurred during verification. Please try again or contact support.</p>
 )}
       
       

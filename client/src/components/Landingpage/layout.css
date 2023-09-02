@@ -4380,3 +4380,34 @@ padding: 3px;
     color: #000000cc;
 
 }
+
+.logintitles{
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+}
+
+.myicon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.canclb {
+    height: 72px;
+    width: 72px;
+    background-color: #219653;
+    border-radius: 50%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+}
