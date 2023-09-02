@@ -93,9 +93,9 @@ const Loanhistory = ({ openModal , responseData }) => {
                           </div>
                         </div>
                       </div>
-                      {activityData.status === 'pending confirmation' ? (
+                      {activityData.status === 'pending confirmation'  ? (
               <Link to={`/Userloanoffer/?loanReference=${activityData.reference}`} className="activityview card-subtitle">Detail</Link>
-            ) : activityData.status === 'submitted for review' || activityData.status === 'confirmed' ? (
+            ) : activityData.status === 'submitted for review' || activityData.status === 'confirmed' || activityData.status === 'Processing Payment' ? (
               <Link to={`/Loandetail/?loanreferences=${activityData.reference}`} className="activityview card-subtitle"> Detail</Link>
             ) : (
               <Link to={`/Userloanoffer/?loanReference=${activityData.reference}`} className="activityview card-subtitle">Detail</Link>

@@ -24,8 +24,11 @@ const re = props.refss
         
         
         console.log('POST request successful', response);
+        setTimeout(() => {
+          navigate(`/Loandetail/?loanreferences=${re}`);
+        }, 3000);
 
-        navigate(`/Loandetail/?loanreferences=${re}`);
+      
       } else {
         toast.error('Value to be sent is missing.');
       }
@@ -50,7 +53,11 @@ const re = props.refss
 
         // Handle the response as needed
         toast.success('This Loan Offer Has Been Declined');
-        navigate(`/app/dashboard'`);
+        setTimeout(() => {
+          navigate(`/app/dashboard`);
+        }, 3000);
+
+       
         console.log('POST request successful', response);
       } else {
         toast.error('Value to be sent is missing.');
