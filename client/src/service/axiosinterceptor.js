@@ -31,19 +31,13 @@ axiosInstance.interceptors.request.use(async (req) => {
         });
         console.log('expired');
         const { access, refresh } = response.data;
-      
-        const decodedAccessToken = jwtDecode(access);
-
- 
-        
+        const decodedAccessToken = jwtDecode(access);        
         user.id = decodedAccessToken.user_id;
         user.username = decodedAccessToken.username;
         user.email = decodedAccessToken.email;
         user.accesstoken = access;
         user.refreshtoken = refresh;
-
         window.localStorage.setItem("gatsbyUser", JSON.stringify(user));
-
         req.headers.Authorization = `Bearer ${access}`;
       } 
       

@@ -2951,14 +2951,16 @@ padding: 15px;
 }
 .getstartedimage{
 width: 100%;
+max-height: 40vh;
 background-position: center;
 }
 }
 
 @media screen and (max-width:800px) {
-.getstartedlogin{
-    padding: 50px;
-}
+    .getstartedlogin {
+        padding: 50px;
+        height: 100%;
+    }
 .mpawa{
     padding: 10px;
 

@@ -24,9 +24,9 @@ const Emailverification = () => {
       toast.error('Please fill in all fields');
       return;
     }
-
+  
     setLoading(true);
-
+  
     axios
       .get(`https://isslblog.vercel.app/newemailverification/verify/${verificationToken}/${userReference}`)
       .then(response => {
@@ -34,17 +34,32 @@ const Emailverification = () => {
         console.log('Verification successful', response.data);
         setResponseData(response.data);
         setLoading(false);
-        toast.success(responseData.message); // Display success message
-        navigate('/'); // Redirect to the homepage upon success
+  
+        // Check if response contains a message
+        if (response.data.message) {
+          toast.success(response.data.message); // Display success message
+        } else {
+          toast.success('Verification successful'); // Default success message
+        }
+  
+        // Delay the redirect by a few milliseconds (e.g., 1000 milliseconds = 1 second)
+        setTimeout(() => {
+          navigate('/app/login/');
+        }, 4000); // Adjust the delay as needed
       })
       .catch(error => {
         // Handle errors
         console.error('Verification error', error);
-        setResponseData({ error: 'Verification failed. Please try again.' });
         setLoading(false);
-        toast.error(responseData.message || 'Verification failed. Please try again.');
+  
+ 
+          toast.error('Verification failed.Incorrect Token Provided.');
+    
+  
+   
       });
   };
+  
 
   useEffect(() => {
     AOS.init({
