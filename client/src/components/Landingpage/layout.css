@@ -3629,6 +3629,13 @@ border-radius: 9px;
         flex-direction: column;
         grid-gap: 30px;
     }
+
+    header .container {
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
     .userflexboxside1 {
         position: relative;
         width: 100%;
@@ -3989,7 +3996,7 @@ border-radius: 9px;
 
 .skelenton .loanrequesttitles h4{
     margin-top: 9px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     padding: 2px;
     border-radius: 3px;
     width: fit-content;
@@ -3999,7 +4006,7 @@ border-radius: 9px;
 
   .skelenton .info-text{
     margin-top: 0px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     width: 100%;
     padding: 16px;
     border-radius: 3px;
@@ -4008,7 +4015,7 @@ border-radius: 9px;
 
   .skelenton .dashboardformtitle{
     margin-top: 0px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     width: 200px;
     padding: 12px;
     border-radius: 3px; 
@@ -4016,7 +4023,7 @@ border-radius: 9px;
 
   .skelenton .loginflex{
     width: 100%;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     padding: 10px;
     color: transparent;
   }
@@ -4031,8 +4038,8 @@ border-radius: 9px;
 
   .skelenton .loanrequestbutton button{
     color: transparent;
-    background-color: #bfbfbf;
-    border:#bfbfbf;
+    background-color: #dfdfdf;
+    border:#dfdfdf;
   }
 
 
@@ -4070,14 +4077,14 @@ border-radius: 9px;
 }
 
 .skelenton .card-title, .skelenton .card-text, .skelenton .revenue-item-data, .skelenton .revenue-item-text{
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     color: transparent !important;
     margin-top: 2px;
     border-radius: 5px;
 }
 
  .card-texts{
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     width: fit-content;
     color: transparent !important;
     margin-top: 2px;
@@ -4087,14 +4094,14 @@ border-radius: 9px;
 .skelenton .card-price, .skelenton .card-subtitle, .skelenton .contact-link{
     min-height: 20px;
     margin-bottom: 10px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     color: transparent;
     border-radius: 5px;
 } 
 
 .skelenton .loanrequesttitles h4{
     margin-top: 9px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     padding: 2px;
     border-radius: 3px;
     width: fit-content;
@@ -4103,11 +4110,11 @@ border-radius: 9px;
   }
 .skelenton h4{
     width: fit-content;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
         color: transparent;
 }
   .skelenton .card-icon, .skelenton .card-avatar{
-    background-color: #bfbfbf !important;
+    background-color: #dfdfdf !important;
    
   }
 
@@ -4126,7 +4133,7 @@ border-radius: 9px;
   }
 
  .skelenton .revenue-item .icon.green,  .skelenton .card-data,  .skelenton .progress-title, .skelenton .progress-data, .skelenton .activitytoptext, .skelenton .activitybottomtext{
-    background-color: #bfbfbf !important;
+    background-color: #dfdfdf !important;
     color: transparent !important;
     --color: transparent !important;
     border-radius: 2px;
@@ -4138,7 +4145,7 @@ border-radius: 9px;
  }
  
  .skelenton .revenue-item .icon.red {
-    background-color: #bfbfbf !important;
+    background-color: #dfdfdf !important;
     color: transparent !important;
     --color: transparent !important;
 
@@ -4147,7 +4154,7 @@ border-radius: 9px;
  
   .skelenton .info-text{
     margin-top: 0px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     width: 100%;
     padding: 16px;
     border-radius: 3px;
@@ -4156,7 +4163,7 @@ border-radius: 9px;
 
   .skelenton .dashboardformtitle{
     margin-top: 0px;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     width: 200px;
     padding: 12px;
     border-radius: 3px; 
@@ -4164,7 +4171,7 @@ border-radius: 9px;
 
   .skelenton .loginflex{
     width: 100%;
-    background-color: #bfbfbf;
+    background-color: #dfdfdf;
     padding: 10px;
     color: transparent;
   }
@@ -4179,8 +4186,8 @@ border-radius: 9px;
 
   .skelenton .loanrequestbutton button{
     color: transparent;
-    background-color: #bfbfbf;
-    border:#bfbfbf;
+    background-color: #dfdfdf;
+    border:#dfdfdf;
   }
 
 

@@ -7,6 +7,7 @@ import axiosInstance from '../service/axiosinterceptor';
 import { toast } from 'react-toastify';
 import Lazyloadingdashboard from '../components/Lazyloading/Lazyloadingdashboard';
 import {isLoggedIn} from '../service/auth'
+import { navigate } from 'gatsby';
 
 function Userdashboard() {
   const [loading, setLoading] = useState(true);
