@@ -4027,7 +4027,11 @@ border-radius: 9px;
     padding: 10px;
     color: transparent;
   }
-
+.skelenton .card-subtitle{
+    background-color: #dfdfdf;
+    padding: 10px;
+    color: transparent;
+}
   .skelenton input{
     display: none;
   }
@@ -4727,5 +4731,8 @@ h5.name {
         left: 50%;
         height: 75%;
         transform: translate(-50%, -50%);
+    }
+    .mnas {
+        margin-top: 40%;
     }
   }
