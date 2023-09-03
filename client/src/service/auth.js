@@ -30,8 +30,8 @@ const setUser = user =>
       const decodedAccessToken = jwtDecode(access);
 
       
-      if (decodedToken.accountnumber) {
-        const accountnumber = decodedToken.accountnumber;
+      if (decodedAccessToken.accountnumber) {
+        const accountnumber = decodedAccessToken.accountnumber;
         // Redirect to email verification page with accountnumber
         toast.error('Login failed. Your Profile Is Not Verified.', {
           position: toast.POSITION.TOP_RIGHT,
