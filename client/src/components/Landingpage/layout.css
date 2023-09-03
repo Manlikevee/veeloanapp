@@ -4649,12 +4649,7 @@ h5.name {
     font-size: 10px;
     font-weight: 400;
 }
-  .twosides{
-    padding: 30px;
-    display: flex;
-    gap: 10px;
-    
-  }
+
   .artistname{
     font-size: 2.1rem;
     line-height: 2.35rem;
