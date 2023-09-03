@@ -58,6 +58,7 @@ const setUser = user =>
   //     return false;
   //   }
   // };
+
   export const handleLogin = async ({ username, password }) => {
     try {
       const response = await axios.post('https://isslblog.vercel.app/token/', {
@@ -65,35 +66,36 @@ const setUser = user =>
         password,
       });
   
-      const { error, accountnumber } = response.data;
-  
-      if (error === 'Profile not verified') {
-        // Redirect to email verification page with accountnumber
-        window.location.href = `/Emailverification/?UserAccountid=${accountnumber}`;
-        return false;
-      }
-  
-      const decodedAccessToken = jwtDecode(response.data.access_token);
-  
-      if (decodedAccessToken && decodedAccessToken.user_id) {
-        toast.success('You Are Now Logged In', {
-          position: toast.POSITION.BOTTOM_CENTER,
-        });
-  
-        // Assuming setUser is available in the function's arguments
-        setUser({
-          id: decodedAccessToken.user_id,
-          username: decodedAccessToken.username,
-          email: decodedAccessToken.email,
-        });
-  
-        return true;
-      } else {
-        toast.error('Invalid access token', {
+      if (response.data.error === 'Profile not verified') {
+        const accountnumber = response.data.accountnumber;
+        toast.error('Login failed. Please Verify Your Account First', {
           position: toast.POSITION.TOP_RIGHT,
         });
+        // Redirect to email verification page with accountnumber
+        setTimeout(() => {
+          window.location.href = `/Emailverification/?UserAccountid=${accountnumber}`;
+        }, 3000);
+      
         return false;
       }
+  
+      const { access, refresh } = response.data;
+      const decodedAccessToken = jwtDecode(access);
+  
+      toast.success('You Are Now Logged In', {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+  
+      // Assuming setUser is available in the function's arguments
+      setUser({
+        id: decodedAccessToken.user_id,
+        username: decodedAccessToken.username,
+        email: decodedAccessToken.email,
+        accesstoken: access,
+        refreshtoken: refresh,
+      });
+  
+      return true;
     } catch (error) {
       console.error('Login failed:', error);
       console.log('errorrrrrrrrrrrrrrrrrrrr');
@@ -103,7 +105,7 @@ const setUser = user =>
   
       return false;
     }
-  };  
+  };
 
 
 export const isLoggedIn = () => {
