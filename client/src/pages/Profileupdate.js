@@ -1,14 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
+import axiosInstance from '../service/axiosinterceptor';
+
+
 
 const Profileupdate = () => {
+  const [isloading, setisloading] = useState(false);
+  const [responsedata, setresponsedata] = useState('');
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [email, setemail] = useState('');
+  const [username, setusername] = useState('');
+  const [middlename, setmiddlename] = useState('');
+  const [phonenumber, setphonenumber] = useState('');
+  const [gender, setgender] = useState('');
+  const [ssn, setssn] = useState('');
+    
+  useEffect(() => {
+    axiosInstance.get('/getprofileobj/')
+      .then(response => {
+        setresponsedata(response.data);
+        setfirstname(response.data.user.first_name)
+        setlastname(response.data.user.last_name)
+        setusername(response.data.user.username)
+        setemail(response.data.user.email)
+        setmiddlename(response.data.middle_name)
+        setphonenumber(response.data.phonenumber)
+        setisloading(false);
+      })
+      .catch(error => {
+       
+        setisloading(false);
+      });
+
+
+  }, []);
+
+
   return (
     <Dashboardlayout>
  <br/>
+
+ {isloading ? (
+
 <div className="dashboardform">
    
   <div className="loanrequesttitles" data-aos="fade-left">
-    <h4> Profile Update </h4>
+    <h4> Profile Update {username} </h4>
   </div>
   <p className="info-text" data-aos="fade-up">
     Kindly update your profile to ensure that your information is accurate and
@@ -97,6 +135,9 @@ const Profileupdate = () => {
     </div>
   </div>
 </div>
+ ) : 'loading.......'
+
+}
 
 
         </Dashboardlayout>
