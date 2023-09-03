@@ -17,88 +17,55 @@ const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
 
-  // export const handleLogin = async ({ username, password }) => {
-  //   try {
-  //     // Call the authentication API here
-  //     const response = await axios.post('https://isslblog.vercel.app/token/', {
-  //       username,
-  //       password,
-  //     });
-  
-
-  //     const { access, refresh } = response.data;
-  //     const decodedAccessToken = jwtDecode(access);
-
-      
-  //     toast.success('You Are Now Logged In', {
-  //       position: toast.POSITION.BOTTOM_CENTER,
-  //     });
-
-  //     // Assuming setUser is available in the function's arguments
-  //     setUser({
-  //       id: decodedAccessToken.user_id,
-  //       username: decodedAccessToken.username,
-  //       email: decodedAccessToken.email,
-  //       accesstoken: access,
-  //       refreshtoken: refresh
-  //     });
-
-  //     toast.success('You Are Now Logged In', {
-  //       position: toast.POSITION.BOTTOM_CENTER,
-  //     });
-      
-  //     return true;
-  //   } catch (error) {
-  //     console.error('Login failed:', error);
-  //     console.log('errorrrrrrrrrrrrrrrrrrrr')
-  //     toast.error('Login failed. Please check your credentials.', {
-  //       position: toast.POSITION.TOP_RIGHT,
-  //     });
-  
-  //     return false;
-  //   }
-  // };
-
   export const handleLogin = async ({ username, password }) => {
     try {
+      // Call the authentication API here
       const response = await axios.post('https://isslblog.vercel.app/token/', {
         username,
         password,
       });
   
-      if (response.data.accountnumber) {
-        const accountnumber = response.data.accountnumber;
-        toast.error('Login failed. Please Verify Your Account First', {
-          position: toast.POSITION.TOP_RIGHT,
-        });
-        // Redirect to email verification page with accountnumber
-        setTimeout(() => {
-          window.location.href = `/Emailverification/?UserAccountid=${accountnumber}`;
-        }, 3000);
-      
-        return false;
-      }
-  
+
       const { access, refresh } = response.data;
       const decodedAccessToken = jwtDecode(access);
-  
+
+      
+      if (decodedToken.accountnumber) {
+        const accountnumber = decodedToken.accountnumber;
+        // Redirect to email verification page with accountnumber
+        toast.error('Login failed. Your Profile Is Not Verified.', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setTimeout(() => {
+          navigate(`/Emailverification/?UserAccountid=${accountnumber}`);
+        }, 3000);
+
+   
+        return false;
+      }
+
+
       toast.success('You Are Now Logged In', {
         position: toast.POSITION.BOTTOM_CENTER,
       });
-  
+
       // Assuming setUser is available in the function's arguments
       setUser({
         id: decodedAccessToken.user_id,
         username: decodedAccessToken.username,
         email: decodedAccessToken.email,
         accesstoken: access,
-        refreshtoken: refresh,
+        refreshtoken: refresh
       });
-  
+
+      toast.success('You Are Now Logged In', {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+      
       return true;
     } catch (error) {
       console.error('Login failed:', error);
-      console.log('errorrrrrrrrrrrrrrrrrrrr');
+      console.log('errorrrrrrrrrrrrrrrrrrrr')
       toast.error('Login failed. Please check your credentials.', {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -106,6 +73,7 @@ const setUser = user =>
       return false;
     }
   };
+  
 
 
 export const isLoggedIn = () => {
