@@ -28,7 +28,7 @@ const Dashboardheader = () => {
 grid_view
 </span>     Dashboard
         </Link>
-        <Link  to='/Loan' className="" activeClassName="activated"><span class="material-symbols-outlined" >
+        <Link  to='/app/Userloans' className="" activeClassName="activated"><span class="material-symbols-outlined" >
 credit_score
 </span> Loan</Link>
         <Link  to='/Loandetail' className="" activeClassName="activated"><span class="material-symbols-outlined">

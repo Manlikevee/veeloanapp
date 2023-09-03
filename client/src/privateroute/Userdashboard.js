@@ -6,7 +6,7 @@ import Loanplans from '../components/Loanplanpopup/Loanplans';
 import axiosInstance from '../service/axiosinterceptor';
 import { toast } from 'react-toastify';
 import Lazyloadingdashboard from '../components/Lazyloading/Lazyloadingdashboard';
-
+import {isLoggedIn} from '../service/auth'
 
 function Userdashboard() {
   const [loading, setLoading] = useState(true);
@@ -88,7 +88,9 @@ function Userdashboard() {
   }, []);
   
 
-
+  if (!isLoggedIn()) {
+    navigate(`/app/profile`);
+  }
   
 
   return (
