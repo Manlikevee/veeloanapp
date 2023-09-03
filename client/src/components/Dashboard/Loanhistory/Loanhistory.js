@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import blank from '../blank.png'
 import ButtonComponent from '../ButtonComponent';
 import axios from 'axios';
-import { Link } from 'gatsby'; // Import Link component
-import axiosInstance from '../../../service/axiosinterceptor';
+import { Link } from 'gatsby'; // Import Link component;
 import { differenceInMinutes, differenceInHours, differenceInDays } from 'date-fns';
 
 function getTimeAgo(dateString) {

@@ -2119,7 +2119,7 @@ font-size: 14px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    max-height: 40vh;
+    max-height: 60vh;
     overflow-x: hidden;
     overflow-y: scroll;
   }

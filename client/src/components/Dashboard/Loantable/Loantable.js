@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Loanpopup from '../Loanpopup/Loanpopup';
 import blank from '../blank.png'
+import dayjs from 'dayjs';
+
 const loanDataList = [
     {
       type: 'Term Loan',
@@ -40,12 +42,32 @@ const loanDataList = [
   ];
 
 
-const Loantable = () => {
+const Loantable = ({responseData}) => {
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [investmentData, setInvestmentData] = useState([]);
+
+  useEffect(() => {
+    setInvestmentData(responseData.myloans);
+    setLoading(false);
+  });
+
   return (
 <>
 
-
-
+{loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {error ? (
+              <div className="empty-data-message">
+                <img src={blank} alt="" />
+                Error loading data.
+              </div>
+            ) : (
+              <>
+              <br/>
 {investmentData.length > 0 ? (
   <ul id="myUL" className="investment_contents">
     {investmentData.map((item, index) => (
@@ -55,7 +77,7 @@ const Loantable = () => {
    <div className="account_number">
      <span className="acc_title">Account Number</span>
      <span className="card_number">
-       <a>{item.accountNumber}</a>
+       <a>{item.reference}</a>
      </span>
    </div>
    <div className="hearder_tooltip">
@@ -69,7 +91,7 @@ const Loantable = () => {
    </div>
  </div>
  <div className="investmentcard_type">
-   <h6>{item.type}</h6>
+   <h6>{item.plan.Loan_name}</h6>
  </div>
  <div className="card_rule_bottom" />
  <div className="investment_card_row">
@@ -85,7 +107,9 @@ const Loantable = () => {
      <div className="investment_card_brown_text">Maturity Date</div>
    </div>
    <div className="investment_card_column">
-     <div className="investment_card_orange_text">{item.maturityDate}</div>
+     <div className="investment_card_orange_text">
+     {dayjs(item.maturity_date).format('YYYY-MM-DD')}
+     </div>
    </div>
  </div>
  <div className="investment_card_row">
@@ -93,12 +117,12 @@ const Loantable = () => {
      <div className="investment_card_brown_text">Interest Rate</div>
    </div>
    <div className="investment_card_column">
-     <div className="investment_card_orange_text">{item.interestRate}</div>
+     <div className="investment_card_orange_text">{item.plan.Loan_rate} %</div>
    </div>
  </div>
  <div className="investment_card_row">
    <div className="investment_card_column">
-     <div className="investment_card_orange_text">Status</div>
+     <div className="investment_card_brown_text">Status</div>
    </div>
    <div className="investment_card_column">
      <div className="investment_card_orange_text">{item.status}</div>
@@ -116,6 +140,14 @@ const Loantable = () => {
   you don’t have any pending request</div>
 )}
 
+
+              </>
+            )}
+          </>
+        )}
+
+
+<br/>
 
     <div className="loantablediv" id="step3Target" data-aos="fade-right">
   <div className="loandiv">

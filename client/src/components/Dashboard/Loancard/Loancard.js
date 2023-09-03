@@ -1,6 +1,6 @@
 import React from 'react'
-
-const Loancard = () => {
+import accounting from 'accounting';
+const Loancard = ({responseData}) => {
   return (
     <div className="dashboardcard" >
     <div className="dashcard" id="step1Target" data-aos="fade-down">
@@ -9,11 +9,11 @@ const Loancard = () => {
         <div className="dashtoggle"> </div>
       </div>
       <div className="dashvalue">
-        <h3>200,000.00</h3>
+        <h3>{accounting.formatMoney(responseData.totalloanamount.principal__sum, '$', 2)}</h3>
       </div>
       <div className="dashfooter">
         <div className="numberofloans">Active Loans</div>
-        <div className="totalnum">23</div>
+        <div className="totalnum">{responseData.loans}</div>
       </div>
     </div>
   </div>

@@ -40,38 +40,27 @@ function Userdashboard() {
   };
   const loanReferenceValue = '123'
   useEffect(() => {
-    setLoanReference(loanReferenceValue);
-
-
-    
-    if (loanReferenceValue) {
-      const myref = loanReferenceValue
-     
-      axiosInstance
-        .get('/Dashboarddata', {
-        })
-
-        .then(response => {
-          // Handle the response as needed
-          toast.success('successfully fetched');
-          setResponseData(response.data);
-          console.log(response.data);
-          setLoading(false);
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('POST request error', error);
-          if (error.response && error.response.data && error.response.data.error) {
-            toast.error(error.response.data.error);
-          } else {
-            toast.error('An error occurred while Loading Your Data');
-          }
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
-    }
+    axiosInstance
+      .get('/Dashboarddata')
+      .then(response => {
+        // Handle the response as needed
+        toast.success('successfully fetched');
+        setResponseData(response.data);
+        console.log(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('GET request error', error);
+        if (error.response && error.response.data && error.response.data.error) {
+          toast.error(error.response.data.error);
+        } else {
+          toast.error('An error occurred while Loading Your Data');
+        }
+        setLoading(false);
+      });
   }, []);
+  
   
 
   useEffect(() => {
@@ -107,7 +96,7 @@ function Userdashboard() {
 
 {loading ? (
         <Lazyloadingdashboard timeOfDay={timeOfDay} />
-      ) : loanReference && responseData ? (
+      ) : responseData ? (
         <div>
 
    <Dashboarddata responseData={responseData} timeOfDay={timeOfDay} />
