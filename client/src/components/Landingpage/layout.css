@@ -374,6 +374,7 @@ marquee {}
     display: flex;
     gap: 30px;
     height: 100%;
+    padding: 0;
 }
 
 .sidea {
@@ -4072,10 +4073,10 @@ border-radius: 9px;
 
 
 
-/* .green {
-    background-color: #c3e6cb;
-    color: #155724;
-} */
+.green {
+   
+    
+}
 
 
 .skelenton .loanrequesttitles{
