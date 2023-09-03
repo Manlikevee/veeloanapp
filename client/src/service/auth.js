@@ -66,7 +66,7 @@ const setUser = user =>
         password,
       });
   
-      if (response.data.error === 'Profile not verified') {
+      if (response.data.accountnumber) {
         const accountnumber = response.data.accountnumber;
         toast.error('Login failed. Please Verify Your Account First', {
           position: toast.POSITION.TOP_RIGHT,
