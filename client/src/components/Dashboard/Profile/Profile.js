@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { handleLogin, isLoggedIn, getUser , logout} from "../../../service/auth"
+import Atm from './Atm'
 
 
 
 const Profile = () => {
+  const [atmloading, setatmloading] = useState(false);
+
+  const toggleshowcard= () => {
+
+    if (atmloading) {
+      setatmloading(false)
+    } else {
+      setatmloading(true)
+    }
+  }
+
   return (
     <div>
+
+
+
+
 <div className="userprofileflexboxcontent">
   <div className="userflexboxside1"  data-aos="fade-up">
     <div className="userintoruc" data-aos="fade-left">
@@ -46,7 +62,7 @@ const Profile = () => {
     </div>
     <div className="userintoruc modalBtn" toggle-modal={4}>
       <div className="introctitle">₦ Naira Card</div>
-      <div className="total">
+      <div className="total" onClick={toggleshowcard}>
         <div className="banklogo">
           <img src="https://raw.githubusercontent.com/Manlikevee/repoNameHere/main/images/logo.png" />{" "}
         </div>
@@ -222,8 +238,10 @@ const Profile = () => {
     </section>
   </div>
 </div>
-
-
+{atmloading ? (
+       <Atm toggleshowcard={toggleshowcard}/>
+      ) : '' 
+ }
     </div>
   )
 }

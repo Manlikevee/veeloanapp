@@ -3,7 +3,7 @@ import logo from "../../Landingpage/logo (2).png"
 import { Link } from "gatsby"
 import { handleLogin, isLoggedIn , getUser, logout} from "../../../service/auth"
 import { navigate } from "gatsby";
-import { toggleFullScreen } from '../toggleFullScreen';
+
 const Dashboardheader = () => {
 
 
@@ -41,10 +41,7 @@ contacts
 <Link  to='/app/profile' className="" activeClassName="activated"><span class="material-symbols-outlined">
 account_box
 </span> User Profile </Link>
-<Link   className="" activeClassName="activated"  onClick={toggleFullScreen}>
-<span class="material-symbols-outlined">
-close_fullscreen
-</span> </Link>
+
         <div className="hideme">
         {isLoggedIn() ? (
           <a
