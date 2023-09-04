@@ -53,11 +53,11 @@ const Profile = ({responseData}) => {
       </div>
       <div className="introccontent">
         <div className="introctitle">Phone Number</div>
-        <div className="introcbody">2348165201384</div>
+        <div className="introcbody">+{responseData.userprofile.phonenumber}</div>
       </div>
       <div className="introccontent">
         <div className="introctitle">Address</div>
-        <div className="introcbody">16 Jimoh Farombi drive, Lagos , Lagos</div>
+        <div className="introcbody">{responseData.userprofile.residential_address}</div>
       </div>
     </div>
     <div className="userintoruc modalBtn" toggle-modal={4}>
@@ -96,12 +96,12 @@ const Profile = ({responseData}) => {
         </div>
         <div className="introccontent">
           <div className="introctitle">Identification Number</div>
-          <div className="introcbody">74a38f01-4e2…</div>
+          <div className="introcbody">{responseData.userprofile.accountnumber}</div>
         </div>
         <div className="introccontent">
           <div className="introctitle">Identification Details</div>
           <div className="introcbody">
-            NiN <i>22288857248</i>
+            NiN <i>{responseData.userprofile.ssn}</i>
           </div>
         </div>
       </div>
@@ -116,22 +116,22 @@ const Profile = ({responseData}) => {
           <div className="introccontent">
             <div className="introctitle">Bank Name</div>
             <div className="introcbody">
-              <i>Hidden</i>
+              <i>{responseData.accountdetails.bank_name}</i>
             </div>
           </div>
           <div className="introccontent">
             <div className="introctitle">BVN</div>
-            <div className="introcbody">21212121</div>
+            <div className="introcbody">{responseData.userprofile.ssn}</div>
           </div>
         </div>
         <div className="minimi max2">
           <div className="introccontent">
             <div className="introctitle">Account Number</div>
-            <div className="introcbody">0774369899</div>
+            <div className="introcbody">{responseData.accountdetails.account_number}</div>
           </div>
           <div className="introccontent">
             <div className="introctitle">Account Name</div>
-            <div className="introcbody">VICTOR EBUBE ODAH</div>
+            <div className="introcbody">{responseData.accountdetails.account_name}</div>
           </div>
         </div>
       </div>
