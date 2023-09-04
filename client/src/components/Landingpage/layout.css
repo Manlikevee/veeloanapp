@@ -3034,6 +3034,8 @@ line-height: normal;
 .mynav a {
     display: flex;
     gap: 5px;
+    user-select: none;
+    cursor: pointer;
     align-items: center;
         text-decoration: none;
     color: #000;

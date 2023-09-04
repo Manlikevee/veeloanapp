@@ -5,7 +5,36 @@ import { handleLogin, isLoggedIn , getUser, logout} from "../../../service/auth"
 import { navigate } from "gatsby";
 
 const Dashboardheader = () => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
+  const toggleFullScreen = () => {
+    if (!isFullScreen) {
+      // Enter full-screen mode
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) {
+        document.documentElement.msRequestFullscreen();
+      }
+    } else {
+      // Exit full-screen mode
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+
+    // Toggle the full-screen state
+    setIsFullScreen(!isFullScreen);
+  };
 
   const [isActive, setIsActive] = useState(false);
 
@@ -42,6 +71,11 @@ contacts
 account_box
 </span> User Profile </Link>
 
+
+<Link   className="" activeClassName="activated" >
+<span class="material-symbols-outlined" onClick={toggleFullScreen}>
+expand_content
+</span> </Link>
         <div className="hideme">
         {isLoggedIn() ? (
           <a
