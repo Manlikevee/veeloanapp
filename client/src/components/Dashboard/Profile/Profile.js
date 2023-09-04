@@ -156,25 +156,25 @@ const Profile = ({responseData}) => {
       <div className="minimi max2">
         <div className="introccontent">
           <div className="introctitle">Full Name</div>
-          <div className="introcbody">Victor</div>
+          <div className="introcbody">{responseData.nextofkin.first_name + '' + responseData.nextofkin.first_name + '' + responseData.nextofkin.middle_name} </div>
         </div>
         <div className="introccontent">
           <div className="introctitle">Phone Number</div>
-          <div className="introcbody">+234234</div>
+          <div className="introcbody">+{responseData.nextofkin.phonenumber}</div>
         </div>
         <div className="introccontent">
           <div className="introctitle">Residential Address</div>
-          <div className="introcbody">16 Jimoh Farombi drive</div>
+          <div className="introcbody">{responseData.nextofkin.residential_address}</div>
         </div>
       </div>
       <div className="minimi max2">
         <div className="introccontent">
           <div className="introctitle">Email</div>
-          <div className="introcbody">Odahviktor@gmail.com</div>
+          <div className="introcbody">{responseData.nextofkin.email}</div>
         </div>
         <div className="introccontent">
           <div className="introctitle">Gender</div>
-          <div className="introcbody">Male</div>
+          <div className="introcbody">{responseData.nextofkin.gender}</div>
         </div>
         <div className="introccontent"></div>
       </div>
