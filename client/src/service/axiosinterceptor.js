@@ -51,11 +51,9 @@ axiosInstance.interceptors.request.use(async (req) => {
           console.error('Failed to refresh access token:', error);
           retryCount++;
           if (retryCount >= 2) {
-            toast.success('Session Expired', {
+            toast.success('Error Fetching Data Kindly Refresh', {
               position: toast.POSITION.BOTTOM_CENTER,
             });
-            logout();
-            navigate('/Userlogin/');
             throw error;
           }
         }

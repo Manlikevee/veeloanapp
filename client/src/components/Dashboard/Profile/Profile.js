@@ -4,7 +4,7 @@ import Atm from './Atm'
 
 
 
-const Profile = () => {
+const Profile = ({responseData}) => {
   const [atmloading, setatmloading] = useState(false);
 
   const toggleshowcard= () => {
