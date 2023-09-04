@@ -20,7 +20,7 @@ const Nextofkin = () => {
   const [putloading, setputloading] = useState(false);    
 
   useEffect(() => {
-    axiosInstance.get('/NextOfKinlview')
+    axiosInstance.get('/NextOfKinlview/')
       .then(response => {
         setresponsedata(response.data);
         console.log(response.data)
