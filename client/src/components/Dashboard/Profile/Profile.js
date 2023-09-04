@@ -156,7 +156,7 @@ const Profile = ({responseData}) => {
       <div className="minimi max2">
         <div className="introccontent">
           <div className="introctitle">Full Name</div>
-          <div className="introcbody">{responseData.nextofkin.first_name + '' + responseData.nextofkin.first_name + '' + responseData.nextofkin.middle_name} </div>
+          <div className="introcbody">{responseData.nextofkin.first_name + ' ' + responseData.nextofkin.middle_name} </div>
         </div>
         <div className="introccontent">
           <div className="introctitle">Phone Number</div>
