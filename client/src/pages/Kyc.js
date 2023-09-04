@@ -5,33 +5,36 @@ import { toast } from 'react-toastify';
 import Spinner from '../components/Forms/Accountnumform/Spinner';
 
 
-const Profileupdate = () => {
+const Kyc = () => {
   const [isloading, setisloading] = useState(true);
   const [responsedata, setresponsedata] = useState('');
   const [responseprofiledata, setresponseprofiledata] = useState('');
-  const [firstname, setfirstname] = useState('');
-  const [lastname, setlastname] = useState('');
-  const [email, setemail] = useState('');
-  const [username, setusername] = useState('');
-  const [middlename, setmiddlename] = useState('');
-  const [phonenumber, setphonenumber] = useState('');
-  const [gender, setgender] = useState('');
-  const [ssn, setssn] = useState('');
+  const [residential_address, setresidential_address] = useState('');
+  const [work_sector, setwork_sector] = useState('');
+  const [form_of_id, setform_of_id] = useState('');
+  const [id_number, setid_number] = useState('');
+  const [job_title, setjob_title] = useState('');
+  const [city, setcity] = useState('');
+  const [region, setregion] = useState('');
+  const [country, setcountry] = useState('');
   const [putloading, setputloading] = useState(false);    
+
   useEffect(() => {
-    axiosInstance.get('/getprofileobj')
+    axiosInstance.get('/KYCView')
       .then(response => {
         setresponsedata(response.data);
+        setform_of_id(response.data.form_of_id)
+        setwork_sector(response.data.work_sector)
+        setid_number(response.data.id_number)
+        setjob_title(response.data.job_title)
+        setcity(response.data.city)
+        setregion(response.data.region)
+        setcountry(response.data.country)
         console.log('response.data')
-        setfirstname(response.data.user.first_name)
-        setlastname(response.data.user.last_name)
-        setusername(response.data.user.username)
-        setemail(response.data.user.email)
-        setmiddlename(response.data.middle_name)
-        setphonenumber(response.data.phonenumber)
         setisloading(false);
       })
       .catch(error => {
+        toast.error('Error fetching profile data')
         console.error("Error fetching profile data:", error);
         setisloading(false);
       });
@@ -44,7 +47,7 @@ const Profileupdate = () => {
     e.preventDefault();
     // Perform form submission logic here
 
-    if (!firstname || !lastname || !email || !username || !middlename || !phonenumber || !gender || !ssn  ) {
+    if (!residential_address || !work_sector || !form_of_id || !id_number || !job_title || !country || !city || !region  ) {
       alert('Please fill in all required fields.');
       return;
     }
@@ -54,20 +57,18 @@ const Profileupdate = () => {
 if(!putloading) {
   try {
     setputloading(true)
-    const response = await axiosInstance.put('/update-profile/', {
+    const response = await axiosInstance.put('/KYCView/', {
      
-      user: {
-        first_name: firstname,
-        last_name: lastname,
-        email: email,
-        username: username
-      },
 
       profile: {
-        middle_name: middlename,
-        phonenumber: phonenumber,
-        gender: gender,
-        ssn: ssn
+        residential_address: residential_address,
+        work_sector: work_sector,
+        form_of_id: form_of_id,
+        id_number: id_number,
+        job_title: job_title,
+        country: country,
+        city: city,
+        region: region
       }
       
     })
@@ -101,16 +102,7 @@ console.log(error)
             });
           });
         }
-            // Display user errors
-  const userErrors = errors.user_errors;
-  for (const field in userErrors) {
-    const fieldErrors = userErrors[field];
-    fieldErrors.forEach((errorMessage) => {
-      toast.error(`${field}: ${errorMessage}`, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    });
-  }
+
 }
     } else {
       setputloading(false)
@@ -135,8 +127,9 @@ if(putloading){
 <div className="dashboardform">
    
   <div className="loanrequesttitles" data-aos="fade-left">
-    <h4> Profile Update </h4>
+    <h4> KYC Update </h4>
   </div>
+
   <p className="info-text" data-aos="fade-up">
     Kindly update your profile to ensure that your information is accurate and
     up-to-date. This will help us provide you with a better experience and keep
@@ -159,105 +152,98 @@ if(putloading){
           type="text"
           name="firstname"
           id="id_username"
-          value={firstname}
-          onChange={e => setfirstname(e.target.value)}
+          value={work_sector}
+          onChange={e => setwork_sector(e.target.value)}
           placeholder="Enter Your First Name"
         />
       </div>
+
       <div className="loginflex">
-        <label htmlFor="">Last Name</label>
+        <label htmlFor="">Job Title</label>
+        <input
+          type="text"
+          name="username"
+          value={job_title}
+          id="id_username"
+          onChange={e => setjob_title(e.target.value)}
+          placeholder="Enter Your Middle Name"
+        />
+      </div>
+    </div>
+    <div className="dbcolumn">
+
+    <div className="loginflex">
+        <label htmlFor="">Form Of Id</label>
         <input
           type="text"
           name="lastname"
           id="id_username"
-          value={lastname}
-          onChange={e => setlastname(e.target.value)}
-          placeholder="Enter Your Last Name"
-        />
-      </div>
-    </div>
-    <div className="dbcolumn">
-    <div className="loginflex">
-        <label htmlFor="">Middle Name</label>
-        <input
-          type="text"
-          name="username"
-          value={middlename}
-          id="id_username"
-          onChange={e => setmiddlename(e.target.value)}
-          placeholder="Enter Your Middle Name"
+          value={form_of_id}
+          onChange={e => setform_of_id(e.target.value)}
+          placeholder="Form Of Id"
         />
       </div>
       <div className="loginflex">
-        <label htmlFor="">Email Address</label>
+        <label htmlFor="">Id Number</label>
         <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={e => setemail(e.target.value)}
+          type="number"
+          name="idnumber"
+          value={id_number}
+          onChange={e => setid_number(e.target.value)}
           readOnly
           id="id_username"
-          placeholder="Enter Your Email Address"
+          placeholder="Enter Your Identification Number"
         />
       </div>
 
     </div>
+
     <div className="dbcolumn">
     <div className="loginflex">
-        <label htmlFor="">Phone Number</label>
+        <label htmlFor="">Country</label>
+        <input
+          type="text"
+          name="username"
+          id="id_username"
+          value={country}
+          onChange={e => setcountry(e.target.value)}
+          placeholder="Enter Your Country"
+        />
+      </div>
+    </div>
+
+
+    <div className="dbcolumn">
+    <div className="loginflex">
+        <label htmlFor="">City</label>
         <input
           type="tel"
           name="username"
           id="id_username"
-          value={phonenumber}
-          onChange={e => setphonenumber(e.target.value)}
-          placeholder="Enter Your Phone Number"
+          value={city}
+          onChange={e => setcity(e.target.value)}
+          placeholder="Enter Your City"
         />
       </div>
       <div className="loginflex">
-        <label htmlFor="">Username</label>
+        <label htmlFor="">Region</label>
         <input
           type="text"
           name="username"
           id="id_username"
-          value={username}
-          onChange={e => setusername(e.target.value)}
+          value={region}
+          onChange={e => setregion(e.target.value)}
           readOnly
-          placeholder="Enter Your Username"
+          placeholder="Enter Your Region"
         />
       </div>
     </div>
     <div className="dbcolumn">
-      {/* <div className="loginflex">
-        <label htmlFor="">Email Address</label>
-        <textarea name="" id="" cols={30} rows={10} defaultValue={""} />
-      </div> */}
-        <div className="loginflex">
-        <label htmlFor="">BVN/NIN</label>
-        <input
-          type="number"
-          name="username"
-          id="id_username"
-          value={ssn}
-          onChange={e => setssn(e.target.value)}
-          placeholder="Enter Your BVN/NIN"
-        />
-      </div>
-
       <div className="loginflex">
-        <label htmlFor="">Gender</label>
-        <select
-  name="gender"
-  id="id_gender"
-  value={gender}
-  onChange={e => setgender(e.target.value)}
->
-  <option value="">Select Gender</option>
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-</select>
-
+        <label htmlFor="">Email Address</label>
+        <textarea name="" id="" cols={30} rows={10} defaultValue={""} value={residential_address}   onChange={e => setresidential_address(e.target.value)}/>
       </div>
+  
     </div>
     <div className="dbcolumn">
       <div className="loanrequestbutton">
@@ -281,5 +267,5 @@ if(putloading){
   )
 }
 
-export default Profileupdate
+export default Kyc
 
