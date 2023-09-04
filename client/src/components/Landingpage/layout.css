@@ -1134,6 +1134,23 @@ input:-webkit-autofill {
     transition: all .25s ease 0s;
 }
 
+
+#react-select-2-placeholder{
+    padding: 10px !important;
+}
+.smb{
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 0.2rem;
+    color: #fff;
+    width: fit-content;
+    background-color: #001212;
+    border: 1px solid rgba(18, 16, 16, 0.986);
+    transition: all .25s ease 0s;  
+}
 .loginflex button:hover {
     color: var(--cultured);
     background-color: #014747;
@@ -3181,6 +3198,7 @@ text-align: center;
     margin-top: 10px;
   }
 textarea{
+    font-family: 'poppins';
     padding: 0.72rem;
     font-size: 15px;
     border-radius: 0.2rem;

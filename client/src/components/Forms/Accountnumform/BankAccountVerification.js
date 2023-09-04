@@ -4,6 +4,9 @@ import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from './Spinner';
+import axiosInstance from '../../../service/axiosinterceptor';
+import { navigate } from "gatsby";
 
 
 const customStyles = {
@@ -15,13 +18,21 @@ const customStyles = {
   // Add more custom styles here for other parts of the component
 };
 
+
+
+
 const BankAccountVerification = () => {
+  const [responseprofiledata, setresponseprofiledata] = useState('');
+  const [isloading, setisloading] = useState(true);
+  const [responsedata, setresponsedata] = useState('');
   const [banks, setBanks] = useState([]);
   const [selectedBank, setSelectedBank] = useState(null);
   const [accountNumber, setAccountNumber] = useState('');
   const [accountName, setAccountName] = useState('');
   const [loadingBanks, setLoadingBanks] = useState(true);
   const [loadingVerification, setLoadingVerification] = useState(false);
+  const [bankname, stebankname] = useState('')
+  const [putloading, setputloading] = useState(false);  
 
   useEffect(() => {
     const fetchBanks = async () => {
@@ -57,6 +68,8 @@ const BankAccountVerification = () => {
     fetchBanks();
   }, []);
 
+
+
   const handleAccountNumberChange = (event) => {
     setAccountNumber(event.target.value);
     setAccountName('');
@@ -88,7 +101,133 @@ const BankAccountVerification = () => {
     }
   };
 
+  const setInitialValue = () => {
+    const initialValue = selectedBank
+      ? { value: selectedBank.value, label: bankname }
+      : null; // Set the desired initial option here or use null if no initial value
+    setSelectedBank(initialValue);
+  };
+
+
+  useEffect(() => {
+    axiosInstance.get('/Accountdetailview/')
+      .then(response => {
+        setresponsedata(response.data);
+        setSelectedBank(response.data.bank_code);
+        setAccountName(response.data.account_name);
+        setAccountNumber(response.data.account_number);
+        stebankname(response.data.bank_name);
+        setInitialValue();
+
+        setisloading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching profile data:", error);
+        setisloading(false);
+      });
+
+
+  }, []);
+
+
+
+
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Perform form submission logic here
+
+    if (!selectedBank || !bankname || !accountNumber || !accountName  ) {
+      toast.error('Please fill in all required fields.');
+      return;
+    }
+
+    toast.info('Processing.......')
+
+if(!putloading) {
+  try {
+    setputloading(true)
+    const response = await axiosInstance.put('/Accountdetailview/', {
+     
+      accountdetails: {
+        bank_code: selectedBank.value,
+        bank_name: bankname,
+        account_number: accountNumber,
+        account_name: accountName
+      },
+
+      
+    })
+
+    .then(response => {
+     
+      // Handle the response as needed
+      toast.success('Account Details Updated Successfully');
+   
+      setresponseprofiledata(response.data);
+      console.log(response.data);
+      setputloading(false)
+      setTimeout(() => {
+        navigate('/app/profile');
+      }, 3000); // 3000 milliseconds (3 seconds)
+    });
+    
+    // Do something with the response if needed
+  } catch (error) {
+    setputloading(false)
+    // Handle any errors that occur during the request
+    console.error('Error updating profile:', error);
+    console.log(error)
+    // Display validation errors with toast if they exist
+    if (error.response && error.response.data && error.response.data.errors) {
+      const errors = error.response.data.errors;
+       const errorcontainer = error.response.data.errors
+       if (errors) {
+        // Display profile errors
+        const profileErrors = errors.profile_errors;
+        for (const field in profileErrors) {
+          const fieldErrors = profileErrors[field];
+          fieldErrors.forEach((errorMessage) => {
+            toast.error(`${field}: ${errorMessage}`, {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          });
+        }
+}
+    } else {
+      setputloading(false)
+      toast.error('An error occurred while updating the profile.');
+    }
+  }
+};
+
+if(putloading){
+  toast.error('The System is still processing a request Please Wait')
+}
+
+}
+
+
+  useEffect(() => {
+    // When selectedBank changes, update bankname with the corresponding bank's label
+    if (selectedBank) {
+      stebankname(selectedBank.label);
+    } else {
+      stebankname(''); // Clear bankname if selectedBank is null
+    }
+  }, [selectedBank]);
+
+
+
+
+
+
+
   return (
+<>
+    {!isloading ? (
+
     <div className="dashboardform">
     
     <div className="loanrequesttitles">
@@ -107,6 +246,7 @@ const BankAccountVerification = () => {
         <div className="circle" />
       </div>
     </div>
+    <form className="dbform" onSubmit={handleSubmit}>
     <div className="dbform">
       <div className="dbcolumn">
 
@@ -129,6 +269,8 @@ const BankAccountVerification = () => {
       </div>
       </div>
 
+
+
       <div className="dbcolumn">
         <div className="loginflex">
           <label htmlFor="">Account Number</label>
@@ -139,7 +281,7 @@ const BankAccountVerification = () => {
           onChange={handleAccountNumberChange}
           className="custom-select"
         />
-        <button className='smb' onClick={handleAccountVerification}>Verify</button>
+        <div className='smb' onClick={handleAccountVerification}>Verify</div>
         </div>
 </div>
         {loadingVerification && 
@@ -162,7 +304,12 @@ const BankAccountVerification = () => {
         </div>
         <div className="dbcolumn">
             <div className="loanrequestbutton">
-              <button>Submit</button>
+            <button  disabled={putloading}>
+        
+   
+        { putloading ? (<> <Spinner/> Processing..</>) : 'Submit' }
+        
+        </button>
             </div>
           </div>
         </div>
@@ -170,7 +317,9 @@ const BankAccountVerification = () => {
     
   
     </div>
-  </div>
+    </form>
+  </div> ) : 'loading.............' }
+  </>
   );
 };
 

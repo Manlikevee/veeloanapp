@@ -3,12 +3,14 @@ import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
 import axiosInstance from '../service/axiosinterceptor';
 import { toast } from 'react-toastify';
 import Spinner from '../components/Forms/Accountnumform/Spinner';
+import { navigate } from "gatsby";
 
 
 const Kyc = () => {
   const [isloading, setisloading] = useState(true);
   const [responsedata, setresponsedata] = useState('');
   const [responseprofiledata, setresponseprofiledata] = useState('');
+  const [workdata, setworkdata] = useState('');
   const [residential_address, setresidential_address] = useState('');
   const [work_sector, setwork_sector] = useState('');
   const [form_of_id, setform_of_id] = useState('');
@@ -22,16 +24,19 @@ const Kyc = () => {
   useEffect(() => {
     axiosInstance.get('/KYCView')
       .then(response => {
+        console.log(response.data)
         setresponsedata(response.data);
         setform_of_id(response.data.form_of_id)
+        setworkdata(response.data.work_sector_choices)
         setwork_sector(response.data.work_sector)
         setid_number(response.data.id_number)
         setjob_title(response.data.job_title)
         setcity(response.data.city)
         setregion(response.data.region)
         setcountry(response.data.country)
-        console.log('response.data')
+        setresidential_address(response.data.residential_address)
         setisloading(false);
+        console.log(workdata)
       })
       .catch(error => {
         toast.error('Error fetching profile data')
@@ -48,11 +53,11 @@ const Kyc = () => {
     // Perform form submission logic here
 
     if (!residential_address || !work_sector || !form_of_id || !id_number || !job_title || !country || !city || !region  ) {
-      alert('Please fill in all required fields.');
+      toast.error('Please fill in all required fields.');
       return;
     }
 
-    alert('all good')
+    toast.info('Processing.......')
 
 if(!putloading) {
   try {
@@ -75,10 +80,15 @@ if(!putloading) {
     .then(response => {
      
       // Handle the response as needed
-      toast.success('successfully fetched');
+      toast.success('KYC Details Successfully Updated');
       setresponseprofiledata(response.data);
       console.log(response.data);
       setputloading(false)
+      setTimeout(() => {
+        navigate('/AccountNumberVerification');
+      }, 3000); 
+
+      
     });
     
     // Do something with the response if needed
@@ -147,15 +157,42 @@ if(putloading){
   <div className="dbform" data-aos="fade-down">
     <div className="dbcolumn">
       <div className="loginflex">
-        <label htmlFor="">First Name</label>
-        <input
-          type="text"
-          name="firstname"
-          id="id_username"
-          value={work_sector}
-          onChange={e => setwork_sector(e.target.value)}
-          placeholder="Enter Your First Name"
-        />
+        <label htmlFor="">Work Sector</label>
+        <select
+  name="gender"
+  id="id_gender"
+  value={work_sector}
+  onChange={e => setwork_sector(e.target.value)}
+>
+    
+{work_sector ? (
+    <option value={work_sector} selected>{work_sector}</option>)
+: <option value="">Select an option</option> }
+
+{workdata ?  (
+    
+   <>
+ {workdata && typeof workdata === 'object' && Object.keys(workdata).length > 0 && (
+  <>
+    <option value="">Select an option</option>
+    {Object.keys(workdata).map((key) => (
+      <option key={key} value={workdata[key]}>
+        {workdata[key]}
+      </option>
+    ))}
+  </>
+)}
+          </>
+) : '' 
+
+
+}
+
+
+
+</select>
+
+
       </div>
 
       <div className="loginflex">
@@ -190,7 +227,7 @@ if(putloading){
           name="idnumber"
           value={id_number}
           onChange={e => setid_number(e.target.value)}
-          readOnly
+        
           id="id_username"
           placeholder="Enter Your Identification Number"
         />
@@ -233,7 +270,6 @@ if(putloading){
           id="id_username"
           value={region}
           onChange={e => setregion(e.target.value)}
-          readOnly
           placeholder="Enter Your Region"
         />
       </div>

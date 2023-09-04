@@ -3,7 +3,7 @@ import Dashboardlayout from '../components/Dashboard/Dashboardlayout'
 import axiosInstance from '../service/axiosinterceptor';
 import { toast } from 'react-toastify';
 import Spinner from '../components/Forms/Accountnumform/Spinner';
-
+import { navigate } from "gatsby";
 
 const Profileupdate = () => {
   const [isloading, setisloading] = useState(true);
@@ -18,17 +18,19 @@ const Profileupdate = () => {
   const [gender, setgender] = useState('');
   const [ssn, setssn] = useState('');
   const [putloading, setputloading] = useState(false);    
+  
   useEffect(() => {
     axiosInstance.get('/getprofileobj')
       .then(response => {
         setresponsedata(response.data);
-        console.log('response.data')
         setfirstname(response.data.user.first_name)
         setlastname(response.data.user.last_name)
         setusername(response.data.user.username)
         setemail(response.data.user.email)
         setmiddlename(response.data.middle_name)
         setphonenumber(response.data.phonenumber)
+        setgender(response.data.gender)
+        setssn(response.data.ssn)
         setisloading(false);
       })
       .catch(error => {
@@ -45,11 +47,11 @@ const Profileupdate = () => {
     // Perform form submission logic here
 
     if (!firstname || !lastname || !email || !username || !middlename || !phonenumber || !gender || !ssn  ) {
-      alert('Please fill in all required fields.');
+      toast.error('Please fill in all required fields.');
       return;
     }
 
-    alert('all good')
+    toast.info('Processing..........')
 
 if(!putloading) {
   try {
@@ -71,13 +73,18 @@ if(!putloading) {
       }
       
     })
+
     .then(response => {
      
       // Handle the response as needed
-      toast.success('successfully fetched');
+      toast.success('Profile Update Suucessful');
+   
       setresponseprofiledata(response.data);
       console.log(response.data);
       setputloading(false)
+      setTimeout(() => {
+        navigate('/Kyc');
+      }, 3000); // 3000 milliseconds (3 seconds)
     });
     
     // Do something with the response if needed
@@ -252,7 +259,12 @@ if(putloading){
   value={gender}
   onChange={e => setgender(e.target.value)}
 >
+
+{ gender ? (<option value={gender} selected>{gender} </option>) :
   <option value="">Select Gender</option>
+ }
+
+
   <option value="Male">Male</option>
   <option value="Female">Female</option>
 </select>
