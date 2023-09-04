@@ -79,9 +79,23 @@ const Profileupdate = () => {
       
       // Do something with the response if needed
     } catch (error) {
-      alert(error)
-      console.error('Error creating loan:', error);
-      // Handle the error if needed
+      // Handle any errors that occur during the request
+      console.error('Error updating profile:', error);
+  
+      // Display validation errors with toast if they exist
+      if (error.response && error.response.data && error.response.data.errors) {
+        const errors = error.response.data.errors;
+  
+        for (const field in errors) {
+          if (errors.hasOwnProperty(field)) {
+            for (const errorMessage of errors[field]) {
+              toast.error(`Validation error for ${field}: ${errorMessage}`);
+            }
+          }
+        }
+      } else {
+        alert('An error occurred while updating the profile.');
+      }
     }
   };
 
