@@ -134,6 +134,16 @@ const Profile = ({responseData}) => {
             <div className="introcbody">{responseData.accountdetails.account_name}</div>
           </div>
         </div>
+        <div className="minimi max2">
+          <div className="introccontent">
+            <div className="introctitle">BanK Code</div>
+            <div className="introcbody">{responseData.accountdetails.bank_code}</div>
+          </div>
+          <div className="introccontent">
+            <div className="introctitle">Bank Location</div>
+            <div className="introcbody">Nigeria</div>
+          </div>
+        </div>
       </div>
     </div>
     <div className="nx nx3" data-aos="fade-down">
