@@ -4580,23 +4580,7 @@ padding: 3px;
     width: fit-content;
 }
 
-.transaction_flex_column_btn1 button {
-    position: relative;
 
-    border: 1px solid #fff;
-    font-size: 15px;
-    color: #FFFFFF;
-    border-radius: 9px;
-    padding: 18px;
-    margin: 0;
-    width: 150px;
-    text-align: center;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-}
 
 .flip-card {
   background-color: transparent;
