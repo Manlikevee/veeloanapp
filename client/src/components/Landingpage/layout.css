@@ -4520,7 +4520,7 @@ padding: 3px;
       text-align: justify;
     }
   
-  .close {
+  .closes {
     color: #aaaaaa;
     float: right;
     margin-right: 20px;
@@ -4528,12 +4528,12 @@ padding: 3px;
     line-height: 3rem;
     font-weight: bold;
   }
-  .close:hover {
+  .closes:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
   }
-  .close:focus {
+  .closes.activated {
     color: black;
     text-decoration: none;
     cursor: pointer;

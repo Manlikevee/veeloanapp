@@ -9,7 +9,7 @@ const Atm = ({toggleshowcard}) => {
     style={{ backgroundColor: "transparent" }}
   >
     <span onClick={toggleshowcard}
-      className="close"
+      className="closes"
       style={{
         background: "white",
         width: 40,
