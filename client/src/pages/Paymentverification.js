@@ -6,12 +6,13 @@ import { getUser } from '../service/auth';
 import Spinner from '../components/Forms/Accountnumform/Spinner';
 import { navigate } from "gatsby";
 import Popups from '../components/Utility/Popups';
+import Newatm from '../components/Utility/Newatm';
 
 
 
 
 const Paymentverification = () => {
-    const [isloading, setisloading] = useState(false);
+    const [isloading, setisloading] = useState(true);
     const [putloading, setputloading] = useState(false);   
     const [paymentStatus, setpaymentststus] = useState('')
     const [loanreference, setLoanReference] = useState('');
@@ -26,16 +27,19 @@ const Paymentverification = () => {
         // Get the loanReference query parameter from the URL
         const loanReferenceValue = queryParams.get('trxref');
         setLoanReference(loanReferenceValue);
+ 
         
     
         if (loanReferenceValue) {
+            const myref = loanReferenceValue
           axiosInstance
             .post('/paymentverify/', {
-                trxref: loanreference,
+                trxref: loanReferenceValue,
             })
             .then(response => {
               // Handle the response as needed
               toast.success('Data Gotten');
+              console.log(response.data);
               setpaymentststus(response.data);
               console.log(response.data);
               setisloading(false);
@@ -45,6 +49,7 @@ const Paymentverification = () => {
               console.error('POST request error', error);
               if (error.response.data.message) {
                 toast.error(error.response.data.message);
+                console.log(error);
               } else {
                 toast.error('An error occurred while sending the request.');
               }
@@ -58,22 +63,23 @@ const Paymentverification = () => {
 
 
     let message;
-    if (paymentStatus === 'successful') {
+    if (paymentStatus?.data?.data?.status === 'success') {
         message = (
-          <p>
+          <p className='processing'>
             Congratulations! Your payment has been successfully processed, and your account is now active. You can now enjoy uninterrupted access to all the premium features and services we offer. We value your trust in our platform and are committed to providing you with the best experience possible.
           </p>
         );
-      } else if (paymentStatus === 'failed') {
+      } else if (paymentStatus?.data?.data?.status === 'failed') {
         message = (
-          <p>
+          <p className='pendingtalk'>
             We apologize for the inconvenience, but it seems that your payment was not successful. Rest assured, our team is working diligently to resolve this issue and ensure a smooth payment process for you. In the meantime, please double-check your payment information and ensure that you have sufficient funds in your account. If you continue to encounter problems, please do not hesitate to reach out to our dedicated support team, who will be happy to assist you.
           </p>
         );
       } else {
         message = (
-          <p>
-            After clicking 'Proceed,' you can expect to see a small test deposit in your linked bank account within minutes. This one-time payment is crucial to verify your account and ensure secure transactions. We are proud to support major bank cards, including American Express, MasterCard, and Visa, to make your experience even more convenient. Your security and satisfaction are our top priorities, and we appreciate your cooperation in this verification process.
+          <p className='pendingtalk'>
+    
+We regret to inform you that we are currently unable to process your request. Please reach out to our dedicated support team for further assistance. Your satisfaction and security remain our highest priorities, and we appreciate your patience and understanding as we work to resolve this issue. Our support team is here to help you, so please don't hesitate to contact us for prompt assistance with your request
           </p>
         );
       }
@@ -86,7 +92,7 @@ const Paymentverification = () => {
 <div className="dashboardform">
    
   <div className="loanrequesttitles" data-aos="fade-up">
-    <h4> Link Your AtmCard  </h4>
+    <h4> Connect Your ATM Card  </h4>
   </div>
 
   <p className="info-text" data-aos="fade-up">
@@ -102,10 +108,20 @@ const Paymentverification = () => {
   </div>
 
   <form className="dbform" >
+ 
   <div className="dbform" data-aos="fade-down">
 
+  { paymentStatus?.data?.data?.authorization? (
+    <> <br/>
+  <div className='dbcolumn movecent'>
 
-<div className='dbcolumn'>
+  <Newatm myauthdata={paymentStatus.data.data}/>
+</div>
+</>
+  ) : '' }
+
+
+  <div className='dbcolumn'>
 <p className="info-text" data-aos="fade-up">
 {message}
   </p>
@@ -113,17 +129,62 @@ const Paymentverification = () => {
 </div>
 
 
+{ paymentStatus?.data?.data? (
+ <table>
+ <caption>Payment Summary</caption>
+ <thead>
+   <tr>
+     <th scope="col">Payment Status</th>
+     <th scope="col">reference</th>
+     <th scope="col">Test Amount</th>
+     <th scope="col">Valid</th>
+   </tr>
+ </thead>
+ <tbody>
 
+ <tr>
+  <td data-label="Status">{paymentStatus.data.data.status}</td>
+  <td data-label="Reference">{paymentStatus.data.data.reference}</td>
+  <td data-label="Amount">
+    {" "}
+    <span id="fig"> {paymentStatus.data.data.amount}</span>{" "}
+  </td>
+  <td data-label="Valid">{ paymentStatus.data.data.authorization.reusable? ('True') : 
+   'False'
+  }
+
+  </td>
+</tr>
+
+
+ </tbody>
+</table>
+  ) : '' }
+
+
+
+
+
+
+
+{ paymentStatus?.data?.data? (
+  
+  <>
+  <br/>
     <div className="dbcolumn">
       <div className="loanrequestbutton">
       <button  disabled={putloading}>
         
    
-        { putloading ? (<> <Spinner/> Processing..</>) : 'Proceed' }
+        { putloading ? (<> <Spinner/> Processing..</>) : 'Save' }
         
         </button>
       </div>
     </div>
+    </>
+) : ''}
+
+
   </div>
   </form>
 </div>

@@ -109,7 +109,7 @@ if(putloading){
 <div className="dashboardform">
    
   <div className="loanrequesttitles" data-aos="fade-up">
-    <h4 onClick={toggleshowcard}> Link Your AtmCard  </h4>
+    <h4 onClick={toggleshowcard}> Connect Your ATM Card  </h4>
   </div>
 
   <p className="info-text" data-aos="fade-up">

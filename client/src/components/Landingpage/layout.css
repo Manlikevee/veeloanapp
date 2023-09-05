@@ -4123,11 +4123,25 @@ border-radius: 9px;
 }
 
 .processing{
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: poppins;
+    width: 100%;
+    margin-bottom: 20px;
+    line-height: 1.6;
     background-color:hsla(188, 78%, 41%, 0.12) ;
     color: hsl(188, 78%, 41%);
 }
 
 .warning{
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: poppins;
+    width: 100%;
+    margin-bottom: 20px;
+    line-height: 1.6;
     color: #d73131;
     background-color: #ffe8e8;
 }
@@ -4760,7 +4774,7 @@ h5.name {
     
   }
 
-  @media only screen and (max-width: 800px){
+ @media only screen and (max-width: 800px){
     .modal-content {
         background-color: #fefefe;
         position: absolute;
@@ -4803,7 +4817,7 @@ h5.name {
     display: block;
 }
 
-popups #close, #close2 {
+.popups #close, #close2 {
     display: block;
     margin-top: -5px;
     float: right;
@@ -4852,3 +4866,306 @@ popups #close, #close2 {
         margin: auto;
     }
 }
+
+
+.form_body_row {
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form_body_column {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.card-group {
+    width: 100%;
+}
+
+.cardd {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.497),rgba(0, 0, 0, 0.5)) , url(https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/22.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 250px;
+    width: 450px;
+    margin: auto;
+    border-radius: 5px;
+     background: rgba(255, 255, 255, 0.2); 
+    -webkit-transition: .5s all;
+    -webkit-transition-delay: 5s;
+    -moz-transition: .5s all;
+    -moz-transition-delay: 5s;
+    -ms-transition: .5s all;
+    -ms-transition-delay: 5s;
+    -o-transition: .5s all;
+    -o-transition-delay: 5s;
+    transition: .5s all;
+    transition-delay: .5s all;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 900px){
+    .form_body_row {
+        flex-direction: column;
+        gap: 1px;
+    }
+}
+ .movecent{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (max-width:600px) {
+    .cardd {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.497),rgba(0, 0, 0, 0.5)) , url(https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/22.jpeg);
+        background-repeat: no-repeat;
+        background-size: unset;
+        background-position: center;
+        position: relative;
+        height: 200px;
+        width: 100%;
+        margin: auto;
+        border-radius: 7px;
+
+        -webkit-backdrop-filter: blur(30px);
+        backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+        overflow: hidden;
+    }
+    
+}
+
+
+
+
+.logoz img {
+    top: 35px;
+    right: 40px;
+    width: 80px;
+    height: auto;
+    opacity: 0.8;
+}
+ /* .logoz img, .chip img, .number, .name, .from, .to, .ring {
+    position: absolute;
+}  */
+
+@media screen and (max-width: 600px){
+    .logoz img {
+        top: 32px;
+        right: 40px;
+        width: 60px;
+        height: auto;
+        opacity: 0.8;
+    }
+    
+}
+
+.number {
+    display: flex;
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    bottom: 65px;
+    text-align: center;
+    width: 100%;
+} 
+
+ 
+/* 
+ .number, .name, .from, .to {
+    color: white;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+} */
+
+.name {
+    font-size: 0.7rem;
+    left: 40px;
+    bottom: 35px;
+}
+
+.chip img {
+    top: 90px;
+    left: 40px;
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 600px){
+    .chip img {
+        top: 70px;
+        left: 30px;
+        width: 30px;
+        height: auto;
+        opacity: 0.8;
+    }
+}
+.to {
+    font-size: 0.7rem;
+    bottom: 35px;
+    right: 40px;
+}
+.ring {
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    background: transparent;
+    border: 50px solid rgba(255, 255, 255, 0.1);
+    bottom: -250px;
+    right: -250px;
+    box-sizing: border-box;
+}
+
+.ring::after {
+    content: "";
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    border-radius: 50%;
+    background: transparent;
+    border: 30px solid rgba(255, 255, 255, 0.1);
+    bottom: -80px;
+    right: -110px;
+    
+}
+.from {
+    font-size: 0.7rem;
+    bottom: 35px;
+    right: 110px;
+}
+
+.cardd:hover {
+    opacity: 0.9;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin: 0.5em 0 0.75em;
+}
+head {
+    box-shadow: 0 5px 10px #e1e5ee !important;
+  }
+  th {
+    padding: 1rem 2rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1rem !important;
+    font-size: 0.7rem !important;
+    font-weight: 900 !important;
+    text-align: start;
+    font-family: inherit !important;
+  }
+  tr:nth-child(even) {
+    background-color: #f4f6fb !important;
+  }
+
+  td {
+    padding: 1rem 1.5rem !important;
+    font-size: 14px;
+    text-align: start;
+  }
+
+
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  
+  table th,
+  table td {
+    padding: .725em;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      
+  
+      content: attr(aria-label);
+      
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+   
