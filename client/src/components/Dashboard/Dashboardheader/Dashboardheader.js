@@ -73,7 +73,7 @@ account_box
 
 
 <Link   className="" activeClassName="activated" >
-<span class="material-symbols-outlined" >
+<span class="material-symbols-outlined" onClick={toggleFullScreen}>
 expand_content
 </span> </Link>
         <div className="hideme">
