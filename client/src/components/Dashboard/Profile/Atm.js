@@ -3,11 +3,10 @@ import React from 'react'
 const Atm = ({toggleshowcard}) => {
   return (
  
-<div id={4} className="modal" style={{ display: "block" }}>
+<div id={4} className="modal" style={{ display: "block" }} >
   <div
     className="modal-content mnas"
-    style={{ backgroundColor: "transparent" }}
-  >
+    style={{ backgroundColor: "transparent" }}>
     <span onClick={toggleshowcard}
       className="closes"
       style={{
@@ -26,9 +25,9 @@ const Atm = ({toggleshowcard}) => {
     >
       ×
     </span>
-    <div className="myimagecontainer" style={{ overflow: "revert" }}>
+    <div className="myimagecontainer" style={{ overflow: "revert" }} data-aos="zoom-in">
       <p></p>
-      <h3 style={{ textAlign: "center", color: "white" }}>Naira Card</h3>
+      <h3 style={{ textAlign: "center", color: "white" }} data-aos="fade-down">Naira Card</h3>
       <p />
       <br />
       <div className="flip-card">
@@ -53,7 +52,7 @@ const Atm = ({toggleshowcard}) => {
                 <div className="card-details">
                   <div className="name-number">
                     <h6>Card Number</h6>
-                    <h5 className="number">408408 ******* 4081</h5>
+                    <h5 className="number" data-aos="fade-down"> 408408 ******* 4081</h5>
                     <h5 className="name">veetech</h5>
                   </div>
                   <div className="valid-date">

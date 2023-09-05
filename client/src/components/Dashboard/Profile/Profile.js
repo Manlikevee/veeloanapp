@@ -24,7 +24,7 @@ const Profile = ({responseData}) => {
 
 <div className="userprofileflexboxcontent">
   <div className="userflexboxside1"  data-aos="fade-up">
-    <div className="userintoruc" data-aos="fade-left">
+    <div className="userintoruc" data-aos="fade-right">
       <div className="introcuploadimg">
         <div className="imagecop">
           <img

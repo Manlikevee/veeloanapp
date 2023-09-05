@@ -11,7 +11,7 @@ function Dashboarddata({responseData, timeOfDay}) {
   return (
     <div>
 
-<article className="article">
+<article className="article" >
   <h2 className="h2 article-title">Good {timeOfDay} {getUser().username} </h2>
   <p className="article-subtitle">Welcome to Dashboard!</p>
   {/* 

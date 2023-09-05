@@ -136,7 +136,7 @@ if(putloading){
 
 <div className="dashboardform">
    
-  <div className="loanrequesttitles" data-aos="fade-left">
+  <div className="loanrequesttitles" data-aos="fade-up">
     <h4> KYC Update </h4>
   </div>
 
@@ -147,7 +147,7 @@ if(putloading){
   </p>
   <div className="dashboardformflex">
     <div className="dashboardformtitle">Complete Your Profile Update</div>
-    <div className="updcanc" data-aos="fade-left">
+    <div className="updcanc" data-aos="fade-down">
       <div className="circle done" /> <div className="lint" />
       <div className="circle done" /> <div className="lint" />
       <div className="circle" />

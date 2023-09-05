@@ -99,7 +99,7 @@ function Userdashboard() {
       ) : responseData ? (
         <div>
 
-   <Dashboarddata responseData={responseData} timeOfDay={timeOfDay} />
+   <Dashboarddata responseData={responseData} timeOfDay={timeOfDay}  />
 
    <Loanhistory openModal={openModal}  responseData={responseData} />
 
