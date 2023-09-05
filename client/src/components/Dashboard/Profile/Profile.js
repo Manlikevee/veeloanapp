@@ -6,8 +6,6 @@ import Atm from './Atm'
 
 const Profile = ({responseData}) => {
   const [atmloading, setatmloading] = useState(false);
-  const hostname = window.location.href;
-  const rootURL = hostname.split('/').slice(0, 3).join('/');
   
   
   const toggleshowcard= () => {
@@ -105,7 +103,7 @@ const Profile = ({responseData}) => {
         <div className="introccontent">
           <div className="introctitle">Identification Details</div>
           <div className="introcbody">
-            NiN <i>{responseData.userprofile.ssn} {rootURL}</i>
+            NiN <i>{responseData.userprofile.ssn} </i>
           </div>
         </div>
       </div>

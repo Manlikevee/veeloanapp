@@ -7,16 +7,24 @@ import Spinner from '../components/Forms/Accountnumform/Spinner';
 import { navigate } from "gatsby";
 import Popups from '../components/Utility/Popups';
 
+
+
+
 const Kyc = () => {
   const [atmloading, setatmloading] = useState(false);
-  const hostname = window.location.href;
-  const rootURL = hostname.split('/').slice(0, 3).join('/');
+
   const [isloading, setisloading] = useState(false);
   const [responsedata, setresponsedata] = useState('');
   const [redirecturl, setredirecturl] = useState('')
   const [myemeail, setmyemail] = useState(() => getUser().email);
-  const [hosturl, sethosturl] = useState(rootURL);
+  const [hosturl, sethosturl] = useState('');
   const [putloading, setputloading] = useState(false);    
+
+  useEffect(() => {
+    const hostname = window.location.href;
+    const rootURL = hostname.split('/').slice(0, 3).join('/');
+    sethosturl(rootURL)
+  }, []);
 
   const toggleshowcard= () => {
 
