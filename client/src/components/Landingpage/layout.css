@@ -4004,6 +4004,10 @@ border-radius: 9px;
 .transaction_flex_column_btn1 button, .transaction_flex_column_btn2 button  {
     width: 100%;
 }
+
+.transaction_flex_column_btn1, .transaction_flex_column_btn2{
+    width:100%;
+}
 .transaction_flex_btn {
     margin-top: 30px;
     display: flex;
