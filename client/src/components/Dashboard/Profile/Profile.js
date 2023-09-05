@@ -8,6 +8,8 @@ const Profile = ({responseData}) => {
   const [atmloading, setatmloading] = useState(false);
   const hostname = window.location.href;
   const rootURL = hostname.split('/').slice(0, 3).join('/');
+  
+  
   const toggleshowcard= () => {
 
     if (atmloading) {
@@ -15,7 +17,8 @@ const Profile = ({responseData}) => {
     } else {
       setatmloading(true)
     }
-  }
+  } 
+  
 
   return (
     <div>
