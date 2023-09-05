@@ -21,8 +21,8 @@ const Newatm = (props) => {
           />
         </div>
         <div className="number">
-          <span>{props.myauthdata.authorization.bin}  </span> <span> *** </span> <span>**** </span>{" "}
-          <span>{props.myauthdata.authorization.last4}  </span>{" "}
+          <span> </span> <span> *** </span> <span>**** </span>
+          <span> </span>
         </div>
         <div className="name">{props.myauthdata.customer.email}</div>
         <div className="from">{props.myauthdata.authorization.bank}  </div>
