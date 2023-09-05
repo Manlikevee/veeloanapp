@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Newatm = (props) => {
+const Newatm = ({myauthdata}) => {
   return (
   
         <div className="form_body_row">
@@ -21,12 +21,12 @@ const Newatm = (props) => {
           />
         </div>
         <div className="number">
-          <span> </span> <span> *** </span> <span>**** </span>
-          <span> </span>
+          <span>{myauthdata.authorization.bin}  </span> <span> *** </span> <span>**** </span>{" "}
+          <span>{myauthdata.authorization.last4}  </span>{" "}
         </div>
-        <div className="name">{props.myauthdata.customer.email}</div>
-        <div className="from">{props.myauthdata.authorization.bank}  </div>
-        <div className="to">{props.myauthdata.authorization.exp_month}/{props.myauthdata.authorization.exp_year}</div>
+        <div className="name">{myauthdata.customer.email}</div>
+        <div className="from">{myauthdata.authorization.bank}  </div>
+        <div className="to">{myauthdata.authorization.exp_month}/{myauthdata.authorization.exp_year}</div>
         <div className="ring" />
       </div>
     </div>
