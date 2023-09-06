@@ -50,6 +50,7 @@ const Profileupdatepopup = () => {
   }, []);
 
   let mylink;
+
   if (Responsedata?.stagelink){
 
 
@@ -92,7 +93,7 @@ const Profileupdatepopup = () => {
       <div className="logobtn">
         <div className='fbs'>
         {loading ? (
-          <Link  className="arwbtn"><Spinner/>  Wait </Link>
+          <Link to='/Profileupdate'  className="arwbtn"><Spinner/>  Wait </Link>
         ) : (
           <Link to={mylink} className="arwbtn">Proceed</Link>
         )}
