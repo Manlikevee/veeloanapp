@@ -5140,7 +5140,14 @@ head {
     letter-spacing: .1em;
     text-transform: uppercase;
   }
-  
+  .logobtn a{
+    text-align: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
   @media screen and (max-width: 600px) {
     table {
       border: 0;
@@ -5149,9 +5156,7 @@ head {
         width: 100%;
     }
 
-    .logobtn a{
-        text-align: center;
-    }
+
   .popup{
     padding: 26px 30px;
   }

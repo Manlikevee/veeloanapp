@@ -5,15 +5,23 @@ import jwtDecode from 'jwt-decode';
 import { logout } from '../../service/auth';
 import { Link } from 'gatsby';
 import { navigate } from 'gatsby';
+import Spinner from '../Forms/Accountnumform/Spinner';
+import axiosInstance from '../../service/axiosinterceptor';
+import { toast } from 'react-toastify';
+
 const Profileupdatepopup = () => {
 
 
   const [isverified, setisverified] = useState(true)
+  const [Responsedata, setResponseData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [loggedinuser, setloggedinuser] = useState('')
 
   useEffect(() => {
     const user = getUser(); // Get user information
 
     if (user) {
+      setloggedinuser(user)
       if (user?.profileupdate) {
         setisverified(user.profileupdate);
       } else {
@@ -24,10 +32,47 @@ const Profileupdatepopup = () => {
     }
   }, []);
 
+
+  useEffect(() => {
+    axiosInstance
+      .get('/getstatus/')
+      .then(response => {
+        // Handle the response as needed
+        setResponseData(response.data);
+        console.log(response.data)
+        setLoading(false);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('GET request error', error);
+        setLoading(false);
+      });
+  }, []);
+
+  let mylink;
+  if (Responsedata?.stagekink === 'userprofile') {
+    mylink = '/app/profile'
+  }
+  else if(Responsedata?.stagekink === 'kyc') {
+    mylink = '/Kyc'
+  }
+  else if(Responsedata?.stagekink === 'Atmsetup') {
+    mylink = '/Nairacard'
+  }
+  else if(Responsedata?.stagekink === 'Accountnumber') {
+    mylink = '/AccountNumberVerification'
+  }
+  else if(Responsedata?.stagekink === 'nextokfkin') {
+    mylink = '/Nextofkin'
+  }
+  else{
+    mylink = '/Profileupdate'
+  }
+
   return (
 
     <>
-    {!isverified ? (
+    {!isverified && loggedinuser ? (
       <div className="loading-over " style={{ display: "block" }}>
   <div className="popup">
     <br />
@@ -41,11 +86,12 @@ const Profileupdatepopup = () => {
       </div>
       <div className="logobtn">
         <div className='fbs'>
-          <Link to='/' className="arwbtn" 
-          >
-            {" "}
-            Proceed{" "}
-          </Link>
+        {loading ? (
+          <Link to={mylink} className="arwbtn"><Spinner/>  Wait </Link>
+        ) : (
+          <Link to='/Profileupdate' className="arwbtn">Proceed</Link>
+        )}
+  
 
           <a href=''  className="arwbtn logout" 
            onClick={event => {
@@ -53,6 +99,12 @@ const Profileupdatepopup = () => {
             logout(() => navigate(`/app/login`))
           }}
           >
+                  <button >
+        
+   
+    
+        
+        </button>
        
             Logout{" "}
           </a>
