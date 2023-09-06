@@ -251,7 +251,7 @@ const Profile = ({responseData}) => {
   </div>
 </div>
 {atmloading ? (
-       <Atm toggleshowcard={toggleshowcard}/>
+       <Atm toggleshowcard={toggleshowcard} responseData={responseData}/>
       ) : '' 
  }
     </div>

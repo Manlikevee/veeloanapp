@@ -6,6 +6,7 @@ import Loanplans from '../components/Loanplanpopup/Loanplans';
 import Loanpopup from '../components/Dashboard/Loanpopup/Loanpopup';
 import axiosInstance from '../service/axiosinterceptor';
 import { toast } from 'react-toastify';
+import Profileupdatepopup from '../components/Utility/Profileupdatepopup';
 
 
 const Loan = () => {
@@ -72,7 +73,7 @@ const Loan = () => {
   };
   return (
     <Dashboardlayout>
-
+  <Profileupdatepopup/>
 {loading ? (
       // Loading component while fetching data
      <div> Loading </div>

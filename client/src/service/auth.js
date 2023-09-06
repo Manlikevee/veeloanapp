@@ -55,7 +55,8 @@ const setUser = user =>
         username: decodedAccessToken.username,
         email: decodedAccessToken.email,
         accesstoken: access,
-        refreshtoken: refresh
+        refreshtoken: refresh,
+        profileupdate: decodedAccessToken.is_updated
       });
 
       toast.success('You Are Now Logged In', {

@@ -37,6 +37,7 @@ axiosInstance.interceptors.request.use(async (req) => {
         user.email = decodedAccessToken.email;
         user.accesstoken = access;
         user.refreshtoken = refresh;
+        user.profileupdate =  decodedAccessToken.is_updated
         window.localStorage.setItem("gatsbyUser", JSON.stringify(user));
         req.headers.Authorization = `Bearer ${access}`;
       } 

@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import Lazyloadingdashboard from '../components/Lazyloading/Lazyloadingdashboard';
 import {isLoggedIn} from '../service/auth'
 import { navigate } from 'gatsby';
+import Profileupdatepopup from '../components/Utility/Profileupdatepopup';
 
 function Userdashboard() {
   const [loading, setLoading] = useState(true);
@@ -93,7 +94,7 @@ function Userdashboard() {
 
   return (
     <Dashboardlayout>
-
+  <Profileupdatepopup/>
 {loading ? (
         <Lazyloadingdashboard timeOfDay={timeOfDay} />
       ) : responseData ? (
