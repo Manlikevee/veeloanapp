@@ -66,7 +66,7 @@ const Profileupdatepopup = () => {
   else if(Responsedata.stagelink === 'Accountnumber') {
     mylink = '/AccountNumberVerification'
   }
-  else if(Responsedata.stagelink === 'nextokfkin') {
+  else if(Responsedata.stagelink === 'nextofkin') {
     mylink = '/Nextofkin'
   }
   else{

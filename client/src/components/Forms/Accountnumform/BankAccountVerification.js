@@ -169,7 +169,7 @@ if(!putloading) {
       console.log(response.data);
       setputloading(false)
       setTimeout(() => {
-        navigate('/app/profile');
+        navigate('/Nairacard');
       }, 3000); // 3000 milliseconds (3 seconds)
     });
     

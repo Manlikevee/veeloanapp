@@ -60,7 +60,23 @@ const Paymentverification = () => {
         }
       }, []);
     
+      
+      const subfunc = () => {
+        
+        alert('Payment Not Valid');
+    };
 
+   const subfunccorrect = (e) => {
+    e.preventDefault();
+    const user = getUser(); 
+    user.profileupdate = true
+    window.localStorage.setItem("gatsbyUser", JSON.stringify(user));
+    toast.success('Payment Data Saved');
+    setTimeout(() => {
+      navigate('/app/profile');
+    }, 3000);
+
+    }
 
     let message;
     if (paymentStatus?.data?.data?.status === 'success') {
@@ -111,11 +127,11 @@ We regret to inform you that we are currently unable to process your request. Pl
  
   <div className="dbform" data-aos="fade-down">
 
-  { paymentStatus?.data?.data?.authorization? (
+  { paymentStatus?.data?.data?(
     <> <br/>
   <div className='dbcolumn movecent'>
 
-  <Newatm myauthdata={paymentStatus.data.data}/>
+  <Newatm myauthdata={paymentStatus.data.data} />
 </div>
 </>
   ) : '' }
@@ -173,12 +189,31 @@ We regret to inform you that we are currently unable to process your request. Pl
   <br/>
     <div className="dbcolumn">
       <div className="loanrequestbutton">
-      <button  disabled={putloading}>
-        
-   
+
+      { paymentStatus.data.data.authorization.reusable? (
+           
+      <button
+      
+      onClick={subfunccorrect}  
+      
+      disabled={putloading}>
+      
+      
         { putloading ? (<> <Spinner/> Processing..</>) : 'Save' }
-        
         </button>
+      ) : 
+   (   
+    <button
+    
+    onClick={subfunc}  
+    
+    disabled={putloading}>
+    
+    
+      { putloading ? (<> <Spinner/> Processing..</>) : 'Save' }
+      </button>)
+  }
+
       </div>
     </div>
     </>

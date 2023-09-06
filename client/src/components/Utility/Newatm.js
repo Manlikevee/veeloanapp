@@ -4,7 +4,7 @@ import React from 'react'
 const Newatm = ({myauthdata}) => {
   return (
   <>
-    { myauthdata?.data?.data?.authorization? (
+    { myauthdata?.authorization? (
         <div className="form_body_row">
   <div className="form_body_column">
     <div className="card-group">

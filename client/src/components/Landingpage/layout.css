@@ -4905,7 +4905,7 @@ h5.name {
 }
 
 .cardd {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.497),rgba(0, 0, 0, 0.5)) , url(https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/22.jpeg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.497),rgba(0, 0, 0, 0.5)) , url(https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/22.jpeg) !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -4972,9 +4972,9 @@ h5.name {
     height: auto;
     opacity: 0.8;
 }
- /* .logoz img, .chip img, .number, .name, .from, .to, .ring {
+ .logoz img, .chip img, .cardd .number, .cardd .name, .cardd .from, .cardd .to, .cardd .ring {
     position: absolute;
-}  */
+} 
 
 @media screen and (max-width: 600px){
     .logoz img {
@@ -4998,13 +4998,13 @@ h5.name {
 } 
 
  
-/* 
- .number, .name, .from, .to {
+
+.cardd .number, .cardd .name,.cardd .from,.cardd .to {
     color: white;
     font-weight: 400;
     letter-spacing: 2px;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-} */
+}
 
 .name {
     font-size: 0.7rem;
