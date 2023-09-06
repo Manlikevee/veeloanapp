@@ -93,9 +93,9 @@ const Profileupdatepopup = () => {
       <div className="logobtn">
         <div className='fbs'>
         {loading ? (
-          <Link to='/Profileupdate'  className="arwbtn"><Spinner/>  Wait </Link>
+          <Link to={mylink}  className="arwbtn"><Spinner/>  Proceed </Link>
         ) : (
-          <Link to={mylink} className="arwbtn">Proceed</Link>
+          <Link to='/Profileupdate' className="arwbtn">Proceed</Link>
         )}
   
 
