@@ -65,13 +65,14 @@ const Userprofile = () => {
 
   return (
     <Dashboardlayout>
-  <Profileupdatepopup/>
+
 
 {loading ? (
         <h4>Loading.............</h4>
       ) : responseData ? (
 
     <div>
+        <Profileupdatepopup/>
       <Profile responseData={responseData}/>
     </div> ) : (
           <h1>NOT FOUND</h1>

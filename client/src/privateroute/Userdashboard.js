@@ -94,12 +94,12 @@ function Userdashboard() {
 
   return (
     <Dashboardlayout>
-  <Profileupdatepopup/>
+
 {loading ? (
         <Lazyloadingdashboard timeOfDay={timeOfDay} />
       ) : responseData ? (
         <div>
-
+  <Profileupdatepopup/>
    <Dashboarddata responseData={responseData} timeOfDay={timeOfDay}  />
 
    <Loanhistory openModal={openModal}  responseData={responseData} />
