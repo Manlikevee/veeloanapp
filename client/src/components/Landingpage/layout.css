@@ -3786,7 +3786,7 @@ border-radius: 9px;
     left: 0;
     right: 0;
     top: 0;
-    z-index: 9999999999999999999998;
+    z-index: 9999;
     align-items: center;
     justify-content: center;
 }
@@ -4823,7 +4823,7 @@ h5.name {
     left: 0;
     right: 0;
     top: 0;
-    z-index: 9999999999999999999998;
+    z-index: 99999;
     align-items: center;
     justify-content: center;
 }
