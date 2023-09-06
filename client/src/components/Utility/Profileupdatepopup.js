@@ -45,29 +45,34 @@ const Profileupdatepopup = () => {
       .catch(error => {
         // Handle errors
         console.error('GET request error', error);
-        setLoading(false);
+      
       });
   }, []);
 
   let mylink;
-  if (Responsedata?.stagekink === 'userprofile') {
+  if (Responsedata?.stagelink){
+
+
+
+  if (Responsedata.stagelink === 'userprofile') {
     mylink = '/app/profile'
   }
-  else if(Responsedata?.stagekink === 'kyc') {
+  else if(Responsedata.stagelink === 'kyc') {
     mylink = '/Kyc'
   }
-  else if(Responsedata?.stagekink === 'Atmsetup') {
+  else if(Responsedata.stagelink === 'Atmsetup') {
     mylink = '/Nairacard'
   }
-  else if(Responsedata?.stagekink === 'Accountnumber') {
+  else if(Responsedata.stagelink === 'Accountnumber') {
     mylink = '/AccountNumberVerification'
   }
-  else if(Responsedata?.stagekink === 'nextokfkin') {
+  else if(Responsedata.stagelink === 'nextokfkin') {
     mylink = '/Nextofkin'
   }
   else{
     mylink = '/Profileupdate'
   }
+}
 
   return (
 
@@ -87,9 +92,9 @@ const Profileupdatepopup = () => {
       <div className="logobtn">
         <div className='fbs'>
         {loading ? (
-          <Link to={mylink} className="arwbtn"><Spinner/>  Wait </Link>
+          <Link  className="arwbtn"><Spinner/>  Wait </Link>
         ) : (
-          <Link to='/Profileupdate' className="arwbtn">Proceed</Link>
+          <Link to={mylink} className="arwbtn">Proceed</Link>
         )}
   
 
