@@ -4,9 +4,11 @@ import BankAccountVerification from '../components/Forms/Accountnumform/BankAcco
 
 const AccountNumberVerification = () => {
   return (
-    <Dashboardlayout>
+   
+   <Dashboardlayout>
         <BankAccountVerification/>
     </Dashboardlayout>
+  
   )
 }
 

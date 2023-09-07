@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getUser } from '../../../service/auth'
 import accounting from 'accounting';
+
 function Dashboarddata({responseData, timeOfDay}) {
   const [isActive, setIsActive] = useState(false);
 
