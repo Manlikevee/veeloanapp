@@ -77,7 +77,7 @@ const Userlogin = () => {
           <div className="loginform">
             <div className="logincontent">
               <div className="loginflex">
-                <label htmlFor="Email">Email Address</label>
+                <label htmlFor="Email">Username</label>
                 <input type="text" name="username" value={username} onChange={handleUpdate} />
               </div>
               <div className="loginflex">
