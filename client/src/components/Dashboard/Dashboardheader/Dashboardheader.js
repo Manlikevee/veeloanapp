@@ -7,6 +7,9 @@ import { navigate } from "gatsby";
 const Dashboardheader = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
+
+
+  
   const toggleFullScreen = () => {
     if (!isFullScreen) {
       // Enter full-screen mode
