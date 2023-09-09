@@ -71,6 +71,7 @@ const Loanhistory = ({ openModal , responseData }) => {
             ) : (
               <>
                 {activityDataList.length > 0 ? (
+                  
                   activityDataList.map((activityData, index) => (
                     <div className="activitybox" key={index}>
                       <div className="activitydemo">
