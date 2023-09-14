@@ -88,7 +88,7 @@ const Loanhistory = ({ openModal , responseData }) => {
                           </div>
                           <div className="activitybottomtext">
                             <small>
-                            {getTimeAgo(activityData.messagetime)} ago
+                            {getTimeAgo(activityData.last_updated)} ago
                             </small>
                           </div>
                         </div>
