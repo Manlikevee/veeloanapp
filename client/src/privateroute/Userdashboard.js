@@ -15,6 +15,7 @@ function Userdashboard() {
   const [loanReference, setLoanReference] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [initialFetchCompleted, setInitialFetchCompleted] = useState(false);
 
   let timeOfDay;
   const date = new Date();
@@ -41,17 +42,84 @@ function Userdashboard() {
     setModalOpen(false);
   };
   const loanReferenceValue = '123'
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get('/Dashboarddata')
+  //     .then(response => {
+  //       // Handle the response as needed
+  //       toast.success('successfully fetched');
+  //       setResponseData(response.data);
+  //       setInitialFetchCompleted(true)
+  //       console.log(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       // Handle errors
+  //       console.error('GET request error', error);
+  //       if (error.response && error.response.data && error.response.data.error) {
+  //         toast.error(error.response.data.error);
+  //       } else {
+  //         toast.error('An error occurred while Loading Your Data');
+  //       }
+  //       setLoading(false);
+  //     });
+  // }, []);
+  
+  
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axiosInstance.get('/Dashboarddata');
+  //       // Handle the response as needed
+  //       setResponseData(response.data);
+
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       // Fail silently without showing errors
+  //       console.error('Fetch error (silently ignored)', error);
+  //     }
+  //   };
+  
+  //   const intervalId = setInterval(() => {
+  //     if (initialFetchCompleted) {
+  //       fetchData();
+  //     } else {
+  //       console.log('Waiting');
+  //     }
+  //   }, 30000);
+  
+  
+  //   // Cleanup the interval when the component unmounts
+  //   return () => clearInterval(intervalId);
+  // }, []);
+  
+
   useEffect(() => {
-    axiosInstance
-      .get('/Dashboarddata')
-      .then(response => {
+    let initialFetchCompleted = false;
+  
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get('/Dashboarddata');
         // Handle the response as needed
-        toast.success('successfully fetched');
+       
+
+        if (!initialFetchCompleted) {
+          toast.success('successfully fetched');
+        } 
+        
+      
+    
         setResponseData(response.data);
+        setInitialFetchCompleted(true)
+  
         console.log(response.data);
         setLoading(false);
-      })
-      .catch(error => {
+  
+        // Set initialFetchCompleted to true once the initial fetch is successful
+        if (!initialFetchCompleted) {
+          initialFetchCompleted = true;
+        }
+      } catch (error) {
         // Handle errors
         console.error('GET request error', error);
         if (error.response && error.response.data && error.response.data.error) {
@@ -60,38 +128,23 @@ function Userdashboard() {
           toast.error('An error occurred while Loading Your Data');
         }
         setLoading(false);
-      });
+      }
+    };
+  
+    const intervalId = setInterval(() => {
+      if (initialFetchCompleted) {
+        fetchData();
+      } else {
+        console.log('Waiting');
+      }
+    }, 20000);
+  
+    // Fetch data initially
+    fetchData();
+  
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, []);
-  
-  
-
-  useEffect(() => {
-    if(responseData){
-      const fetchData = async () => {
-        try {
-          const response = await axiosInstance.get('/Dashboarddata');
-          // Handle the response as needed
-  
-          setResponseData(response.data);
-          console.log(response.data);
-        } catch (error) {
-          // Fail silently without showing errors
-          console.error('Fetch error (silently ignored)', error);
-        }
-      };
-    
-      // Fetch data initially
-      fetchData();
-    
-      // Fetch data every 10 seconds
-      const intervalId = setInterval(fetchData, 30000);
-    
-      // Cleanup the interval when the component unmounts
-      return () => clearInterval(intervalId);
-    }
- 
-  }, []);
-  
 
 
 

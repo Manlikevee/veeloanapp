@@ -71,7 +71,6 @@ const Loanhistory = ({ openModal , responseData }) => {
             ) : (
               <>
                 {activityDataList.length > 0 ? (
-                  
                   activityDataList.map((activityData, index) => (
                     <div className="activitybox" key={index}>
                       <div className="activitydemo">
@@ -88,7 +87,7 @@ const Loanhistory = ({ openModal , responseData }) => {
                           </div>
                           <div className="activitybottomtext">
                             <small>
-                            {getTimeAgo(activityData.last_updated)} ago
+                            {getTimeAgo(activityData.updated_at)} ago
                             </small>
                           </div>
                         </div>

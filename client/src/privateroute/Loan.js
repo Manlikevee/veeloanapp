@@ -13,18 +13,86 @@ const Loan = () => {
   const [loading, setLoading] = useState(true);
   const [loanReference, setLoanReference] = useState('');
   const [responseData, setResponseData] = useState(null);
+  const [initialFetchCompleted, setInitialFetchCompleted] = useState(false);
+//   useEffect(() => {
+//     axiosInstance
+//       .get('/Loanpage')
+//       .then(response => {
+//         // Handle the response as needed
+//         toast.success('successfully fetched');
+//         setResponseData(response.data);
+//         console.table(response.data)
+//         setLoading(false);
+//       })
+//       .catch(error => {
+//         // Handle errors
+//         console.error('GET request error', error);
+//         if (error.response && error.response.data && error.response.data.error) {
+//           toast.error(error.response.data.error);
+//         } else {
+//           toast.error('An error occurred while Loading Your Data');
+//         }
+//         setLoading(false);
+//       });
+//   }, []);
+  
+//   useEffect(() => {
+// if(responseData) {
+//   const fetchData = async () => {
+//     try {
+//       const response = await axiosInstance.get('/Loanpage');
+//       // Handle the response as needed
 
+//       setResponseData(response.data);
+//       console.log(response.data);
+//     } catch (error) {
+//       // Fail silently without showing errors
+//       console.error('Fetch error (silently ignored)', error);
+//     }
+//   };
+
+//   // Fetch data initially
+//   fetchData();
+
+//   // Fetch data every 10 seconds
+//   const intervalId = setInterval(fetchData, 30000);
+
+//   // Cleanup the interval when the component unmounts
+//   return () => clearInterval(intervalId);
+// }
+// else{
+//   console.log('hello')
+// }
+//   }, []);
+
+
+
+    
   useEffect(() => {
-    axiosInstance
-      .get('/Loanpage')
-      .then(response => {
+    let initialFetchCompleted = false;
+  
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get('/Loanpage');
         // Handle the response as needed
-        toast.success('successfully fetched');
+       
+
+        if (!initialFetchCompleted) {
+          toast.success('successfully fetched');
+        } 
+        
+      
+  
+        setInitialFetchCompleted(true)
         setResponseData(response.data);
-        console.table(response.data)
+        console.log(response.data);
         setLoading(false);
-      })
-      .catch(error => {
+  
+        // Set initialFetchCompleted to true once the initial fetch is successful
+        if (!initialFetchCompleted) {
+          initialFetchCompleted = true;
+        }
+      } catch (error) {
         // Handle errors
         console.error('GET request error', error);
         if (error.response && error.response.data && error.response.data.error) {
@@ -33,36 +101,22 @@ const Loan = () => {
           toast.error('An error occurred while Loading Your Data');
         }
         setLoading(false);
-      });
-  }, []);
+      }
+    };
   
-  useEffect(() => {
-if(responseData) {
-  const fetchData = async () => {
-    try {
-      const response = await axiosInstance.get('/Loanpage');
-      // Handle the response as needed
-
-      setResponseData(response.data);
-      console.log(response.data);
-    } catch (error) {
-      // Fail silently without showing errors
-      console.error('Fetch error (silently ignored)', error);
-    }
-  };
-
-  // Fetch data initially
-  fetchData();
-
-  // Fetch data every 10 seconds
-  const intervalId = setInterval(fetchData, 30000);
-
-  // Cleanup the interval when the component unmounts
-  return () => clearInterval(intervalId);
-}
-else{
-  console.log('hello')
-}
+    const intervalId = setInterval(() => {
+      if (initialFetchCompleted) {
+        fetchData();
+      } else {
+        console.log('Waiting');
+      }
+    }, 20000);
+  
+    // Fetch data initially
+    fetchData();
+  
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, []);
 
 
